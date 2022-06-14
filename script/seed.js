@@ -1,6 +1,6 @@
 'use strict'
 
-const {db, models: {User} } = require('../server/db')
+const {db, models: {User, Product} } = require('../server/db')
 
 /**
  * seed - this function clears the database, updates tables to
@@ -11,25 +11,49 @@ async function seed() {
   console.log('db synced!')
 
   // Creating Users
-  const users = await Promise.all([
-    User.create({ username: 'cody', password: '123' }),
-    User.create({ username: 'murphy', password: '123' }),
-  ])
+  const users = [{ email: 'grace@gmail.com', firstName: 'Grace', lastName:'Shopper', password: '123' }];
+
+  const [grace] = await Promise.all(users.map(user => User.create(user)));
+
+  // Creating Products
+  const products = [
+    {
+      productName: "Nature Nate\'s 100% Pure, Raw & Unfiltered Honey",
+      price: 10,
+      description: "",
+      category: "organic",
+      imageUrl: ["https://images-na.ssl-images-amazon.com/images/I/41euxoYwTIL._SX300_SY300_QL70_FMwebp_.jpg"]
+    },
+    {
+      productName: "Kiva Raw Manuka Honey",
+      price: 40,
+      description: "",
+      category: "organic",
+      imageUrl: [" https://m.media-amazon.com/images/I/513whGsJxeL._AC_SR480,480_.jpg"]
+    },
+    {
+      productName: "Subee",
+      price: 20,
+      description: "",
+      category: "manuka",
+      imageUrl: ["https://images-na.ssl-images-amazon.com/images/I/41Ob1%2BOxFYL._SX300_SY300_QL70_FMwebp_.jpg"]
+    }
+  ];
+
+  const [ natures, kiva, subee] = await Promise.all(products.map(product => Product.create(product)));
+
+  // Setting User-Product Associations (Creating Cart)
+  await grace.setProducts([ natures, kiva, subee]);
 
   console.log(`seeded ${users.length} users`)
   console.log(`seeded successfully`)
-  return {
-    users: {
-      cody: users[0],
-      murphy: users[1]
-    }
-  }
 }
+
 
 /*
  We've separated the `seed` function from the `runSeed` function.
- This way we can isolate the error handling and exit trapping.
- The `seed` function is concerned only with modifying the database.
+This way we can isolate the error handling and exit trapping.
+The `seed` function is concerned only with modifying the database.
 */
 async function runSeed() {
   console.log('seeding...')
@@ -55,4 +79,4 @@ if (module === require.main) {
 }
 
 // we export the seed function for testing purposes (see `./seed.spec.js`)
-module.exports = seed
+module.exports = seed;
