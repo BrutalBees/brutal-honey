@@ -6,10 +6,17 @@ import { fetchProducts } from "../store/products";
 import ProductIndexItem from "./ProductIndexItem";
 
 // STYLED COMPONENT
-const ProductIndexWrapper = styled.div`
-  width: 100%vh;
-  height: 50%vh;
+const StyledProductIndexWrapper = styled.div`
+  width: 100%;
+  height: 100vh;
   border-bottom: solid #b7aba4 1px;
+  padding: 100px;
+`;
+
+const StyledIndexItemsWrapper = styled.div`
+  display: flex;
+  flex-flow: row wrap;
+  gap: 10px 30px;
 `;
 
 // FUNCTIONAL COMPONENT
@@ -24,9 +31,11 @@ const ProductIndex = () => {
     dispatch(fetchProducts())
   }, [dispatch]);
   return(
-    <ProductIndexWrapper>
-      {products.map(product => <ProductIndexItem key={product.id} product={product} />)}
-    </ProductIndexWrapper>
+    <StyledProductIndexWrapper>
+      <StyledIndexItemsWrapper>
+        {products.map(product => <ProductIndexItem key={product.id} product={product} />)}
+      </StyledIndexItemsWrapper>
+    </StyledProductIndexWrapper>
   )
 };
 
