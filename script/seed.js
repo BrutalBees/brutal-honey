@@ -20,21 +20,21 @@ async function seed() {
     {
       productName: "Nature Nate\'s 100% Pure, Raw & Unfiltered Honey",
       price: 10,
-      description: "",
+      description: "Nature Nate's 100% Pure, Raw & Unfiltered Honey is a sweetener as nature intended. One ingredient: Honey. All we add is the bottle",
       category: "organic",
       imageUrl: ["https://images-na.ssl-images-amazon.com/images/I/41euxoYwTIL._SX300_SY300_QL70_FMwebp_.jpg"]
     },
     {
       productName: "Kiva Raw Manuka Honey",
       price: 40,
-      description: "",
+      description: "Genuine Manuka honey harvested from the remote and pristine hills, forest, and coastal areas of New Zealand",
       category: "organic",
       imageUrl: [" https://m.media-amazon.com/images/I/513whGsJxeL._AC_SR480,480_.jpg"]
     },
     {
       productName: "Subee",
       price: 20,
-      description: "",
+      description: "From hive to Table! Gently filtered to remove hive debris & prevent granulation, our honey is available in packets, squeeze bears, bottles & jars. It's perfect for baking, BBQ, as a sweetener & more!",
       category: "manuka",
       imageUrl: ["https://images-na.ssl-images-amazon.com/images/I/41Ob1%2BOxFYL._SX300_SY300_QL70_FMwebp_.jpg"]
     }
