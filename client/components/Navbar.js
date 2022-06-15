@@ -1,16 +1,24 @@
-import React from 'react'
-import {connect} from 'react-redux'
-import {Link} from 'react-router-dom'
-import {logout} from '../store'
+import React, {useCallback} from 'react';
+// import {connect} from 'react-redux';
+import {Link} from 'react-router-dom';
+import {logout} from '../store';
+import { useSelector, useDispatch } from 'react-redux';
 
-const Navbar = ({handleClick, isLoggedIn}) => (
+const Navbar = () => {
+// const Navbar = ({handleClick, isLoggedIn}) => {
+  const name = useSelector(state => state.auth.firstName);
+  const isLoggedIn = useSelector(state => !!state.auth.id);
+  const dispatch = useDispatch();
+  const handleClick = useCallback(() => dispatch(logout()));
+
+  return (
   <div>
-    <h1>FS-App-Template</h1>
     <nav>
       {isLoggedIn ? (
         <div>
           {/* The navbar will show these links after you log in */}
           <Link to="/home">Home</Link>
+          <span>Welcome, {name}</span>
           <a href="#" onClick={handleClick}>
             Logout
           </a>
@@ -25,23 +33,23 @@ const Navbar = ({handleClick, isLoggedIn}) => (
     </nav>
     <hr />
   </div>
-)
-
-/**
- * CONTAINER
- */
-const mapState = state => {
-  return {
-    isLoggedIn: !!state.auth.id
-  }
+  )
 }
+export default Navbar;
 
-const mapDispatch = dispatch => {
-  return {
-    handleClick() {
-      dispatch(logout())
-    }
-  }
-}
+// REFACTORED USING REACT-REDUX HOOKS
+// const mapState = state => {
+//   return {
+//     isLoggedIn: !!state.auth.id
+//   }
+// }
 
-export default connect(mapState, mapDispatch)(Navbar)
+// const mapDispatch = dispatch => {
+//   return {
+//     handleClick() {
+//       dispatch(logout())
+//     }
+//   }
+// }
+
+// export default connect(mapState, mapDispatch)(Navbar)
