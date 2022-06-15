@@ -1,11 +1,14 @@
 const router = require('express').Router();
-const Cart = require('../db/models/cart')
-
+const Cart = require('../db/models/cart');
 
 router.get('/', async (req, res, next) => {
   try {
-    res.json(req.cart)
-  } catch (err) {
+    const cart = await Cart.findAll()
+    res.json(cart)
+  } 
+  catch (err) {
     next(err)
   }
 });
+
+module.exports = router;
