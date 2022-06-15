@@ -56,7 +56,6 @@ const mapSignup = state => {
 }
 
 const mapDispatch = (dispatch)=> {
-  debugger
   return {
     handleSubmit(evt) {
       evt.preventDefault()

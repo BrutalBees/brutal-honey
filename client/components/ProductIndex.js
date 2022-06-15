@@ -1,8 +1,16 @@
 import React from "react";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import styled from "styled-components";
 import { fetchProducts } from "../store/products";
 import ProductIndexItem from "./ProductIndexItem";
+
+// STYLED COMPONENT
+const ProductIndexWrapper = styled.div`
+  width: 100%vh;
+  height: 50%vh;
+  border-bottom: solid #b7aba4 1px;
+`;
 
 // FUNCTIONAL COMPONENT
 const ProductIndex = () => {
@@ -16,9 +24,9 @@ const ProductIndex = () => {
     dispatch(fetchProducts())
   }, [dispatch]);
   return(
-    <div>
+    <ProductIndexWrapper>
       {products.map(product => <ProductIndexItem key={product.id} product={product} />)}
-    </div>
+    </ProductIndexWrapper>
   )
 };
 

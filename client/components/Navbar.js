@@ -71,12 +71,14 @@ const Navbar = () => {
     <StyledNavbar>
       <StyledNavHeader>
         <StyledLeftHeader>SEARCH</StyledLeftHeader>
-        <StyledLogoHeader>BRUTAL HONEY</StyledLogoHeader>
+        <StyledLogoHeader>
+          <Link to='/home'>BRUTAL HONEY</Link>
+        </StyledLogoHeader>
         <StyledRightHeader>
           {isLoggedIn ? (
           <div>
           {/* The navbar will show these links after you log in */}
-            <span>WELCOME, {name} </span>
+            <span>WELCOME, {name.toUpperCase()} </span>
             <a href="#" onClick={handleClick}>
               LOG OUT
             </a>
@@ -101,21 +103,3 @@ const Navbar = () => {
   )
 }
 export default Navbar;
-
-// previous navBar
-      {/* {isLoggedIn ? (
-        <div> */}
-          {/* The navbar will show these links after you log in */}
-          {/* <Link to="/home">HOME</Link>
-          <span>WELCOME, {name}</span>
-          <a href="#" onClick={handleClick}>
-            LOG OUT
-          </a>
-        </div>
-      ) : (
-        <div> */}
-          {/* The navbar will show these links before you log in */}
-          {/* <Link to="/login">LOGIN</Link>
-          <Link to="/signup">SIGN UP</Link>
-        </div>
-      )} */}
