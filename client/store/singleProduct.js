@@ -16,11 +16,19 @@ export const fetchSingleProduct = (id) => {
   };
 };
 
+<<<<<<< HEAD
 export default (state = {}, action) => {
+=======
+export default function singleProductReducer(state = {}, action) {
+>>>>>>> main
   switch (action.type) {
     case SET_SINGLE_PRODUCT:
       return action.product;
     default:
       return state;
   }
+<<<<<<< HEAD
 };
+=======
+}
+>>>>>>> main
