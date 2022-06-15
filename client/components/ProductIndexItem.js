@@ -7,7 +7,6 @@ const StyledItemWrapper = styled.div`
   flex-direction: column;
   width: 255px;
   height: 360px;
-  border: solid grey 1px;
 `;
 
 const StyledItemImage = styled.div`
@@ -21,6 +20,7 @@ const StyledItemImage = styled.div`
 
 const StyledProductName = styled.div`
   display: flex;
+  justify-content: center;
 `;
 
 const ProductIndexItem = (props) => {
@@ -28,7 +28,9 @@ const ProductIndexItem = (props) => {
   return (
     <StyledItemWrapper>
       <StyledItemImage image={product.imageUrl[0]} />
-      <StyledProductName>{product.productName.toUpperCase()}</StyledProductName>
+      <StyledProductName>
+        {product.productName.toUpperCase()}
+      </StyledProductName>
     </StyledItemWrapper>
   )
 };
