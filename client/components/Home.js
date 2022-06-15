@@ -1,5 +1,4 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 import ProductIndex from './ProductIndex';
 import styled from 'styled-components';
 import Navbar from './Navbar';

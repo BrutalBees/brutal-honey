@@ -24,7 +24,7 @@ const Product = db.define('product', {
       type: Sequelize.ENUM('organic', 'raw', 'manuka'),
       defaultValue: 'organic'
   },
-  imageURL: {
+  imageUrl: {
       type: Sequelize.ARRAY(Sequelize.STRING),
       defaultValue: ['https://res.cloudinary.com/hksqkdlah/image/upload/24728_sil-honey-gunters-pure-clover-honey-1.jpg']
   }
