@@ -1,6 +1,7 @@
 'use strict'
 
-const {db, models: {User, Product} } = require('../server/db')
+const {db, models: {User, Product} } = require('../server/db');
+const Cart = require('../server/db/models/Cart');
 
 /**
  * seed - this function clears the database, updates tables to
@@ -11,9 +12,35 @@ async function seed() {
   console.log('db synced!')
 
   // Creating Users
-  const users = [{ email: 'grace@gmail.com', firstName: 'Grace', lastName:'Shopper', password: '123' }];
+  const users = [
+    {
+      email: 'grace@gmail.com',
+      firstName: 'Grace',
+      lastName:'Shopper',
+      password: '123'
+    },
+    {
+      email: 'jia@gmail.com',
+      firstName: 'Jia',
+      lastName:'Shopper',
+      password: '123'
+    },
+    {
+      email: 'angel@gmail.com',
+      firstName: 'Angel',
+      lastName:'Shopper',
+      password: '123'
+    },
+    {
+      email: 'katie@gmail.com',
+      firstName: 'Katie',
+      lastName:'Shopper',
+      password: '123'
+    }
+  ];
 
-  const [grace] = await Promise.all(users.map(user => User.create(user)));
+  const [grace, jia, angel, katie] = await Promise.all(users.map(user => User.create(user)));
+
 
   // Creating Products
   const products = [
@@ -39,11 +66,23 @@ async function seed() {
       imageUrl: ["https://images-na.ssl-images-amazon.com/images/I/41Ob1%2BOxFYL._SX300_SY300_QL70_FMwebp_.jpg"]
     }
   ];
-
   const [ natures, kiva, subee] = await Promise.all(products.map(product => Product.create(product)));
 
-  // Setting User-Product Associations (Creating Cart)
-  await grace.setProducts([ natures, kiva, subee]);
+  // Create Carts
+  const carts = [
+    {},
+    {},
+    {}
+  ];
+  const [cart1, cart2, cart3 ] = await Promise.all(carts.map(cart => Cart.create(cart)));
+
+  // Set associations between users and carts
+  await cart1.setUser(grace);
+  await cart2.setUser(jia);
+  await cart3.setUser(angel);
+
+  // Set Cart-Product Associations
+  await cart1.setProducts([ natures, kiva, subee]);
 
   console.log(`seeded ${users.length} users`)
   console.log(`seeded successfully`)
