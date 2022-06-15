@@ -1,5 +1,6 @@
 import React from 'react';
 import ProductIndex from './ProductIndex';
+
 import styled from 'styled-components';
 import Navbar from './Navbar';
 
@@ -23,5 +24,19 @@ export const Home = props => {
     </div>
   )
 };
+=======
+
+// COMPONENT
+export const Home = props => {
+  const username = useSelector(state => state.auth.firstName);
+
+  return (
+    <div>
+      {/* <h3>Welcome, {username}</h3> */}
+      <ProductIndex />
+    </div>
+  )
+}
+
 
 export default Home;
