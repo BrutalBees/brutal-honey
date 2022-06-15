@@ -1,6 +1,9 @@
 const router = require('express').Router();
-const Cart = require('../db/models/cart');
+const { models: { Cart } } = require('../db');
+module.exports = router;
 
+
+// GET /api/cart
 router.get('/', async (req, res, next) => {
   try {
     const cart = await Cart.findAll()
@@ -10,5 +13,3 @@ router.get('/', async (req, res, next) => {
     next(err)
   }
 });
-
-module.exports = router;
