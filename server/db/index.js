@@ -14,20 +14,21 @@ User.hasOne(Cart);
 Cart.belongsTo(User);
 
 // Many to Many
-const cart_product = db.define('cart_product', {
+const cartProduct = db.define('cartProduct', {
   quantity: {
     type: Sequelize.INTEGER
   }
 });
 
-Cart.belongsToMany(Product, { through: cart_product });
-Product.belongsToMany(Cart, { through: cart_product });
+Cart.belongsToMany(Product, { through: cartProduct });
+Product.belongsToMany(Cart, { through: cartProduct });
 
 module.exports = {
   db,
   models: {
     User,
     Product, 
-    Cart
+    Cart,
+    cartProduct
   },
 };
