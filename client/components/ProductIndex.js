@@ -16,7 +16,8 @@ const StyledProductIndexWrapper = styled.div`
 const StyledIndexItemsWrapper = styled.div`
   display: flex;
   flex-flow: row wrap;
-  gap: 10px 30px;
+  gap: 30px 60px;
+  justify-content: center;
 `;
 
 // FUNCTIONAL COMPONENT
