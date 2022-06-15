@@ -1,9 +1,24 @@
+
+* {
+  font-family: 'Nunito', sans-serif;
+=======
 body {
   font-family: sans-serif;
+
 }
 
 a {
   text-decoration: none;
+
+  color: black;
+}
+
+/* label {
+  display: block;
+} */
+
+/* nav a {
+=======
 }
 
 label {
@@ -11,6 +26,7 @@ label {
 }
 
 nav a {
+
   display: inline-block;
   margin: 1em;
 }
@@ -18,4 +34,8 @@ nav a {
 form div {
   margin: 1em;
   display: inline-block;
+
+} */
+=======
 }
+
