@@ -10,8 +10,10 @@ const StyledItemWrapper = styled.div`
 
 const ProductIndexItem = (props) => {
   const { product } = props;
+  debugger
   return (
     <StyledItemWrapper>
+      {/* <img src={product.imageUrl[0]} /> */}
       {product.productName}
     </StyledItemWrapper>
   )
