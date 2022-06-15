@@ -45,7 +45,7 @@ async function seed() {
   // Creating Products
   const products = [
     {
-      productName: "Nature Nate\'s 100% Pure, Raw & Unfiltered Honey",
+      productName: "Nature Nate\'s",
       price: 10,
       description: "Nature Nate's 100% Pure, Raw & Unfiltered Honey is a sweetener as nature intended. One ingredient: Honey. All we add is the bottle",
       category: "organic",
@@ -63,7 +63,7 @@ async function seed() {
       price: 20,
       description: "From hive to Table! Gently filtered to remove hive debris & prevent granulation, our honey is available in packets, squeeze bears, bottles & jars. It's perfect for baking, BBQ, as a sweetener & more!",
       category: "manuka",
-      imageUrl: ["https://images-na.ssl-images-amazon.com/images/I/41Ob1%2BOxFYL._SX300_SY300_QL70_FMwebp_.jpg"]
+      imageUrl: ["https://cdn.shopify.com/s/files/1/0415/3455/4270/products/003791.jpg?v=1614673437"]
     }
   ];
   const [ natures, kiva, subee] = await Promise.all(products.map(product => Product.create(product)));
