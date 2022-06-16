@@ -2,16 +2,20 @@ const router = require('express').Router()
 const { models: { User }} = require('../db')
 module.exports = router;
 
+// GET /api/users
 router.get('/', async (req, res, next) => {
   try {
-    const users = await User.findAll({
-      // explicitly select only the id and username fields - even though
-      // users' passwords are encrypted, it won't help if we just
-      // send everything to anyone who asks!
-      attributes: ['id', 'username']
-    })
-    res.json(users)
+    const accessUser = await User.findByToken(req.headers.authorization);
+    if (accessUser.isAdmin) {
+      const users = await User.findAll({
+        attributes: ['id', 'email', 'firstName', 'lastName'] // only sends back these attributes
+      })
+      res.json(users)
+    } else {
+      throw new error
+    }
   } catch (err) {
     next(err)
   }
 })
+
