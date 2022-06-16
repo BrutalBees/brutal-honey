@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchSingleProduct } from '../store/singleProduct';
-import Navbar from './Navbar';
 import styled from 'styled-components';
 
 const AddToCartBtn = styled.button`
@@ -29,14 +28,6 @@ const TopRtWrapper = styled.div`
 `;
 
 const Description = styled.p``;
-
-const StyledSpash = styled.div`
-  background-image: url('https://images.unsplash.com/photo-1625600243103-1dc6824c6c8a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1064&q=80');
-  background-size: cover;
-  background-position: center;
-  height: 100vh;
-  width: 100%;
-`;
 
 const SingleProduct = (props) => {
   const dispatch = useDispatch();
