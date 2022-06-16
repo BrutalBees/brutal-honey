@@ -13,3 +13,12 @@ router.get('/', async (req, res, next) => {
     next(err)
   }
 });
+
+router.post('/', async (req, res, next) => {
+  try {
+    const productAdded = await Cart.create(req.body)
+    res.json(productAdded)
+  } catch (error) {
+    next(error)
+  }
+})
