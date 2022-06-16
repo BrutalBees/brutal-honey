@@ -4,11 +4,9 @@ import { withRouter, Route, Switch, Redirect } from 'react-router-dom';
 import { Login, Signup } from './components/AuthForm';
 import SingleProduct from './components/SingleProduct';
 import Home from './components/Home';
-import { me } from './store';
+import AllProducts from './components/AllProducts';
+import {me} from './store';
 
-/**
- * COMPONENT
- */
 class Routes extends Component {
   componentDidMount() {
     this.props.loadInitialData();
@@ -21,9 +19,10 @@ class Routes extends Component {
       <div>
         <Switch>
           <Route path="/home" component={Home} />
+          <Route exact path="/products" component={AllProducts} />
+          <Route path="/products/:id" component={SingleProduct} />
           <Route path="/login" component={Login} />
           <Route path="/signup" component={Signup} />
-          <Route exact path="/products/:id" component={SingleProduct} />
           <Redirect to="home" />
         </Switch>
       </div>
@@ -31,9 +30,6 @@ class Routes extends Component {
   }
 }
 
-/**
- * CONTAINER
- */
 const mapState = (state) => {
   return {
     // Being 'logged in' for our purposes will be defined has having a state.auth that has a truthy id.

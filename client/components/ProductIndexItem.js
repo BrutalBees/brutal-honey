@@ -1,28 +1,7 @@
 import React from "react";
-import styled from "styled-components";
+import { StyledItemWrapper, StyledItemImage, StyledProductName } from "./styles";
 
-// STYLED COMPONENTS
-const StyledItemWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 255px;
-  height: 360px;
-`;
-
-const StyledItemImage = styled.div`
-  display: flex;
-  background-image: url(${props => props.image});
-  background-size: cover;
-  background-position: center;
-  width: 100%;
-  height: 300px;
-`;
-
-const StyledProductName = styled.div`
-  display: flex;
-  justify-content: center;
-`;
-
+// ProductIndexItem Component
 const ProductIndexItem = (props) => {
   const { product } = props;
   return (

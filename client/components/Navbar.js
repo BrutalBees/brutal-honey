@@ -1,9 +1,16 @@
+<<<<<<< HEAD
 import React, { useCallback } from 'react';
 // import {connect} from 'react-redux';
 import { Link } from 'react-router-dom';
 import { logout } from '../store';
+=======
+import React, {useCallback} from 'react';
+import {logout} from '../store';
+>>>>>>> origin
 import { useSelector, useDispatch } from 'react-redux';
+import { StyledNavbar, StyledNavHeader, StyledLeftHeader, StyledRightHeader, StyledLogoHeader, StyledLogoLink, StyledLink, StyledLinksWrapper, StyledNavHeaderBottom } from './styles';
 
+<<<<<<< HEAD
 import styled from 'styled-components';
 
 // STYLED COMPONENT
@@ -55,6 +62,8 @@ const StyledNavHeaderBottom = styled(StyledNavHeader)`
 `;
 
 // FUNCTIONAL COMPONENT
+=======
+>>>>>>> origin
 const Navbar = () => {
   const name = useSelector((state) => state.auth.firstName);
   const isLoggedIn = useSelector((state) => !!state.auth.id);
@@ -66,6 +75,7 @@ const Navbar = () => {
       <StyledNavHeader>
         <StyledLeftHeader>SEARCH</StyledLeftHeader>
         <StyledLogoHeader>
+<<<<<<< HEAD
           <Link to="/home">BRUTAL HONEY</Link>
         </StyledLogoHeader>
         <StyledRightHeader>
@@ -83,6 +93,23 @@ const Navbar = () => {
               <Link to="/login">LOGIN</Link>
               <Link to="/signup">SIGN UP</Link>
             </div>
+=======
+          <StyledLogoLink to='/home'>BRUTAL HONEY</StyledLogoLink>
+        </StyledLogoHeader>
+        <StyledRightHeader>
+          {isLoggedIn ? (
+          <StyledLinksWrapper>
+            <span>WELCOME, {name.toUpperCase()}  </span>
+            <StyledLink to="#" onClick={handleClick}>
+              LOG OUT
+            </StyledLink>
+          </StyledLinksWrapper>
+          ) : (
+            <StyledLinksWrapper>
+              <StyledLink to="/login">LOGIN</StyledLink>
+              <StyledLink to="/signup">SIGN UP</StyledLink>
+            </StyledLinksWrapper>
+>>>>>>> origin
           )}
         </StyledRightHeader>
       </StyledNavHeader>
