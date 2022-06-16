@@ -16,6 +16,19 @@ router.get('/', async (req, res, next) => {
   }
 });
 
+// POST api/products - admin can create new product
+router.post('/', verifyToken, async (req, res, next) => {
+  try {
+    if (req.user.isAdmin) {
+      res.send(await Product.create(req.body));
+    } else {
+      res.status(401).send('User does not have admin access');
+    }
+  } catch (error) {
+    next(error)
+  }
+});
+
 // GET /api/products/:id
 router.get('/:id', async (req, res, next) => {
   try {
@@ -26,15 +39,17 @@ router.get('/:id', async (req, res, next) => {
   }
 });
 
-// POST /products - admin can create new product
-router.post('/', verifyToken, async (req, res, next) => {
+// PUT api/products/:id - Admin can edit a product
+router.put('/:id', verifyToken, async (req, res, next) => {
   try {
     if (req.user.isAdmin) {
-      res.send(await Product.create(req.body));
+      const product = await Product.findByPk(req.params.id);
+      await product.set(req.body);
+      res.send(await product.save());
     } else {
       res.status(401).send('User does not have admin access');
     }
   } catch (error) {
-    next(error)
+    next(error);
   }
 });
