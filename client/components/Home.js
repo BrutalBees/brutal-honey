@@ -24,19 +24,5 @@ export const Home = props => {
     </div>
   )
 };
-=======
-
-// COMPONENT
-export const Home = props => {
-  const username = useSelector(state => state.auth.firstName);
-
-  return (
-    <div>
-      {/* <h3>Welcome, {username}</h3> */}
-      <ProductIndex />
-    </div>
-  )
-}
-
 
 export default Home;
