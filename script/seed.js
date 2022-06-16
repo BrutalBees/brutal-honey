@@ -3,10 +3,6 @@
 const {db, models: {User, Product} } = require('../server/db');
 const Cart = require('../server/db/models/Cart');
 
-/**
- * seed - this function clears the database, updates tables to
- *      match the models, and populates the database.
- */
 async function seed() {
   await db.sync({ force: true }) // clears db and matches models to tables
   console.log('db synced!')
@@ -72,34 +68,34 @@ async function seed() {
       category: "organic",
       imageUrl: ["http://storiesofgreekorigins.com/image/cache/data/Organic-Thyme-Honey_photo_2-455x475.jpg"]
     },
-    // {
-    //   productName: "Local Hive",
-    //   price: 20,
-    //   description: "Made in the USA and straight from the hive - from our family to your family! Rice`s Honey proudly partners with local beekeepers around the country to provide only 100% pure, authentic, high quality, raw & unfiltered honey in a wide variety of local blends.",
-    //   category: "raw",
-    //   imageUrl: ["https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1576171343-lr-rice-southeast-honey-1576171328.jpg?crop=1xw:1xh;center,top&resize=768:*"]
-    // },
-    // {
-    //   productName: "Nature Nate\'s",
-    //   price: 10,
-    //   description: "Nature Nate's 100% Pure, Raw & Unfiltered Honey is a sweetener as nature intended. One ingredient: Honey. All we add is the bottle",
-    //   category: "organic",
-    //   imageUrl: ["https://images-na.ssl-images-amazon.com/images/I/41euxoYwTIL._SX300_SY300_QL70_FMwebp_.jpg"]
-    // },
-    // {
-    //   productName: "Kiva Raw Manuka Honey",
-    //   price: 40,
-    //   description: "Genuine Manuka honey harvested from the remote and pristine hills, forest, and coastal areas of New Zealand",
-    //   category: "organic",
-    //   imageUrl: [" https://m.media-amazon.com/images/I/513whGsJxeL._AC_SR480,480_.jpg"]
-    // },
-    // {
-    //   productName: "Subee",
-    //   price: 20,
-    //   description: "From hive to Table! Gently filtered to remove hive debris & prevent granulation, our honey is available in packets, squeeze bears, bottles & jars. It's perfect for baking, BBQ, as a sweetener & more!",
-    //   category: "manuka",
-    //   imageUrl: ["https://cdn.shopify.com/s/files/1/0415/3455/4270/products/003791.jpg?v=1614673437"]
-    // }
+    {
+      productName: "Local Hive",
+      price: 20,
+      description: "Made in the USA and straight from the hive - from our family to your family! Rice`s Honey proudly partners with local beekeepers around the country to provide only 100% pure, authentic, high quality, raw & unfiltered honey in a wide variety of local blends.",
+      category: "raw",
+      imageUrl: ["https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1576171343-lr-rice-southeast-honey-1576171328.jpg?crop=1xw:1xh;center,top&resize=768:*"]
+    },
+    {
+      productName: "Nature Nate\'s",
+      price: 10,
+      description: "Nature Nate's 100% Pure, Raw & Unfiltered Honey is a sweetener as nature intended. One ingredient: Honey. All we add is the bottle",
+      category: "organic",
+      imageUrl: ["https://images-na.ssl-images-amazon.com/images/I/41euxoYwTIL._SX300_SY300_QL70_FMwebp_.jpg"]
+    },
+    {
+      productName: "Kiva Raw Manuka Honey",
+      price: 40,
+      description: "Genuine Manuka honey harvested from the remote and pristine hills, forest, and coastal areas of New Zealand",
+      category: "organic",
+      imageUrl: [" https://m.media-amazon.com/images/I/513whGsJxeL._AC_SR480,480_.jpg"]
+    },
+    {
+      productName: "Subee",
+      price: 20,
+      description: "From hive to Table! Gently filtered to remove hive debris & prevent granulation, our honey is available in packets, squeeze bears, bottles & jars. It's perfect for baking, BBQ, as a sweetener & more!",
+      category: "manuka",
+      imageUrl: ["https://cdn.shopify.com/s/files/1/0415/3455/4270/products/003791.jpg?v=1614673437"]
+    }
   ];
   const [ natures, kiva, subee] = await Promise.all(products.map(product => Product.create(product)));
 
