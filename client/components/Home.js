@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import ProductIndex from './ProductIndex';
+
 import styled from 'styled-components';
 import Navbar from './Navbar';
 
