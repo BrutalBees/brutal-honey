@@ -1,26 +1,25 @@
 import React from 'react';
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchProducts } from "../store/products";
 import ProductIndex from './ProductIndex';
+import { StyledSplash, StyledProductIndexWrapper, StyledProductsLink } from './styles';
 
-import styled from 'styled-components';
-import Navbar from './Navbar';
+export const Home = () => {
+  const allProducts = useSelector(state => state.products);
+  const dispatch = useDispatch();
 
-// STYLED COMPONENTS
-const StyledSpash = styled.div`
-  background-image: url("https://images.unsplash.com/photo-1625600243103-1dc6824c6c8a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1064&q=80");
-  background-size: cover;
-  background-position: center;
-  height: 100vh;
-  width: 100%;
-`;
+  useEffect(() => {
+    dispatch(fetchProducts())
+  }, [dispatch]);
 
-// COMPONENT
-export const Home = props => {
   return (
     <div>
-      <StyledSpash>
-        <Navbar />
-      </StyledSpash>
-      <ProductIndex />
+      <StyledSplash />
+      <StyledProductIndexWrapper>
+        <ProductIndex products={allProducts.slice(0,4)}/>
+        <StyledProductsLink to='/products'>VIEW ALL PRODUCTS</StyledProductsLink>
+      </StyledProductIndexWrapper>
     </div>
   )
 };

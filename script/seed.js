@@ -3,10 +3,6 @@
 const {db, models: {User, Product} } = require('../server/db');
 const Cart = require('../server/db/models/Cart');
 
-/**
- * seed - this function clears the database, updates tables to
- *      match the models, and populates the database.
- */
 async function seed() {
   await db.sync({ force: true }) // clears db and matches models to tables
   console.log('db synced!')
@@ -44,6 +40,41 @@ async function seed() {
 
   // Creating Products
   const products = [
+    {
+      productName: "Beekeeper's Naturals",
+      price: 16,
+      description: "Go raw or go home. Beekeeper\'s Naturals raw wildflower honey is a pure, all-natural, and healthy. Our raw wildflower honey comes from sustainable, local apiaries in Ontario, Canada and it\'s truly farm to bottle.",
+      category: "raw",
+      imageUrl: ["https://img.thrivemarket.com/store/full/6/2/628055142058-1_1_1.jpg"]
+    },
+    {
+      productName: "Thrive Market",
+      price: 8,
+      description: "Made from nectar collected from wildflower fields spanning Mexico and Argentina and ethically sourced from the hive, our Organic Raw Wildflower Honey is never pasteurized or filtered.",
+      category: "raw",
+      imageUrl: ["https://img.thrivemarket.com/store/full/6/7/671635708137-1_1_1.jpg"]
+    },
+    {
+      productName: "Bloom Honey",
+      price: 10,
+      description: "Turmeric delicately blended with Bloom\'s Orange Blossom honey - Use this tasty “creamed honey” combo in tea to support overall health & wellness",
+      category: "raw",
+      imageUrl: ["https://img.thrivemarket.com/store/full/8/5/855990004640-1.jpg"]
+    },
+    {
+      productName: "Kythnos Cyclades",
+      price: 20,
+      description: "“Stories of Greek Origins” Organic Thyme Honey from Kythnos Cyclades, is a distinguished honey with exceptional aroma and flavor , vivid golden color and taste of the highest quality.  It is surely an ultra premium, special gift of nature.",
+      category: "organic",
+      imageUrl: ["http://storiesofgreekorigins.com/image/cache/data/Organic-Thyme-Honey_photo_2-455x475.jpg"]
+    },
+    {
+      productName: "Local Hive",
+      price: 20,
+      description: "Made in the USA and straight from the hive - from our family to your family! Rice`s Honey proudly partners with local beekeepers around the country to provide only 100% pure, authentic, high quality, raw & unfiltered honey in a wide variety of local blends.",
+      category: "raw",
+      imageUrl: ["https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1576171343-lr-rice-southeast-honey-1576171328.jpg?crop=1xw:1xh;center,top&resize=768:*"]
+    },
     {
       productName: "Nature Nate\'s",
       price: 10,
