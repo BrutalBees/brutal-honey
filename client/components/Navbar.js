@@ -48,13 +48,6 @@ const StyledLogoHeader = styled.div`
   font-weight: 300px;
 `;
 
-// const StyledLogo = styled.h1`
-//   font-size: 50px;
-//   font-weight: 200px;
-//   color: white;
-//   font-style: normal;
-// `;
-
 const StyledNavHeaderBottom = styled(StyledNavHeader)`
   padding: 0px 30%;
   align-items: flex-end;

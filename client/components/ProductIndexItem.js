@@ -7,6 +7,11 @@ const StyledItemWrapper = styled.div`
   flex-direction: column;
   width: 255px;
   height: 360px;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  transition-duration: 0.5s;
+  &:hover {
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+  }
 `;
 
 const StyledItemImage = styled.div`
@@ -21,6 +26,7 @@ const StyledItemImage = styled.div`
 const StyledProductName = styled.div`
   display: flex;
   justify-content: center;
+  font-weight: 400;
 `;
 
 const ProductIndexItem = (props) => {

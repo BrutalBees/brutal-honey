@@ -32,11 +32,11 @@ const ProductIndex = () => {
     dispatch(fetchProducts())
   }, [dispatch]);
   return(
-    <StyledProductIndexWrapper>
+    <div>
       <StyledIndexItemsWrapper>
         {products.map(product => <ProductIndexItem key={product.id} product={product} />)}
       </StyledIndexItemsWrapper>
-    </StyledProductIndexWrapper>
+    </div>
   )
 };
 

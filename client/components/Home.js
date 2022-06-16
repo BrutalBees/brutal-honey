@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import ProductIndex from './ProductIndex';
 import styled from 'styled-components';
 import Navbar from './Navbar';
@@ -12,6 +13,31 @@ const StyledSpash = styled.div`
   width: 100%;
 `;
 
+const StyledProductIndexWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  border-bottom: solid #b7aba4 1px;
+  padding: 100px;
+`;
+
+const StyledLink = styled(Link)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 42px;
+  width: 217px;
+  background-color: rgb(245, 219, 139);
+  color: black;
+  border: solid rgb(245, 219, 139) 1px;
+  &:hover {
+    color: rgb(245, 219, 139);
+    background-color: white;
+  }
+`;
+
 // COMPONENT
 export const Home = props => {
   return (
@@ -19,7 +45,10 @@ export const Home = props => {
       <StyledSpash>
         <Navbar />
       </StyledSpash>
-      <ProductIndex />
+      <StyledProductIndexWrapper>
+        <ProductIndex />
+        <StyledLink to='/products'>VIEW ALL PRODUCTS</StyledLink>
+      </StyledProductIndexWrapper>
     </div>
   )
 };
