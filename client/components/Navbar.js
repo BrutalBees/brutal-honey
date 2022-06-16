@@ -1,11 +1,21 @@
-import React, {useCallback} from 'react';
-import {logout} from '../store';
+import React, { useCallback } from 'react';
+import { logout } from '../store';
 import { useSelector, useDispatch } from 'react-redux';
-import { StyledNavbar, StyledNavHeader, StyledLeftHeader, StyledRightHeader, StyledLogoHeader, StyledLogoLink, StyledLink, StyledLinksWrapper, StyledNavHeaderBottom } from './styles';
+import {
+  StyledNavbar,
+  StyledNavHeader,
+  StyledLeftHeader,
+  StyledRightHeader,
+  StyledLogoHeader,
+  StyledLogoLink,
+  StyledLink,
+  StyledLinksWrapper,
+  StyledNavHeaderBottom,
+} from './styles';
 
 const Navbar = () => {
-  const name = useSelector(state => state.auth.firstName);
-  const isLoggedIn = useSelector(state => !!state.auth.id);
+  const name = useSelector((state) => state.auth.firstName);
+  const isLoggedIn = useSelector((state) => !!state.auth.id);
   const dispatch = useDispatch();
   const handleClick = useCallback(() => dispatch(logout()));
 
@@ -14,16 +24,16 @@ const Navbar = () => {
       <StyledNavHeader>
         <StyledLeftHeader>SEARCH</StyledLeftHeader>
         <StyledLogoHeader>
-          <StyledLogoLink to='/home'>BRUTAL HONEY</StyledLogoLink>
+          <StyledLogoLink to="/home">BRUTAL HONEY</StyledLogoLink>
         </StyledLogoHeader>
         <StyledRightHeader>
           {isLoggedIn ? (
-          <StyledLinksWrapper>
-            <span>WELCOME, {name.toUpperCase()}  </span>
-            <StyledLink to="#" onClick={handleClick}>
-              LOG OUT
-            </StyledLink>
-          </StyledLinksWrapper>
+            <StyledLinksWrapper>
+              <span>WELCOME, {name.toUpperCase()} </span>
+              <StyledLink to="#" onClick={handleClick}>
+                LOG OUT
+              </StyledLink>
+            </StyledLinksWrapper>
           ) : (
             <StyledLinksWrapper>
               <StyledLink to="/login">LOGIN</StyledLink>
@@ -40,6 +50,6 @@ const Navbar = () => {
         <span>ABOUT</span>
       </StyledNavHeaderBottom>
     </StyledNavbar>
-  )
-}
+  );
+};
 export default Navbar;
