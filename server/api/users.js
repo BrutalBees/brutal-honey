@@ -1,21 +1,21 @@
-const router = require('express').Router()
-const { models: { User }} = require('../db')
+const router = require('express').Router();
+const verifyToken = require('../auth/verifyToken');
+const { models: { User }} = require('../db');
 module.exports = router;
 
 // GET /api/users
-router.get('/', async (req, res, next) => {
+router.get('/', verifyToken, async (req, res, next) => {
   try {
-    const accessUser = await User.findByToken(req.headers.authorization);
-    if (accessUser.isAdmin) {
+    if (req.user.isAdmin) {
       const users = await User.findAll({
         attributes: ['id', 'email', 'firstName', 'lastName'] // only sends back these attributes
       })
       res.json(users)
     } else {
-      throw new error
+      res.status(401).send('User does not have admin access')
     }
   } catch (err) {
     next(err)
   }
-})
+});
 
