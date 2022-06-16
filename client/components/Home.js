@@ -6,7 +6,7 @@ import Navbar from './Navbar';
 
 // STYLED COMPONENTS
 const StyledSpash = styled.div`
-  background-image: url("https://images.unsplash.com/photo-1625600243103-1dc6824c6c8a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1064&q=80");
+  background-image: url('https://images.unsplash.com/photo-1625600243103-1dc6824c6c8a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1064&q=80');
   background-size: cover;
   background-position: center;
   height: 100vh;
@@ -14,7 +14,7 @@ const StyledSpash = styled.div`
 `;
 
 // COMPONENT
-export const Home = props => {
+export const Home = (props) => {
   return (
     <div>
       <StyledSpash>
@@ -22,7 +22,7 @@ export const Home = props => {
       </StyledSpash>
       <ProductIndex />
     </div>
-  )
+  );
 };
 
 export default Home;

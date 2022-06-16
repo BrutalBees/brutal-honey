@@ -1,7 +1,7 @@
-import React, {useCallback} from 'react';
+import React, { useCallback } from 'react';
 // import {connect} from 'react-redux';
-import {Link} from 'react-router-dom';
-import {logout} from '../store';
+import { Link } from 'react-router-dom';
+import { logout } from '../store';
 import { useSelector, useDispatch } from 'react-redux';
 
 import styled from 'styled-components';
@@ -19,7 +19,7 @@ const StyledNavbar = styled.nav`
   &:hover {
     color: #ffffff;
     background-color: #b48139;
-    transition: background .5s ease-in-out,box-shadow .3s ease-in-out;
+    transition: background 0.5s ease-in-out, box-shadow 0.3s ease-in-out;
   }
 `;
 
@@ -56,8 +56,8 @@ const StyledNavHeaderBottom = styled(StyledNavHeader)`
 
 // FUNCTIONAL COMPONENT
 const Navbar = () => {
-  const name = useSelector(state => state.auth.firstName);
-  const isLoggedIn = useSelector(state => !!state.auth.id);
+  const name = useSelector((state) => state.auth.firstName);
+  const isLoggedIn = useSelector((state) => !!state.auth.id);
   const dispatch = useDispatch();
   const handleClick = useCallback(() => dispatch(logout()));
 
@@ -66,20 +66,20 @@ const Navbar = () => {
       <StyledNavHeader>
         <StyledLeftHeader>SEARCH</StyledLeftHeader>
         <StyledLogoHeader>
-          <Link to='/home'>BRUTAL HONEY</Link>
+          <Link to="/home">BRUTAL HONEY</Link>
         </StyledLogoHeader>
         <StyledRightHeader>
           {isLoggedIn ? (
-          <div>
-          {/* The navbar will show these links after you log in */}
-            <span>WELCOME, {name.toUpperCase()} </span>
-            <a href="#" onClick={handleClick}>
-              LOG OUT
-            </a>
+            <div>
+              {/* The navbar will show these links after you log in */}
+              <span>WELCOME, {name.toUpperCase()} </span>
+              <a href="#" onClick={handleClick}>
+                LOG OUT
+              </a>
             </div>
           ) : (
             <div>
-          {/* The navbar will show these links before you log in */}
+              {/* The navbar will show these links before you log in */}
               <Link to="/login">LOGIN</Link>
               <Link to="/signup">SIGN UP</Link>
             </div>
@@ -94,6 +94,6 @@ const Navbar = () => {
         <span>ABOUT</span>
       </StyledNavHeaderBottom>
     </StyledNavbar>
-  )
-}
+  );
+};
 export default Navbar;
