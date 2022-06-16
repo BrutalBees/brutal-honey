@@ -1,6 +1,7 @@
-import React from 'react'
-import {connect} from 'react-redux'
-import {authenticate} from '../store'
+import React from 'react';
+import {connect} from 'react-redux';
+import {authenticate} from '../store';
+import history from '../history';
 
 /**
  * COMPONENT
@@ -65,7 +66,7 @@ const mapDispatch = (dispatch)=> {
       dispatch(authenticate(email, password, formName))
     }
   }
-}
+};
 
 export const Login = connect(mapLogin, mapDispatch)(AuthForm)
 export const Signup = connect(mapSignup, mapDispatch)(AuthForm)

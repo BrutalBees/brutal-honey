@@ -19,10 +19,10 @@ class Routes extends Component {
       <div>
         <Switch>
           <Route path="/home" component={Home} />
-          <Route path="/products" component={AllProducts} />
+          <Route exact path="/products" component={AllProducts} />
+          <Route path="/products/:id" component={SingleProduct} />
           <Route path="/login" component={Login} />
           <Route path="/signup" component={Signup} />
-          <Route exact path="/products/:id" component={SingleProduct} />
           <Redirect to="home" />
         </Switch>
       </div>
