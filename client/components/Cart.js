@@ -6,6 +6,8 @@ import { addProductToCart } from '../store/cart';
 
 const Cart = (props) => {
     return (
-        <div></div>
-        )
-}
+        <div>Hello World</div>
+        );
+};
+
+export default Cart;

@@ -38,6 +38,7 @@ const Navbar = () => {
             <StyledLinksWrapper>
               <StyledLink to="/login">LOGIN</StyledLink>
               <StyledLink to="/signup">SIGN UP</StyledLink>
+               <StyledLink to="/cart">Cart</StyledLink>
             </StyledLinksWrapper>
           )}
         </StyledRightHeader>
