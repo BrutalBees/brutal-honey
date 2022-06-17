@@ -5,6 +5,7 @@ import { Login, Signup } from './components/AuthForm';
 import SingleProduct from './components/SingleProduct';
 import Home from './components/Home';
 import AllProducts from './components/AllProducts';
+import AdminView from './components/AdminView';
 import {me} from './store';
 
 class Routes extends Component {
@@ -21,6 +22,7 @@ class Routes extends Component {
           <Route path="/home" component={Home} />
           <Route exact path="/products" component={AllProducts} />
           <Route path="/products/:id" component={SingleProduct} />
+          <Route path="/admin" component={AdminView} />
           <Route path="/login" component={Login} />
           <Route path="/signup" component={Signup} />
           <Redirect to="home" />
