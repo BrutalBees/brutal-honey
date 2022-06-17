@@ -18,6 +18,8 @@ const updateQty = (cartProduct, qty) => ({
 //  Thunks
 
 export const addProductToCart = (cartProduct) => async dispatch => {
+        // const guestCart = window.localStorage.getItem("guestCart")
+        // const { data } = await axios.post(`/api/cart`, cartProduct, guestCart)
         const { data } = await axios.post(`/api/cart`, cartProduct)
         dispatch(addToCart(data))
 }
@@ -33,7 +35,7 @@ export default (state = initialState, action) => {
     switch(action.type) {
         case ADD_TO_CART:
             return {
-                ...state, 
+                ...state,
                cart: [...state.cart,  action.cartProduct]
             }
         default:
