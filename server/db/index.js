@@ -16,7 +16,8 @@ Cart.belongsTo(User);
 // Many to Many
 const cartProduct = db.define('cartProduct', {
   quantity: {
-    type: Sequelize.INTEGER
+    type: Sequelize.INTEGER,
+    defaultVaulue: 0
   }
 });
 

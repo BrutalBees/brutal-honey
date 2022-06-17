@@ -40,8 +40,8 @@ const StyledSpash = styled.div`
 `;
 
 const SingleProduct = (props) => {
-  const handleClick = (id)=>{
-    this.props.addProductToCart(id);
+  const handleClick = (product)=>{
+    this.props.addProductToCart(product);
   }
   const dispatch = useDispatch();
   const product = useSelector((state) => state.singleProduct);
