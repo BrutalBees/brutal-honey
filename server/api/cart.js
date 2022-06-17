@@ -16,8 +16,8 @@ router.get('/', async (req, res, next) => {
 
 router.post('/', async (req, res, next) => {
   try {
-    const productAdded = await Cart.create(req.body)
-    res.json(productAdded)
+    const productToAdd = await Cart.create(req.body)
+    res.json(productToAdd)
   } catch (error) {
     next(error)
   }

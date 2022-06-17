@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { fetchSingleProduct } from '../store/singleProduct';
 import Navbar from './Navbar';
 import styled from 'styled-components';
+import { addProductToCart } from '../store/cart';
 
 const AddToCartBtn = styled.button`
   display: flex;
@@ -39,6 +40,9 @@ const StyledSpash = styled.div`
 `;
 
 const SingleProduct = (props) => {
+  const handleClick = (id)=>{
+    this.props.addProductToCart(id);
+  }
   const dispatch = useDispatch();
   const product = useSelector((state) => state.singleProduct);
   useEffect(() => {
@@ -57,7 +61,7 @@ const SingleProduct = (props) => {
         <h3>{product.price}</h3>
         <hr />
         <p>{product.description}</p>
-        <AddToCartBtn>Add to Cart</AddToCartBtn>
+        <AddToCartBtn onClick={handleClick}>Add to Cart</AddToCartBtn>
       </TopRtWrapper>
     </div>
   );

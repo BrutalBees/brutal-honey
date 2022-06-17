@@ -4,9 +4,9 @@ const ADD_TO_CART ='ADD_TO_CART';
 const UPDATE_QTY = 'UPDATE_QTY';
 
 // ACTION CREATORS
-const addToCart = (cartProduct) => ({
+const addToCart = (id) => ({
   type: ADD_TO_CART,
-  payload: cartProduct
+  id
 });
 
 const updateQty = (cartProduct, qty) => ({
