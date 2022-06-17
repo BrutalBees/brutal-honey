@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { models: { Cart, User } } = require('../db');
+const { models: { Cart, User, Product } } = require('../db');
 module.exports = router;
 
 
@@ -20,7 +20,11 @@ router.post('/', async (req, res, next) => {
     const cart = await Cart.findOrCreate({
      where: {
        userId: user.id
-     }
+     },
+     include: {
+      model: Product,
+      model: User
+  }
     })
     res.json(cart)
   } catch (error) {
