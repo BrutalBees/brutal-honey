@@ -29,16 +29,16 @@ export const me = () => async (dispatch) => {
   }
 };
 
-export const authenticate = (email, password, method) => async (dispatch) => {
-  try {
-    const res = await axios.post(`/auth/${method}`, { email, password });
-    window.localStorage.setItem(TOKEN, res.data.token);
-    dispatch(me());
-    history.push('/home');
-  } catch (authError) {
-    return dispatch(setAuth({ error: authError }));
-  }
-};
+// export const authenticate = (email, password, method) => async (dispatch) => {
+//   try {
+//     const res = await axios.post(`/auth/${method}`, { email, password });
+//     window.localStorage.setItem(TOKEN, res.data.token);
+//     dispatch(me());
+//     history.push('/home');
+//   } catch (authError) {
+//     return dispatch(setAuth({ error: authError }));
+//   }
+// };
 
 export const login = (password, email) => async (dispatch) => {
   try {
@@ -80,6 +80,7 @@ export const logout = () => {
  */
 export default function (state = {}, action) {
   switch (action.type) {
+    // add your new actions here!
     case SET_AUTH:
       return action.auth;
     case LOGOUT:

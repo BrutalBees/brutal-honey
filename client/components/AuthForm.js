@@ -6,11 +6,10 @@ import { authenticate } from '../store';
  * COMPONENT
  */
 const AuthForm = (props) => {
-  const { name, displayName, handleSubmit, error } = props;
-
+  const { name, displayName, handleSubmit, error, match } = props;
   return (
     <form onSubmit={handleSubmit} name={name}>
-      {Login ? (
+      {(match.path === '/login') ? (
         <div>
           <label htmlFor="email">
             <small>Email</small>
@@ -83,6 +82,7 @@ const mapDispatch = (dispatch) => {
       const email = evt.target.email.value;
       const password = evt.target.password.value;
       dispatch(authenticate(email, password, formName));
+      // refactor this to call your new thunk creators
     },
   };
 };
