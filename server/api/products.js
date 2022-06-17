@@ -1,5 +1,7 @@
 // API/PRODUCTS ROUTES
 const router = require('express').Router();
+const { NoStyleItemContext } = require('antd/lib/form/context');
+const req = require('express/lib/request');
 const verifyToken = require('../auth/verifyToken');
 const { models: { Product }} = require('../db');
 module.exports = router;
@@ -16,7 +18,7 @@ router.get('/', async (req, res, next) => {
   }
 });
 
-// POST api/products - admin can create new product
+// POST /api/products - admin can create new product
 router.post('/', verifyToken, async (req, res, next) => {
   try {
     if (req.user.isAdmin) {
@@ -39,13 +41,27 @@ router.get('/:id', async (req, res, next) => {
   }
 });
 
-// PUT api/products/:id - Admin can edit a product
+// PUT /api/products/:id - Admin can edit a product
 router.put('/:id', verifyToken, async (req, res, next) => {
   try {
     if (req.user.isAdmin) {
       const product = await Product.findByPk(req.params.id);
       await product.set(req.body);
       res.send(await product.save());
+    } else {
+      res.status(401).send('User does not have admin access');
+    }
+  } catch (error) {
+    next(error);
+  }
+});
+
+// DELETE /api/product/:id - Admin can delete a product
+router.delete('/:id', verifyToken, async (req, res, next) => {
+  try {
+    if (req.user.isAdmin) {
+      await Product.destroy({where: {id: req.params.id}});
+      res.sendStatus(204);
     } else {
       res.status(401).send('User does not have admin access');
     }
