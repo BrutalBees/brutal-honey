@@ -1,7 +1,5 @@
 // API/PRODUCTS ROUTES
 const router = require('express').Router();
-const { NoStyleItemContext } = require('antd/lib/form/context');
-const req = require('express/lib/request');
 const verifyToken = require('../auth/verifyToken');
 const { models: { Product }} = require('../db');
 module.exports = router;
