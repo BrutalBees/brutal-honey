@@ -16,6 +16,7 @@ import {
 const Navbar = () => {
   const name = useSelector((state) => state.auth.firstName);
   const isLoggedIn = useSelector((state) => !!state.auth.id);
+  const isAdmin = useSelector((state) => state.auth.isAdmin);
   const dispatch = useDispatch();
   const handleClick = useCallback(() => dispatch(logout()));
 
@@ -30,6 +31,10 @@ const Navbar = () => {
           {isLoggedIn ? (
             <StyledLinksWrapper>
               <span>WELCOME, {name.toUpperCase()} </span>
+              {isAdmin &&
+                <StyledLink to="/admin">
+                  ADMIN
+                </StyledLink>}
               <StyledLink to="#" onClick={handleClick}>
                 LOG OUT
               </StyledLink>

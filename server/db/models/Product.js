@@ -21,8 +21,8 @@ const Product = db.define('product', {
         defaultValue: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
     },
     category: {
-        type: Sequelize.ENUM('organic', 'raw', 'manuka'),
-        defaultValue: 'organic'
+        type: Sequelize.ENUM('Organic', 'Raw', 'Manuka'),
+        defaultValue: 'Organic'
     },
     imageUrl: {
         type: Sequelize.ARRAY(Sequelize.STRING),
