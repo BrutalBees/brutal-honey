@@ -40,9 +40,9 @@ export const authenticate = (email, password, method) => async (dispatch) => {
   }
 };
 
-export const login = (password, email, method) => async (dispatch) => {
+export const login = (password, email) => async (dispatch) => {
   try {
-    const res = await axios.post(`/auth/${method}`, { password, email });
+    const res = await axios.post(`/auth/login`, { password, email });
     window.localStorage.setItem(TOKEN, res.data.token);
     dispatch(me());
   } catch (authError) {
@@ -51,9 +51,9 @@ export const login = (password, email, method) => async (dispatch) => {
 };
 
 export const signup =
-  (email, password, firstName, lastName, method) => async (dispatch) => {
+  (email, password, firstName, lastName) => async (dispatch) => {
     try {
-      const res = await axios.post(`/auth/${method}`, {
+      const res = await axios.post(`/auth/signup`, {
         email,
         password,
         firstName,
