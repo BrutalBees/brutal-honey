@@ -21,10 +21,7 @@ router.post('/', async (req, res, next) => {
      where: {
        userId: user.id
      },
-     include: {
-      model: Product,
-      model: User
-  }
+     include:  [Product, User]
     })
     res.json(cart)
   } catch (error) {
