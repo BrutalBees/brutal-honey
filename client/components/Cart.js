@@ -6,11 +6,13 @@ const Cart = (props) => {
      const cart = useSelector((state) => state.cart);
     return (
         <div className="cart-container">
-            <div className="cart-product-container">
+            <div>
                 {cart.map((product => (
-                    <div key={product.id}>
-        
-                    </div>
+                <div className="cart-product-container">
+                    <div className="product-image"></div>
+                    <div className="product-name"></div>
+                    <div className="produce-price"></div>
+                </div>
         )))}
             </div>
         </div>  

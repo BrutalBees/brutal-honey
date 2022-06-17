@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { models: { Cart } } = require('../db');
+const { models: { Cart, User } } = require('../db');
 module.exports = router;
 
 
@@ -16,8 +16,13 @@ router.get('/', async (req, res, next) => {
 
 router.post('/', async (req, res, next) => {
   try {
-    const productToAdd = await Cart.create(req.body)
-    res.json(productToAdd)
+    const user = await User.findByToken(req.headers.authorization)
+    const cart = await Cart.findOrCreate({
+     where: {
+       userId: user.id
+     }
+    })
+    res.json(cart)
   } catch (error) {
     next(error)
   }

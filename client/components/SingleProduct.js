@@ -40,8 +40,8 @@ const StyledSpash = styled.div`
 `;
 
 const SingleProduct = (props) => {
-  const handleClick = (product)=>{
-    this.props.addProductToCart(product);
+  const handleClick = ()=>{
+    dispatch(addProductToCart(product));
   }
   const dispatch = useDispatch();
   const product = useSelector((state) => state.singleProduct);
@@ -61,7 +61,10 @@ const SingleProduct = (props) => {
         <h3>{product.price}</h3>
         <hr />
         <p>{product.description}</p>
-        <AddToCartBtn onClick={handleClick}>Add to Cart</AddToCartBtn>
+        <AddToCartBtn onClick= { () => {
+          handleClick(product)
+        }}>Add to Cart
+        </AddToCartBtn>
       </TopRtWrapper>
     </div>
   );
