@@ -10,7 +10,7 @@ const AuthForm = (props) => {
 
   return (
     <form onSubmit={handleSubmit} name={name}>
-      {Login ? (
+      {matchMedia.path === '/login' ? (
         <div>
           <label htmlFor="email">
             <small>Email</small>
