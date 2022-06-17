@@ -56,7 +56,7 @@ router.put('/:id', verifyToken, async (req, res, next) => {
   }
 });
 
-// DELETE /api/product/:id - Admin can delete a product
+// DELETE /api/products/:id - Admin can delete a product
 router.delete('/:id', verifyToken, async (req, res, next) => {
   try {
     if (req.user.isAdmin) {
