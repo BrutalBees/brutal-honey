@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const verifyToken = require('../auth/verifyToken');
 const {
   models: { User },
 } = require('../db');
@@ -25,9 +26,10 @@ router.post('/signup', async (req, res, next) => {
   }
 });
 
-router.get('/me', async (req, res, next) => {
+router.get('/me', verifyToken, async (req, res, next) => {
   try {
-    res.send(await User.findByToken(req.headers.authorization));
+    // res.send(await User.findByToken(req.headers.authorization));
+    res.send(req.user);
   } catch (ex) {
     next(ex);
   }

@@ -1,8 +1,7 @@
 // API/PRODUCTS ROUTES
 const router = require('express').Router();
-const {
-  models: { Product },
-} = require('../db');
+const verifyToken = require('../auth/verifyToken');
+const { models: { Product }} = require('../db');
 module.exports = router;
 
 // GET /api/products
@@ -17,11 +16,25 @@ router.get('/', async (req, res, next) => {
   }
 });
 
+// GET /api/products/:id
 router.get('/:id', async (req, res, next) => {
   try {
     const product = await Product.findByPk(req.params.id);
     res.send(product);
   } catch (error) {
     next(error);
+  }
+});
+
+// POST /products - admin can create new product
+router.post('/', verifyToken, async (req, res, next) => {
+  try {
+    if (req.user.isAdmin) {
+      res.send(await Product.create(req.body));
+    } else {
+      res.status(401).send('User does not have admin access');
+    }
+  } catch (error) {
+    next(error)
   }
 });

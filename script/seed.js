@@ -25,7 +25,8 @@ async function seed() {
       email: 'angel@gmail.com',
       firstName: 'Angel',
       lastName:'Shopper',
-      password: '123'
+      password: '123',
+      isAdmin: true
     },
     {
       email: 'katie@gmail.com',
@@ -97,15 +98,10 @@ async function seed() {
       imageUrl: ["https://cdn.shopify.com/s/files/1/0415/3455/4270/products/003791.jpg?v=1614673437"]
     }
   ];
-  const [ natures, kiva, subee] = await Promise.all(products.map(product => Product.create(product)));
+  const [ product1, product2, product3 ] = await Promise.all(products.map(product => Product.create(product)));
 
   // Create Carts
-  const carts = [
-    {},
-    {},
-    {}
-  ];
-  const [cart1, cart2, cart3 ] = await Promise.all(carts.map(cart => Cart.create(cart)));
+  const [cart1, cart2, cart3, cart4 ] = await Cart.bulkCreate([ {}, {}, {}, {} ]);
 
   // Set associations between users and carts
   await cart1.setUser(grace);
@@ -113,7 +109,7 @@ async function seed() {
   await cart3.setUser(angel);
 
   // Set Cart-Product Associations
-  await cart1.setProducts([ natures, kiva, subee]);
+  await cart1.setProducts([ product1, product2, product3]);
 
   console.log(`seeded ${users.length} users`)
   console.log(`seeded successfully`)
