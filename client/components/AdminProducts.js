@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchProducts } from '../store/products';
+import { updateSingleProduct } from '../store/singleProduct';
 import { Form, Input, InputNumber, Popconfirm, Select, Table, Typography } from 'antd';
 
 // Editable Cell Component
@@ -88,9 +89,16 @@ const AdminProducts = () => {
 
       if (index > -1) { // if the item was found
         const item = newData[index];
-        newData.splice(index, 1, {...item, ...row}); // adds the row to the current item at that index
-        setData(newData);
+        // newData.splice(index, 1, {...item, ...row}); // adds the row to the current item at that index
+        // setData(newData);
+        // setEditingId("");
+        debugger
+        const productUpdate = {...item, ...row};
+        debugger
+        dispatch(updateSingleProduct(productUpdate.id, productUpdate));
+        debugger
         setEditingId("");
+
       } else { // if there is no item at that index
         newData.push(row); // just add the row
         setData(newData);
