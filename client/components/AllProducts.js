@@ -13,7 +13,7 @@ const AllProducts = () => {
   }, [dispatch]);
 
   return (
-    <div>
+    <div style={{ margin: 100 }}>
       <ProductIndex products={allProducts}/>
     </div>
   )

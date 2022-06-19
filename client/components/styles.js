@@ -1,6 +1,7 @@
 // STYLED COMPONENTS
 import styled from 'styled-components';
 import {Link} from 'react-router-dom';
+import { Button, Table } from 'antd';
 
 // Home
 const StyledSplash = styled.div`
@@ -126,6 +127,39 @@ const StyledProductName = styled.div`
   font-weight: 400;
 `;
 
+// AdminProducts AdminUsers
+const StyledButton = styled(Button)`
+  justify-content: center;
+  color: black;
+  background-color: white;
+  border: solid #d9d9d9; 1px;
+  margin-bottom: 20px;
+  &:hover {
+    color: #f5db8b;
+    border: solid #f5db8b 1px;
+  }
+`;
+
+const StyledTable = styled(Table)`
+  .ant-pagination-item-active {
+    border-color: #b5963e;
+  };
+  .ant-pagination-item-active a {
+    color: #b5963e;
+  };
+  a:hover {
+    color: #b5963e;
+  };
+  .ant-pagination-item:hover {
+    border-color: #b5963e;
+  };
+  .ant-pagination-prev:hover .ant-pagination-item-link, .ant-pagination-next:hover .ant-pagination-item-link {
+    color: #b5963e;
+    border-color: #b5963e;
+  }
+`;
+
+// Exports
 export {
   // Home
   StyledSplash,
@@ -144,5 +178,8 @@ export {
   // ProductIndexItem
   StyledItemWrapper,
   StyledItemImage,
-  StyledProductName
+  StyledProductName,
+  // AdminProducts AdminUsers
+  StyledButton,
+  StyledTable
 };

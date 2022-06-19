@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import AdminProducts from './AdminProducts';
-import { SettingOutlined, AppstoreOutlined } from '@ant-design/icons';
+import AdminUsers from './AdminUsers';
+import { DashboardOutlined, AppstoreOutlined, UserOutlined } from '@ant-design/icons';
 import { Menu } from 'antd';
 
 // Styled Components
@@ -24,24 +25,22 @@ const StyledMenu = styled(Menu)`
   }
 `;
 
-function getMenuItem(label, key, icon, children, type) {
+function getMenuItem(label, key, icon) {
   return {
     key,
     icon,
-    children,
     label,
-    type,
   };
 };
 
 const menuItems = [
+  getMenuItem('Dashboard', 'dashboard', <DashboardOutlined />),
   getMenuItem('Products', 'products', <AppstoreOutlined />),
-  getMenuItem('Users', 'users', <AppstoreOutlined />),
-  getMenuItem('Settings', 'setting', <SettingOutlined />),
+  getMenuItem('Users', 'users', <UserOutlined />)
 ];
 
 const AdminView = () => {
-  const [view, setView] = useState("products");
+  const [view, setView] = useState("users");
 
   return (
     <div style={{ display: "flex", justifyContent: "space-between"}}>
@@ -52,13 +51,13 @@ const AdminView = () => {
         onClick={(evt) => {
           return setView(evt.key)
         }}
-        defaultSelectedKeys={['products']}
+        defaultSelectedKeys={['users']}
         mode="inline"
         items={menuItems}
       />
       <StyledProductsWrapper>
         {view === "products" && <AdminProducts />}
-        {view === "users" && <h1>USERS PAGE</h1>}
+        {view === "users" && <AdminUsers />}
       </StyledProductsWrapper>
     </div>
   );
