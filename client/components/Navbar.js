@@ -19,7 +19,7 @@ const Navbar = () => {
   const isLoggedIn = useSelector((state) => !!state.auth.id);
   const isAdmin = useSelector((state) => state.auth.isAdmin);
   const dispatch = useDispatch();
-  const handleClick = useCallback(() => dispatch(logout()));
+  const handleLogout = useCallback(() => dispatch(logout()));
 
   return (
     <StyledNavbar>
@@ -38,7 +38,7 @@ const Navbar = () => {
                 :
                 <span>WELCOME, {name.toUpperCase()} </span>
               }
-              <StyledLink to="#" onClick={handleClick}>
+              <StyledLink to="#" onClick={handleLogout}>
                 LOG OUT
               </StyledLink>
               <StyledLink to="/cart">

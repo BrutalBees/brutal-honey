@@ -1,7 +1,5 @@
 import axios from "axios";
 
-const token = window.localStorage.getItem('token');
-
 // Action Types
 const SET_CART = "SET_CART";
 
@@ -15,6 +13,7 @@ const setCart = (cart) => {
 
 // Thunk Creators
 export const fetchCart = () => {
+  const token = window.localStorage.getItem('token');
   return async (dispatch) => {
     const { data: cart } = await axios.get('/api/cart', {
       headers: {
