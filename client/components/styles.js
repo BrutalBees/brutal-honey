@@ -37,7 +37,7 @@ const StyledProductsLink = styled(Link)`
     background-color: white;
   }
 `;
-//
+
 // Navbar
 const StyledNavbar = styled.nav`
   display: flex;
@@ -50,6 +50,9 @@ const StyledNavbar = styled.nav`
   opacity: 1;
   &:hover {
     color: #ffffff;
+    a:not(:hover) {
+      color: white;
+    }
     background-color: #b48139;
     transition: background .5s ease-in-out,box-shadow .3s ease-in-out;
   }
@@ -82,11 +85,17 @@ const StyledLogoHeader = styled.div`
 const StyledLogoLink = styled(Link)`
   font-size: 30px;
   font-weight: 300px;
-  color: #705129;
+  color: #a39c62;
+  &:hover {
+    color: #a2aab1;
+  }
 `;
 
 const StyledLink = styled(Link)`
   color: black;
+  &:hover {
+    color: #a2aab1;
+  }
 `;
 
 const StyledLinksWrapper = styled.div`
@@ -106,9 +115,12 @@ const StyledItemWrapper = styled.div`
   width: 255px;
   height: 360px;
   box-shadow: 0 0 1px rgba(0, 0, 0, 0);
-  transition-duration: 0.5s;
+  transform: perspective(1px) translateZ(0);
+  transition-property: box-shadow, transform;
+  transition-duration: 0.3s;
   &:hover {
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+    box-shadow: 0 10px 10px -10px rgb(0 0 0 / 50%);
+    transform: scale(1.1);
   }
 `;
 

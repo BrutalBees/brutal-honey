@@ -12,6 +12,8 @@ const AdminProducts = () => {
   const allProducts = useSelector((state) => state.products);
   const dispatch = useDispatch();
   const [data, setData] = useState(allProducts); // stores the allProducts data in the state
+  const [filteredInfo, setFilteredInfo] = useState({});
+  const [sortedInfo, setSortedInfo] = useState({});
   const [editingId, setEditingId] = useState(""); // state: { data, editingId}
   useEffect(() => { setData(allProducts) }, [allProducts]); // sets allProducts again in the state when allProducts updates
   useEffect(() => { dispatch(fetchProducts()) }, [dispatch]);
@@ -65,6 +67,20 @@ const AdminProducts = () => {
     }
   };
 
+  const handleChange = (pagination, filteredInfo, sortedInfo) => {
+    setFilteredInfo(filteredInfo);
+    setSortedInfo(sortedInfo);
+  };
+
+  const clearFilters = () => {
+    setFilteredInfo({});
+  };
+
+  const clearAll = () => {
+    setFilteredInfo({});
+    setSortedInfo({});
+  };
+
   const handleCancel = () => {
     setEditingId(""); //sets the EditingId as empty if edit cancelled
   };
@@ -75,34 +91,69 @@ const AdminProducts = () => {
       title: "Product Name",
       dataIndex: "productName",
       inputType: "text",
+      key: 'productName',
       width: "14%",
-      editable: true
+      editable: true,
+      sorter: (a, b) => {
+        if (a.productName < b.productName) return -1;
+        if (a.productName > b.productName) return 1;
+        return 0;
+      },
+      sortOrder: sortedInfo.columnKey === 'productName' ? sortedInfo.order : null,
     },
     {
       title: "Price",
       dataIndex: "price",
       inputType: "number",
+      key: 'price',
       width: "8%",
-      editable: true
+      editable: true,
+      sorter: (a, b) => a.price - b.price,
+      sortOrder: sortedInfo.columnKey === 'price' ? sortedInfo.order : null,
     },
     {
       title: "Category",
       dataIndex: "category",
       inputType: "select",
+      key: "category",
       inputOptions: ["Raw", "Organic", "Manuka"],
       width: "8%",
-      editable: true
+      editable: true,
+      sorter: (a, b) => {
+        if (a.category < b.category) return -1;
+        if (a.category > b.category) return 1;
+        return 0;
+      },
+      sortOrder: sortedInfo.columnKey === 'category' ? sortedInfo.order : null,
+      filters: [
+        {
+          text: 'Raw',
+          value: 'Raw',
+        },
+        {
+          text: 'Organic',
+          value: 'Organic',
+        },
+        {
+          text: 'Manuka',
+          value: 'Manuka',
+        }
+      ],
+      filteredValue: filteredInfo.category || null,
+      onFilter: (value, product) => product.category === value,
     },
     {
       title: "Description",
       dataIndex: "description",
       inputType: "text",
+      key: "description",
       width: "55%",
-      editable: true
+      editable: true,
     },
     {
       title: "Actions",
       dataIndex: "actions",
+      key: "actions",
       width: "15%",
       render: (_, product) => {  // renders the Save Delete Cancel or Edit buttons
         return isEditing(product) ? // if the product is being edited then show the Save and Cancel buttons
@@ -151,15 +202,18 @@ const AdminProducts = () => {
   // Form returned from AdminProduct Component
   return (
     <Form form={form} component={false}>
-      <div style={{ display: "flex", justifyContent: "flex-start"}}>
+      <div style={{ display: "flex", justifyContent: "flex-start", gap: 10}}>
         <StyledButton onClick={handleAdd}>
           Add Product
         </StyledButton>
+        <StyledButton onClick={clearFilters}>Clear Filters</StyledButton>
+        <StyledButton onClick={clearAll}>Clear All</StyledButton>
       </div>
       <AdminProductsTable
         data={data}
         mergedColumns={mergedColumns}
         handleCancel={handleCancel}
+        handleChange={handleChange}
       />
     </Form>
   );

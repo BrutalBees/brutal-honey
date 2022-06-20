@@ -4,15 +4,14 @@ import { Form, Input, InputNumber, Select } from 'antd';
 
 // Editable Cell Function
 const EditableCell = ({
-  productOrUser,
+  product,
   editing,
   dataIndex,
   title,
   inputType,
   inputOptions,
-  index,
   children,
-  ...restProps
+  ...restProps // className, styled, etc
 }) => {
   // Returns inputElement to render based on inputType
   const inputElement = () => {
@@ -24,7 +23,6 @@ const EditableCell = ({
   )
     return (<Input />)
   };
-
   return (
     <td {...restProps}>
       {editing ? ( //editing is a boolean indicating whether cell is currently being edited
@@ -50,7 +48,7 @@ const EditableCell = ({
 };
 
 const AdminProductsTable = (props) => {
-  const {data, mergedColumns, handleCancel} = props;
+  const {data, mergedColumns, handleCancel, handleChange} = props;
   return (
     <StyledTable
       rowKey={'id'}
@@ -68,6 +66,7 @@ const AdminProductsTable = (props) => {
         defaultPageSize: 5,
         position: ["none", "bottomCenter"]
       }}
+      onChange={handleChange}
     />
   );
 };

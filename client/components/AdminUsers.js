@@ -16,7 +16,7 @@ const AdminUsers = () => {
   useEffect(() => { setData(users) }, [users]);
 
   // Handler functions
-  const handleChange = (filteredInfo, sortedInfo) => {
+  const handleChange = (pagination, filteredInfo, sortedInfo) => {
     setFilteredInfo(filteredInfo);
     setSortedInfo(sortedInfo);
   };
@@ -29,7 +29,6 @@ const AdminUsers = () => {
     setFilteredInfo({});
     setSortedInfo({});
   };
-
   // Columns
   const columns = [
     {
@@ -72,8 +71,8 @@ const AdminUsers = () => {
       key: 'isAdmin',
       render: text => text ? "Admin" : "User",
       sorter: (a, b) => {
-        if (a.isAdmin < b.isAdmin) return -1;
-        if (a.isAdmin > b.isAdmin) return 1;
+        if (a.isAdmin > b.isAdmin) return -1;
+        if (a.isAdmin < b.isAdmin) return 1;
         return 0;
       },
       sortOrder: sortedInfo.columnKey === 'isAdmin' ?
@@ -100,7 +99,7 @@ const AdminUsers = () => {
           marginBottom: 16,
         }}
       >
-        <StyledButton onClick={clearFilters}>Clear filters</StyledButton>
+        <StyledButton onClick={clearFilters}>Clear Filters</StyledButton>
         <StyledButton onClick={clearAll}>Clear All</StyledButton>
         </Space>
       <StyledTable

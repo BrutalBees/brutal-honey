@@ -38,9 +38,12 @@ const deletedProductFromServer = (productId) => {
 };
 
 // Thunk Creators
-export const fetchProducts = () => {
+export const fetchProducts = (search) => {
   return async (dispatch) => {
-    const { data: products } = await axios.get('/api/products');
+    const { data: products } = search ?
+    await axios.get(`/api/products${search}`) // api/products?category=Organic
+    :
+    await axios.get(`/api/products`)
     dispatch(setProducts(products));
   }
 };

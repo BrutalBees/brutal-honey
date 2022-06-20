@@ -23,6 +23,9 @@ const StyledMenu = styled(Menu)`
       border-right: 3px solid #f5db8b;
     }
   }
+  .ant-menu-item:hover {
+    color: #a2aab1;
+  }
 `;
 
 function getMenuItem(label, key, icon) {
@@ -40,18 +43,15 @@ const menuItems = [
 ];
 
 const AdminView = () => {
-  const [view, setView] = useState("users");
+  const [view, setView] = useState("dashboard");
 
   return (
     <div style={{ display: "flex", justifyContent: "space-between"}}>
       <StyledMenu
-        // style={{
-        //   width: '15%'
-        // }}
         onClick={(evt) => {
           return setView(evt.key)
         }}
-        defaultSelectedKeys={['users']}
+        defaultSelectedKeys={['dashboard']}
         mode="inline"
         items={menuItems}
       />
