@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchSingleProduct } from '../store/singleProduct';
-import Navbar from './Navbar';
 import styled from 'styled-components';
 
 const AddToCartBtn = styled.button`
@@ -13,29 +12,44 @@ const AddToCartBtn = styled.button`
   align-text: center;
   margin: 1em;
   padding: 0.25em 1em;
-  &:hover {
-    curser: pointer;
-    background-color: #b48139;
-    transition: ;
+  align-self: flex-end;
+  justify content: end;
+  curser: pointer;
+&:hover {
+  opacity: 50%;
+  transition: 100ms ease;
+}
   }
 `;
 
 const ProductImg = { width: '300px', height: '350px' };
-const TopRtWrapper = styled.div`
-  display: flex;
-  align-content: flex-end;
-  justify-content: felx-end;
-  padding: '1rem';
+// const Description = {
+//   width: '250px',
+//   justifyContent: 'end',
+//   alignSelf: 'flexEnd',
+//   margin: '0 0 24px',
+// };
+
+const Description = styled.p`
+  font-size: 14px;
+  margin: 0 0 24px;
+  line-height: 1.5em;
+  letter-spacing: 1.5;
+  width: 300px;
+  align-self: flex-end;
 `;
 
-const Description = styled.p``;
+// const TopWrapper = styled.section`
+//   display: flex;
+//   flex-direction: row;
+// `;
 
-const StyledSpash = styled.div`
-  background-image: url('https://images.unsplash.com/photo-1625600243103-1dc6824c6c8a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1064&q=80');
-  background-size: cover;
-  background-position: center;
+const TopWrapper = styled.section`
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  // text-align: center;
   height: 100vh;
-  width: 100%;
 `;
 
 const SingleProduct = (props) => {
@@ -46,22 +60,26 @@ const SingleProduct = (props) => {
   }, [dispatch]);
   return (
     <div>
-      {/* <StyledSpash> */}
-      {/* </StyledSpash> */}
-      {/* <ProductImg> */}
-      <img src={[product.imageUrl]} style={ProductImg} />
-      {/* </ProductImg> */}
-      {/* </StyledSpash> */}
-      <TopRtWrapper>
-        <h2>{product.productName}</h2>
-        <h3>{product.price}</h3>
-        <hr />
-        <p>{product.description}</p>
-        <AddToCartBtn>Add to Cart</AddToCartBtn>
-      </TopRtWrapper>
+      <TopWrapper>
+        <div>
+          {/* </StyledSpash> */}
+          {/* <ProductImg> */}
+          <span>
+            <img src={[product.imageUrl]} style={ProductImg} />
+            {/* </ProductImg> */}
+            {/* </StyledSpash> */}
+            <h2>{product.productName}</h2>
+          </span>
+          <h3>${product.price}</h3>
+          <hr />
+          <Description>{product.description}</Description>
+          <AddToCartBtn>Add to Cart</AddToCartBtn>
+        </div>
+      </TopWrapper>
     </div>
   );
 };
+
 export default SingleProduct;
 
 // TODO: style
