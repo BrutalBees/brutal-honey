@@ -1,88 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import styled from 'styled-components';
 import { fetchProducts, updateProduct, deleteProduct, addProduct } from '../store/products';
-import { Button, Form, Input, InputNumber, Popconfirm, Select, Table, Typography } from 'antd';
-
-// Styled Components
-const StyledButton = styled(Button)`
-  justify-content: center;
-  background-color: rgb(245, 219, 139);
-  color: black;
-  border: solid rgb(245, 219, 139) 1px;
-  margin-bottom: 10px;
-  &:hover {
-    color: rgb(245, 219, 139);
-    background-color: white;
-    border: solid rgb(245, 219, 139) 1px;
-  }
-`;
-
-const StyledTable = styled(Table)`
-  .ant-pagination-item-active {
-    border-color: #f5db8b;
-  };
-  .ant-pagination-item-active a {
-    color: #f5db8b;
-  };
-  a:hover {
-    color: #f5db8b;
-  };
-  .ant-pagination-item:hover {
-    border-color: #f5db8b;
-  };
-  .ant-pagination-prev:hover .ant-pagination-item-link, .ant-pagination-next:hover .ant-pagination-item-link {
-    color: #f5db8b;
-    border-color: #f5db8b;
-  }
-`;
-
-// Editable Cell Function
-const EditableCell = ({
-  editing,
-  dataIndex,
-  title,
-  inputType,
-  inputOptions,
-  product,
-  index,
-  children,
-  ...restProps
-}) => {
-  // Returns inputElement to render based on inputType
-  const inputElement = () => {
-    if (inputType === "number") return (<InputNumber />)
-    if (inputType === "select") return (
-        <Select>
-          {inputOptions.map(option => <Select.Option value={option}>{option}</Select.Option>)}
-        </Select>
-  )
-    return (<Input />)
-  };
-
-  return (
-    <td {...restProps}>
-      {editing ? ( //editing is a boolean indicating whether cell is currently being edited
-        <Form.Item
-          name={dataIndex}
-          style={{
-            margin: 0
-          }}
-          rules={[
-            {
-              required: true,
-              message: `Please Input ${title}!`
-            }
-          ]}
-        >
-          {inputElement()}
-        </Form.Item>
-      ) : (
-        children
-      )}
-    </td>
-  );
-};
+import { Form, Popconfirm, Typography } from 'antd';
+import { StyledButton } from './styles';
+import AdminProductsTable from './AdminProductsTable';
 
 // AdminProducts Component
 const AdminProducts = () => {
@@ -91,6 +12,8 @@ const AdminProducts = () => {
   const allProducts = useSelector((state) => state.products);
   const dispatch = useDispatch();
   const [data, setData] = useState(allProducts); // stores the allProducts data in the state
+  const [filteredInfo, setFilteredInfo] = useState({});
+  const [sortedInfo, setSortedInfo] = useState({});
   const [editingId, setEditingId] = useState(""); // state: { data, editingId}
   useEffect(() => { setData(allProducts) }, [allProducts]); // sets allProducts again in the state when allProducts updates
   useEffect(() => { dispatch(fetchProducts()) }, [dispatch]);
@@ -144,6 +67,20 @@ const AdminProducts = () => {
     }
   };
 
+  const handleChange = (pagination, filteredInfo, sortedInfo) => {
+    setFilteredInfo(filteredInfo);
+    setSortedInfo(sortedInfo);
+  };
+
+  const clearFilters = () => {
+    setFilteredInfo({});
+  };
+
+  const clearAll = () => {
+    setFilteredInfo({});
+    setSortedInfo({});
+  };
+
   const handleCancel = () => {
     setEditingId(""); //sets the EditingId as empty if edit cancelled
   };
@@ -154,34 +91,69 @@ const AdminProducts = () => {
       title: "Product Name",
       dataIndex: "productName",
       inputType: "text",
+      key: 'productName',
       width: "14%",
-      editable: true
+      editable: true,
+      sorter: (a, b) => {
+        if (a.productName < b.productName) return -1;
+        if (a.productName > b.productName) return 1;
+        return 0;
+      },
+      sortOrder: sortedInfo.columnKey === 'productName' ? sortedInfo.order : null,
     },
     {
       title: "Price",
       dataIndex: "price",
       inputType: "number",
+      key: 'price',
       width: "8%",
-      editable: true
+      editable: true,
+      sorter: (a, b) => a.price - b.price,
+      sortOrder: sortedInfo.columnKey === 'price' ? sortedInfo.order : null,
     },
     {
       title: "Category",
       dataIndex: "category",
       inputType: "select",
+      key: "category",
       inputOptions: ["Raw", "Organic", "Manuka"],
       width: "8%",
-      editable: true
+      editable: true,
+      sorter: (a, b) => {
+        if (a.category < b.category) return -1;
+        if (a.category > b.category) return 1;
+        return 0;
+      },
+      sortOrder: sortedInfo.columnKey === 'category' ? sortedInfo.order : null,
+      filters: [
+        {
+          text: 'Raw',
+          value: 'Raw',
+        },
+        {
+          text: 'Organic',
+          value: 'Organic',
+        },
+        {
+          text: 'Manuka',
+          value: 'Manuka',
+        }
+      ],
+      filteredValue: filteredInfo.category || null,
+      onFilter: (value, product) => product.category === value,
     },
     {
       title: "Description",
       dataIndex: "description",
       inputType: "text",
+      key: "description",
       width: "55%",
-      editable: true
+      editable: true,
     },
     {
       title: "Actions",
       dataIndex: "actions",
+      key: "actions",
       width: "15%",
       render: (_, product) => {  // renders the Save Delete Cancel or Edit buttons
         return isEditing(product) ? // if the product is being edited then show the Save and Cancel buttons
@@ -230,28 +202,18 @@ const AdminProducts = () => {
   // Form returned from AdminProduct Component
   return (
     <Form form={form} component={false}>
-      <div style={{ display: "flex", justifyContent: "space-between"}}>
-        <h3>PRODUCTS</h3>
+      <div style={{ display: "flex", justifyContent: "flex-start", gap: 10}}>
         <StyledButton onClick={handleAdd}>
           Add Product
         </StyledButton>
+        <StyledButton onClick={clearFilters}>Clear Filters</StyledButton>
+        <StyledButton onClick={clearAll}>Clear All</StyledButton>
       </div>
-      <StyledTable
-        rowKey={'id'}
-        components={{
-          body: {
-            cell: EditableCell
-          }
-        }}
-        bordered
-        dataSource={data} // dataSource for the table
-        columns={mergedColumns}
-        rowClassName="editable-row"
-        pagination={{
-          onChange: handleCancel,
-          defaultPageSize: 5,
-          position: ["none", "bottomCenter"]
-        }}
+      <AdminProductsTable
+        data={data}
+        mergedColumns={mergedColumns}
+        handleCancel={handleCancel}
+        handleChange={handleChange}
       />
     </Form>
   );

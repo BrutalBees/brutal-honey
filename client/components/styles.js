@@ -1,6 +1,7 @@
 // STYLED COMPONENTS
 import styled from 'styled-components';
 import {Link} from 'react-router-dom';
+import { Button, Table } from 'antd';
 
 // Home
 const StyledSplash = styled.div`
@@ -36,7 +37,7 @@ const StyledProductsLink = styled(Link)`
     background-color: white;
   }
 `;
-//
+
 // Navbar
 const StyledNavbar = styled.nav`
   display: flex;
@@ -49,6 +50,9 @@ const StyledNavbar = styled.nav`
   opacity: 1;
   &:hover {
     color: #ffffff;
+    a:not(:hover) {
+      color: white;
+    }
     background-color: #b48139;
     transition: background .5s ease-in-out,box-shadow .3s ease-in-out;
   }
@@ -79,13 +83,19 @@ const StyledLogoHeader = styled.div`
 `;
 
 const StyledLogoLink = styled(Link)`
-  font-size: 30px;
+  font-size: 2.5vw;
   font-weight: 300px;
-  color: #705129;
+  color: #a39c62;
+  &:hover {
+    color: #a2aab1;
+  }
 `;
 
 const StyledLink = styled(Link)`
   color: black;
+  &:hover {
+    color: #a2aab1;
+  }
 `;
 
 const StyledLinksWrapper = styled.div`
@@ -105,9 +115,12 @@ const StyledItemWrapper = styled.div`
   width: 255px;
   height: 360px;
   box-shadow: 0 0 1px rgba(0, 0, 0, 0);
-  transition-duration: 0.5s;
+  transform: perspective(1px) translateZ(0);
+  transition-property: box-shadow, transform;
+  transition-duration: 0.3s;
   &:hover {
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+    box-shadow: 0 10px 10px -10px rgb(0 0 0 / 50%);
+    transform: scale(1.1);
   }
 `;
 
@@ -126,6 +139,39 @@ const StyledProductName = styled.div`
   font-weight: 400;
 `;
 
+// AdminProducts AdminUsers
+const StyledButton = styled(Button)`
+  justify-content: center;
+  color: black;
+  background-color: white;
+  border: solid #d9d9d9; 1px;
+  margin-bottom: 20px;
+  &:hover {
+    color: #f5db8b;
+    border: solid #f5db8b 1px;
+  }
+`;
+
+const StyledTable = styled(Table)`
+  .ant-pagination-item-active {
+    border-color: #b5963e;
+  };
+  .ant-pagination-item-active a {
+    color: #b5963e;
+  };
+  a:hover {
+    color: #b5963e;
+  };
+  .ant-pagination-item:hover {
+    border-color: #b5963e;
+  };
+  .ant-pagination-prev:hover .ant-pagination-item-link, .ant-pagination-next:hover .ant-pagination-item-link {
+    color: #b5963e;
+    border-color: #b5963e;
+  }
+`;
+
+// Exports
 export {
   // Home
   StyledSplash,
@@ -144,5 +190,8 @@ export {
   // ProductIndexItem
   StyledItemWrapper,
   StyledItemImage,
-  StyledProductName
+  StyledProductName,
+  // AdminProducts AdminUsers
+  StyledButton,
+  StyledTable
 };
