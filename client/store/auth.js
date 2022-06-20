@@ -49,7 +49,9 @@ export const signup =
   };
 
 export const logout = () => {
+  debugger
   window.localStorage.removeItem(TOKEN);
+  debugger
   history.push('/login');
   return {
     type: SET_AUTH,
