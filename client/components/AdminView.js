@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import AdminDashboard from './AdminDashboard';
 import AdminProducts from './AdminProducts';
 import AdminUsers from './AdminUsers';
 import { DashboardOutlined, AppstoreOutlined, UserOutlined } from '@ant-design/icons';
@@ -56,6 +57,7 @@ const AdminView = () => {
         items={menuItems}
       />
       <StyledProductsWrapper>
+        {view === "dashboard" && <AdminDashboard />}
         {view === "products" && <AdminProducts />}
         {view === "users" && <AdminUsers />}
       </StyledProductsWrapper>

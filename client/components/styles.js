@@ -83,7 +83,7 @@ const StyledLogoHeader = styled.div`
 `;
 
 const StyledLogoLink = styled(Link)`
-  font-size: 30px;
+  font-size: 2.5vw;
   font-weight: 300px;
   color: #a39c62;
   &:hover {
