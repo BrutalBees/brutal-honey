@@ -109,8 +109,12 @@ async function seed() {
   await cart3.setUser(angel);
 
   // Set Cart-Product Associations
-  await cart1.setProducts([ createdProducts[0], createdProducts[1], createdProducts[2]]);
-  await cart3.setProducts([ createdProducts[0], createdProducts[2], createdProducts[4], createdProducts[6]]);
+  await cart1.setProducts([ createdProducts[0], createdProducts[1], createdProducts[2]], {
+    through: { quantity: 1 }
+  });
+  await cart3.setProducts([ createdProducts[0], createdProducts[2], createdProducts[4], createdProducts[6]], {
+    through: { quantity: 2 }
+  });
 
   console.log(`seeded ${users.length} users`)
   console.log(`seeded successfully`)

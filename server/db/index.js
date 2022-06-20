@@ -16,7 +16,9 @@ Cart.belongsTo(User);
 // Many to Many
 const cartProduct = db.define('cartProduct', {
   quantity: {
-    type: Sequelize.INTEGER
+    type: Sequelize.INTEGER,
+    defaultValue: 1
+    // by default if a product is associated then the quantity is 1
   }
 });
 
@@ -27,7 +29,7 @@ module.exports = {
   db,
   models: {
     User,
-    Product, 
+    Product,
     Cart,
     cartProduct
   },
