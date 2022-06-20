@@ -58,7 +58,7 @@ const StyledProductQuantity = styled.div`
   justify-content: flex-start;
   align-items: center;
   padding: 0px 30px;
-  border: solid #e5991f 1px;
+  border: solid grey 0.5px;
 `;
 
 const StyledQuantityInput = styled.input`
