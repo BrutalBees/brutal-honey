@@ -1,12 +1,15 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { withRouter, Route, Switch, Redirect } from 'react-router-dom';
-import { Login, Signup } from './components/AuthForm';
+// import { Login } from './components/AuthForm';
 import SingleProduct from './components/SingleProduct';
 import Home from './components/Home';
 import AllProducts from './components/AllProducts';
 import AdminView from './components/AdminView';
-import {me} from './store';
+import Signup from './components/SignUp';
+import Login from './components/Login';
+
+import { me } from './store';
 
 class Routes extends Component {
   componentDidMount() {

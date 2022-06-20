@@ -1,10 +1,10 @@
 // STYLED COMPONENTS
 import styled from 'styled-components';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 // Home
 const StyledSplash = styled.div`
-  background-image: url("https://images.unsplash.com/photo-1625600243103-1dc6824c6c8a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1064&q=80");
+  background-image: url('https://images.unsplash.com/photo-1625600243103-1dc6824c6c8a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1064&q=80');
   background-size: cover;
   background-position: center;
   height: 100vh;
@@ -50,7 +50,7 @@ const StyledNavbar = styled.nav`
   &:hover {
     color: #ffffff;
     background-color: #b48139;
-    transition: background .5s ease-in-out,box-shadow .3s ease-in-out;
+    transition: background 0.5s ease-in-out, box-shadow 0.3s ease-in-out;
   }
 `;
 
@@ -113,7 +113,7 @@ const StyledItemWrapper = styled.div`
 
 const StyledItemImage = styled.div`
   display: flex;
-  background-image: url(${props => props.image});
+  background-image: url(${(props) => props.image});
   background-size: cover;
   background-position: center;
   width: 100%;
@@ -144,5 +144,5 @@ export {
   // ProductIndexItem
   StyledItemWrapper,
   StyledItemImage,
-  StyledProductName
+  StyledProductName,
 };
