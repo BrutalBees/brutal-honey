@@ -1,6 +1,6 @@
 // STYLED COMPONENTS
 import styled from 'styled-components';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Button, Table } from 'antd';
 
 // Home
@@ -155,17 +155,18 @@ const StyledButton = styled(Button)`
 const StyledTable = styled(Table)`
   .ant-pagination-item-active {
     border-color: #b5963e;
-  };
+  }
   .ant-pagination-item-active a {
     color: #b5963e;
-  };
+  }
   a:hover {
     color: #b5963e;
-  };
+  }
   .ant-pagination-item:hover {
     border-color: #b5963e;
-  };
-  .ant-pagination-prev:hover .ant-pagination-item-link, .ant-pagination-next:hover .ant-pagination-item-link {
+  }
+  .ant-pagination-prev:hover .ant-pagination-item-link,
+  .ant-pagination-next:hover .ant-pagination-item-link {
     color: #b5963e;
     border-color: #b5963e;
   }
@@ -191,10 +192,7 @@ export {
   StyledItemWrapper,
   StyledItemImage,
   StyledProductName,
-<<<<<<< HEAD
-=======
   // AdminProducts AdminUsers
   StyledButton,
-  StyledTable
->>>>>>> main
+  StyledTable,
 };

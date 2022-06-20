@@ -3,31 +3,13 @@ import history from '../history';
 
 const TOKEN = 'token';
 
-<<<<<<< HEAD
-/**
- * ACTION TYPES
- */
 const SET_AUTH = 'SET_AUTH';
 
-/**
- * ACTION CREATORS
- */
-export const setAuth = (auth) => ({ type: SET_AUTH, auth });
-
-/**
- * THUNK CREATORS
- */
-export const me = () => async (dispatch) => {
-  const token = window.localStorage.getItem(TOKEN);
-=======
-const SET_AUTH = 'SET_AUTH'
-
-const setAuth = auth => ({type: SET_AUTH, auth})
+const setAuth = (auth) => ({ type: SET_AUTH, auth });
 
 // Thunk Creators
-export const me = () => async dispatch => {
-  const token = window.localStorage.getItem(TOKEN)
->>>>>>> main
+export const me = () => async (dispatch) => {
+  const token = window.localStorage.getItem(TOKEN);
   if (token) {
     const res = await axios.get('/auth/me', {
       headers: {
@@ -76,7 +58,7 @@ export const logout = () => {
 };
 
 // Reducer
-export default function(state = {}, action) {
+export default function (state = {}, action) {
   switch (action.type) {
     case SET_AUTH:
       return action.auth;
