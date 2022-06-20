@@ -3,7 +3,13 @@ import { useSelector, useDispatch } from 'react-redux';
 import { fetchSingleProduct } from '../store/singleProduct';
 import styled from 'styled-components';
 
-const AddToCartBtn = styled.button`
+const StyledTopWrapper = styled.section`
+  display: flex;
+  flex-direction: row;
+  // justify-content: space-between;
+`;
+
+const StyledAddToCartBtn = styled.button`
   display: flex;
   color: #303030;
   border-radius: 2px;
@@ -22,34 +28,42 @@ const AddToCartBtn = styled.button`
   }
 `;
 
-const ProductImg = { width: '300px', height: '350px' };
-// const Description = {
-//   width: '250px',
-//   justifyContent: 'end',
-//   alignSelf: 'flexEnd',
-//   margin: '0 0 24px',
-// };
-
-const Description = styled.p`
-  font-size: 14px;
-  margin: 0 0 24px;
-  line-height: 1.5em;
-  letter-spacing: 1.5;
-  width: 300px;
-  align-self: flex-end;
+const StyledSingleProductImg = styled.img`
+  // display: flex;
+  width: 350px;
+  height: 400px;
+  margin: 50px;
 `;
 
-// const TopWrapper = styled.section`
-//   display: flex;
-//   flex-direction: row;
-// `;
-
-const TopWrapper = styled.section`
-  overflow: hidden;
+const StyledProductInfo = styled.div`
   display: flex;
   flex-direction: column;
-  // text-align: center;
-  height: 100vh;
+  align-items:center;
+  border-style: solid'
+  width: 300px;
+  // align-self: flex-end;
+
+`;
+const StyledDescription = styled.p`
+  letter-spacing: 1.5;
+  align-tex: center;
+  width: 50px;
+  height: 400px;
+  margin-left: 400px;
+  margin-top: 100px;
+  padding-right: 500px;
+  // overflow-wrap: normal;
+  order: 2;
+`;
+const StyledProductName = styled.h1`
+  letter-spacing: 1.5;
+  align-tex: center;
+  // width: 350px;
+  // height: 400px;
+  margin-left: 400px;
+  margin-top: 50px;
+  padding-bottom: 2px;
+  order: 1;
 `;
 
 const SingleProduct = (props) => {
@@ -59,24 +73,29 @@ const SingleProduct = (props) => {
     dispatch(fetchSingleProduct(props.match.params.id));
   }, [dispatch]);
   return (
-    <div>
-      <TopWrapper>
-        <div>
-          {/* </StyledSpash> */}
-          {/* <ProductImg> */}
-          <span>
-            <img src={[product.imageUrl]} style={ProductImg} />
-            {/* </ProductImg> */}
-            {/* </StyledSpash> */}
-            <h2>{product.productName}</h2>
-          </span>
-          <h3>${product.price}</h3>
-          <hr />
-          <Description>{product.description}</Description>
-          <AddToCartBtn>Add to Cart</AddToCartBtn>
-        </div>
-      </TopWrapper>
-    </div>
+    <StyledTopWrapper>
+      <StyledSingleProductImg src={[product.imageUrl]} />
+      <StyledProductInfo>
+        <StyledProductName>{product.productName}</StyledProductName>
+        <StyledDescription>{product.description}</StyledDescription>
+      </StyledProductInfo>
+    </StyledTopWrapper>
+    // <div>
+    //   <StyledTopWrapper>
+    //     {/* <div> */}
+    //     <StyledSingleProductImg>
+    // <img src={[product.imageUrl]} />
+    //     </StyledSingleProductImg>
+    //     <StyledProductInfo>{product.productName}</StyledProductInfo>
+    //     <h3>${product.price}</h3>
+    //     <hr />
+    //     <StyledDescription>
+    //       <p>{product.description}</p>
+    //     </StyledDescription>
+    //     <StyledAddToCartBtn>Add to Cart</StyledAddToCartBtn>
+    //     {/* </div> */}
+    //   </StyledTopWrapper>
+    // </div>
   );
 };
 
