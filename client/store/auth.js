@@ -3,6 +3,7 @@ import history from '../history';
 
 const TOKEN = 'token';
 
+<<<<<<< HEAD
 /**
  * ACTION TYPES
  */
@@ -18,6 +19,15 @@ export const setAuth = (auth) => ({ type: SET_AUTH, auth });
  */
 export const me = () => async (dispatch) => {
   const token = window.localStorage.getItem(TOKEN);
+=======
+const SET_AUTH = 'SET_AUTH'
+
+const setAuth = auth => ({type: SET_AUTH, auth})
+
+// Thunk Creators
+export const me = () => async dispatch => {
+  const token = window.localStorage.getItem(TOKEN)
+>>>>>>> main
   if (token) {
     const res = await axios.get('/auth/me', {
       headers: {
@@ -65,10 +75,8 @@ export const logout = () => {
   };
 };
 
-/**
- * REDUCER
- */
-export default function (state = {}, action) {
+// Reducer
+export default function(state = {}, action) {
   switch (action.type) {
     case SET_AUTH:
       return action.auth;

@@ -30,11 +30,13 @@ const Navbar = () => {
         <StyledRightHeader>
           {isLoggedIn ? (
             <StyledLinksWrapper>
-              <span>WELCOME, {name.toUpperCase()} </span>
-              {isAdmin &&
+              {isAdmin ?
                 <StyledLink to="/admin">
-                  ADMIN
-                </StyledLink>}
+                  WELCOME, {name.toUpperCase()}
+                </StyledLink>
+                :
+                <span>WELCOME, {name.toUpperCase()} </span>
+              }
               <StyledLink to="#" onClick={handleClick}>
                 LOG OUT
               </StyledLink>
@@ -48,11 +50,11 @@ const Navbar = () => {
         </StyledRightHeader>
       </StyledNavHeader>
       <StyledNavHeaderBottom>
-        <span>ORGANIC</span>
-        <span>RAW</span>
-        <span>MANUKA</span>
-        <span>SAGE</span>
-        <span>ABOUT</span>
+        <StyledLink to="/products?category=Organic">ORGANIC</StyledLink>
+        <StyledLink to="/products?category=Raw">RAW</StyledLink>
+        <StyledLink to="/products?category=Manuka">MANUKA</StyledLink>
+        <StyledLink to="/products?category=Sage">SAGE</StyledLink>
+        <StyledLink to="/home">ABOUT</StyledLink>
       </StyledNavHeaderBottom>
     </StyledNavbar>
   );

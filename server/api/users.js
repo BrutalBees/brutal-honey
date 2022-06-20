@@ -8,7 +8,7 @@ router.get('/', verifyToken, async (req, res, next) => {
   try {
     if (req.user.isAdmin) {
       const users = await User.findAll({
-        attributes: ['id', 'email', 'firstName', 'lastName'] // only sends back these attributes
+        attributes: ['id', 'email', 'firstName', 'lastName', 'isAdmin'] // only sends back these attributes
       })
       res.json(users)
     } else {
