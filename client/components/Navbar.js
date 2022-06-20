@@ -1,6 +1,7 @@
 import React, { useCallback } from 'react';
 import { logout } from '../store';
 import { useSelector, useDispatch } from 'react-redux';
+import { ShoppingCartOutlined } from '@ant-design/icons';
 import {
   StyledNavbar,
   StyledNavHeader,
@@ -39,6 +40,10 @@ const Navbar = () => {
               }
               <StyledLink to="#" onClick={handleClick}>
                 LOG OUT
+              </StyledLink>
+              <StyledLink to="/cart">
+                <ShoppingCartOutlined />
+                {" CART "}
               </StyledLink>
             </StyledLinksWrapper>
           ) : (
