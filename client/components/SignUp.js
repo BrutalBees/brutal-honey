@@ -3,18 +3,19 @@ import { connect } from 'react-redux';
 import { signup } from '../store/auth';
 import { Container, Card, Button, Form, Row, Col } from 'react-bootstrap';
 import styled from 'styled-components';
-import { StyledSplash, StyledFormWrapper } from './styles';
-const StyledFormWrapper = styled.div`
+import { StyledSplash } from './styles';
+
+export const StyledWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   align-content: center;
   padding: 3em;
+  height: 100vh;
   background-image: url('https://images.unsplash.com/photo-1625600243103-1dc6824c6c8a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1064&q=80');
-  background-size: cover;
 `;
 
-const StyledFormBox = styled.div`
+export const StyledFormBox = styled.div`
   display: flex;
   justify-content: center;
   border: 5px solid #b48139;
@@ -23,7 +24,7 @@ const StyledFormBox = styled.div`
 const SignUp = (props) => {
   const { name, displayName, handleSubmit, error } = props;
   return (
-    <StyledFormWrapper>
+    <StyledWrapper>
       <header className="App-header">
         <Container>
           <h1> Register</h1>
@@ -99,7 +100,7 @@ const SignUp = (props) => {
           </div>
         </Container>
       </header>
-    </StyledFormWrapper>
+    </StyledWrapper>
   );
 };
 
