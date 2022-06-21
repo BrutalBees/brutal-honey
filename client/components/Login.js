@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { login } from '../store/auth';
 import { Container, Card, Button, Form, Row, Col } from 'react-bootstrap';
 import { StyledFormBox, StyledWrapper } from './Signup';
+import { StyledButton } from './styles';
 
 const Login = (props) => {
   const { name, displayName, handleSubmit, error } = props;
@@ -45,22 +46,21 @@ const Login = (props) => {
                         <Form.Control name="password" type="password" />
                       </Col>
                     </Form.Group>
-
-                    <a href="/#" className="forget-link">
-                      Forgot password?
-                    </a>
-                    <Button
+                    <StyledButton
                       variant="secondary"
                       type="submit"
                       className="button"
                     >
                       {displayName}
-                    </Button>
+                    </StyledButton>
                     <div>
                       {error && error.response && (
                         <div> {error.response.data} </div>
                       )}
                     </div>
+                    <a href="/#" className="forget-link">
+                        Forgot password?
+                      </a>
                     <div className="signup-link">
                       <a
                         href="/signup"

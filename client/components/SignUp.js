@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { signup } from '../store/auth';
 import { Container, Card, Button, Form, Row, Col } from 'react-bootstrap';
 import styled from 'styled-components';
-import { StyledSplash } from './styles';
+import { StyledButton } from './styles';
 
 export const StyledWrapper = styled.div`
   display: flex;
@@ -87,9 +87,9 @@ const SignUp = (props) => {
                   </Col>
                 </Form.Group>
 
-                <Button variant="secondary" type="submit" className="button">
+                <StyledButton variant="secondary" type="submit" className="button">
                   {displayName}
-                </Button>
+                </StyledButton>
                 <div>
                   {error && error.response && (
                     <div> {error.response.data} </div>

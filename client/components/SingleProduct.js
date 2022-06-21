@@ -3,11 +3,12 @@ import { useSelector, useDispatch } from 'react-redux';
 import { fetchSingleProduct } from '../store/singleProduct';
 import styled from 'styled-components';
 import { Container, Card, Button, Form, Row, Col } from 'react-bootstrap';
-import {
-  StyledSplash,
-  StyledProductIndexWrapper,
-  StyledProductsLink,
-} from './styles';
+import { StyledProductsLink } from './styles';
+// import {
+//   StyledSplash,
+//   StyledProductIndexWrapper,
+//   StyledProductsLink,
+// } from './styles';
 import { fetchProducts } from '../store/products';
 
 const StyledTopWrapper = styled.section`
@@ -93,7 +94,7 @@ const SingleProduct = (props) => {
                 $ {product.price}
               </Card.Subtitle>
               <Card.Text>{product.description}</Card.Text>
-              <StyledAddToCartBtn>Add to Cart</StyledAddToCartBtn>
+              <StyledProductsLink>Add to Cart</StyledProductsLink>
             </Card.Body>
           </Card>
         </StyledProductInfo>
