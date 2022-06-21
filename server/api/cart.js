@@ -44,7 +44,6 @@ router.post('/', verifyToken, async (req, res, next) => {
 // DELETE /api/cart - removes product from cart
 router.delete('/:productId', verifyToken, async (req, res, next) => {
   try {
-    debugger
     const userCart = await Cart.findOne({
       where: {
         userId: req.user.id
