@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from 'react-router-dom';
 import { updateCart, removeProductFromCart } from "../store/cart";
@@ -21,21 +21,17 @@ const CartProduct = (props) => {
   const initialQty = product.cartProduct.quantity;
   const [ quantity, setQuantity ] = useState(initialQty);
   const dispatch = useDispatch();
+  useEffect(() => { dispatch(updateCart(product.id, quantity - initialQty))}, [quantity]);
 
   const handleChange = (evt) => {
     evt.preventDefault();
     setQuantity(evt.target.value);
   };
 
-  const handleQtyChange = (evt) => {
+  const handleQtyChange = async (evt) => {
     evt.preventDefault();
-    evt.target.name === 'minus' && setQuantity(quantity - 1);
+    evt.target.name === 'minus' && (quantity > 1) && setQuantity(quantity - 1);
     evt.target.name === 'plus' && setQuantity(quantity + 1);
-  };
-
-  const handleSubmit = () => {
-    const qtyToAdd = quantity - initialQty;
-    dispatch(updateCart(product.id, qtyToAdd))
   };
 
   const handleDelete = () => {
@@ -66,12 +62,12 @@ const CartProduct = (props) => {
             onClick={handleQtyChange}
           >{"+"}</StyledQuantityButton>
         </StyledProductQuantity>
-        <StyledQuantityInput
+        {/* <StyledQuantityInput
             type="submit"
             name="Update"
             value="Update"
             onClick={handleSubmit}
-        />
+        /> */}
       </StyledQuantityForm>
       <StyledProductPrice>${product.price * product.cartProduct.quantity}</StyledProductPrice>
       <StyledDeleteButton
