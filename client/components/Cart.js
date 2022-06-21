@@ -3,36 +3,15 @@ import { useSelector, useDispatch } from "react-redux";
 import { fetchCart } from "../store/cart";
 import CartProduct from "./CartProduct";
 import styled from "styled-components";
-import { StyledProductsLink, StyledProductPrice } from "./styles";
-
-// Styled Components
-const StyledCartWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  padding: 100px 200px;
-`;
-
-const StyledCart = styled.div`
-  display: flex;
-  flex-direction: column;
-  border-top: solid #cdc5c4 0.5px;
-`;
-
-const StyledTotalPrice = styled.div`
-  display: flex;
-  justify-content: flex-end;
-  margin-top: 30px;
-  padding: 0px 10px;
-  font-size: 16px;
-  font-weight: 600;
-`;
-
-const StyledCheckoutLink = styled(StyledProductsLink)`
-  align-self: flex-end;
-  margin-right: 0px;
-  margin-top: 30px;
-`;
+import {
+  StyledProductsLink,
+  StyledProductPrice,
+  StyledCartWrapper,
+  StyledCart,
+  StyledEmptyCart,
+  StyledTotalPrice,
+  StyledCheckoutLink
+} from "./styles";
 
 // Cart Component
 const Cart = () => {
@@ -45,14 +24,18 @@ const Cart = () => {
 
   return(
     <StyledCartWrapper>
-      <h1>Your Cart</h1>
+      <h1>YOUR CART</h1>
       <StyledCart>
-        {products && products.map(product =>
+      {products && products.length ?
+        (products.map(product =>
           <CartProduct
             key={product.id}
             product={product}
           />
-        )}
+        ))
+      :
+      <StyledEmptyCart>Looks like your cart is empty</StyledEmptyCart>
+      }
       </StyledCart>
       <StyledTotalPrice>TOTAL ${subtotal}</StyledTotalPrice>
       <StyledCheckoutLink to="/checkout">CHECK OUT</StyledCheckoutLink>

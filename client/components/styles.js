@@ -173,6 +173,47 @@ const StyledTable = styled(Table)`
 `;
 
 // Cart
+const StyledCartWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 100px 200px;
+`;
+
+const StyledCart = styled.div`
+  display: flex;
+  flex-direction: column;
+  border-top: solid #cdc5c4 0.5px;
+`;
+
+const StyledEmptyCart = styled.div`
+  display: flex;
+  width: 100%;
+  padding: 20px 0px;
+  border-bottom: solid #cdc5c4 0.5px;
+  height: 150px;
+  font-size: 18px;
+  font-weight: 800;
+`;
+
+const StyledTotalPrice = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 30px;
+  padding: 0px 10px;
+  font-size: 16px;
+  font-weight: 600;
+`;
+
+const StyledCheckoutLink = styled(StyledProductsLink)`
+  align-self: flex-end;
+  margin-right: 0px;
+  margin-top: 30px;
+`;
+
+
+
+// CartProduct
 const StyledCartRow = styled.div`
   display: flex;
   width: 100%;
@@ -286,6 +327,12 @@ export {
   StyledButton,
   StyledTable,
   // Cart
+  StyledCartWrapper,
+  StyledCart,
+  StyledEmptyCart,
+  StyledTotalPrice,
+  StyledCheckoutLink,
+  // CartProduct
   StyledCartRow,
   StyledProductImage,
   StyledCartProductName,
