@@ -22,13 +22,17 @@ const StyledConfirmationBox = styled.div`
   font-size: 180%;
   background-color:rgba(193, 125, 31, 0.8);
 `
+const StyledButton = styled(Button)`
+   background-color:rgba(193, 125, 31, 0.8);
+   border: 3px solid #ffffff;
+   color: #ffffff;
+`
 
 
 const OrderConfirmation = (props) => {
   const cart = useSelector(state => state.cart);
   const dispatch = useDispatch();
    useEffect(() => { dispatch(fetchCart()) }, [dispatch]);
-   console.log(cart)
   return (
     <StyledWrapper>
       <StyledConfirmationBox>
@@ -37,6 +41,9 @@ const OrderConfirmation = (props) => {
         <div>A confirmation has been sent to your email.
           Your order confirmation is:</div>
         <div> {cart.id}</div>
+        <a href="/home">
+        <StyledButton>CONTINUE SHOPPING</StyledButton>
+        </a>
       </StyledConfirmationBox>
     </StyledWrapper>
   );
