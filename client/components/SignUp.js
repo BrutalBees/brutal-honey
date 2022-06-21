@@ -13,6 +13,8 @@ export const StyledWrapper = styled.div`
   padding: 3em;
   height: 100vh;
   background-image: url('https://images.unsplash.com/photo-1625600243103-1dc6824c6c8a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1064&q=80');
+  background-size: cover;
+  background-position: center;
 `;
 
 export const StyledFormBox = styled.div`
