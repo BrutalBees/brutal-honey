@@ -3,6 +3,7 @@ const { models: { User }} = require('../db');
 // Middleware function to verify token
 const verifyToken = async (req, res, next) => {
   try {
+    debugger
     const user = await User.findByToken(req.headers.authorization);
     req.user = user;
     next();
