@@ -36,7 +36,7 @@ const OrderConfirmation = (props) => {
         <div> We have recieved your order.</div>
         <div>A confirmation has been sent to your email.
           Your order confirmation is:</div>
-        <div> {cart.id }</div>
+        <div> {cart.id}</div>
       </StyledConfirmationBox>
     </StyledWrapper>
   );
