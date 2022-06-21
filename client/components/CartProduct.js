@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import { Link } from 'react-router-dom';
 import { updateCart, removeProductFromCart } from "../store/cart";
 import { DeleteOutlined } from '@ant-design/icons';
 import {
@@ -43,8 +44,10 @@ const CartProduct = (props) => {
 
   return (
     <StyledCartRow key={product.id}>
-      <StyledProductImage image={product.imageUrl[0]}></StyledProductImage>
-      <StyledCartProductName>{product.productName}</StyledCartProductName>
+        <StyledProductImage image={product.imageUrl[0]}></StyledProductImage>
+        <StyledCartProductName>
+          <Link to={`/product/${product.id}`}>{product.productName}</Link>
+        </StyledCartProductName>
       <StyledProductPrice>${product.price}</StyledProductPrice>
       <StyledQuantityForm>
         <StyledProductQuantity>

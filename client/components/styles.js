@@ -198,6 +198,12 @@ const StyledCartProductName = styled.div`
   justify-content: flex-start;
   align-items: center;
   padding: 0px 30px;
+  a {
+    color: black;
+  }
+  a:hover {
+    color: #b5963e;
+  }
 `;
 
 const StyledProductPrice = styled(StyledProductName)`
