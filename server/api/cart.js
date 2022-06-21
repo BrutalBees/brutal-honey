@@ -59,7 +59,7 @@ router.delete('/:productId', verifyToken, async (req, res, next) => {
   }
 });
 
-// PUT /api/cart/checkout - changes cart to order
+// GET /api/cart/checkout - changes cart to order
 router.get('/checkout', verifyToken, async (req, res, next) => {
   try {
     const userCart = await Cart.findOne({
