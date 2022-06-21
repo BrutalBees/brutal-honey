@@ -13,7 +13,6 @@ const setCart = (cart) => {
 };
 
 const gotUpdatedCart = (updatedCart) => {
-  debugger
   return {
     type: UPDATED_CART,
     updatedCart

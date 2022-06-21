@@ -80,7 +80,8 @@ const SingleProduct = (props) => {
   };
 
   const handleAddToCart = (evt) => {
-    dispatch(updateCart(product.id, quantity))
+    dispatch(updateCart(product.id, quantity - 1))
+    // by default quantity is 1 when product is added to cart
   };
 
   return (
