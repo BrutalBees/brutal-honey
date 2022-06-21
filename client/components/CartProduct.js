@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { updateCart } from "../store/cart";
+import { updateCart, removeProductFromCart } from "../store/cart";
 import styled from "styled-components";
 import { DeleteOutlined } from '@ant-design/icons';
 
@@ -113,6 +113,10 @@ const CartProduct = (props) => {
     dispatch(updateCart(product.id, qtyToAdd))
   };
 
+  const handleDelete = () => {
+    dispatch(removeProductFromCart(product.id))
+  };
+
   return (
     <StyledCartRow key={product.id}>
       <StyledProductImage image={product.imageUrl[0]}></StyledProductImage>
@@ -143,7 +147,9 @@ const CartProduct = (props) => {
         />
       </StyledQuantityForm>
       <StyledProductPrice>${product.price * product.cartProduct.quantity}</StyledProductPrice>
-      <StyledDeleteButton><DeleteOutlined /></StyledDeleteButton>
+      <StyledDeleteButton
+        onClick={handleDelete}
+      ><DeleteOutlined /></StyledDeleteButton>
     </StyledCartRow>
   )
 };

@@ -43,7 +43,7 @@ const Cart = () => {
           />
         )}
       </StyledCart>
-      <StyledCheckoutLink to="/home">CHECK OUT</StyledCheckoutLink>
+      <StyledCheckoutLink to="/checkout">CHECK OUT</StyledCheckoutLink>
     </StyledCartWrapper>
   )
 };
