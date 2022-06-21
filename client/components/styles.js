@@ -45,7 +45,7 @@ const StyledNavbar = styled.nav`
   height: 120px;
   width: 100%;
   padding: 24px 50px;
-  border-bottom: solid white 0.5px;
+  border-bottom: solid #cdc5c4 1px;
   color: #292819;
   opacity: 1;
   &:hover {
