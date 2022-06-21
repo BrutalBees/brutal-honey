@@ -43,7 +43,6 @@ const About = () => {
         }
       />
       <StyledSubtitle>ANCIENT WISDOM + AWESOME SMELLS.</StyledSubtitle>
-      {/* <StyledPWrapper> */}
       <StyledParagraph>
         We lovingly create products that will complement and enhance the daily
         stess and struggle, using only the highest quality active ingredients
@@ -55,7 +54,6 @@ const About = () => {
         that smell like trash, a dog fart, or even a unhygienic partner.
         <br /> Brutal Bees with Love, Angel + Nyjia + Katie
       </StyledParagraph>
-      {/* </StyledPWrapper> */}
     </div>
   );
 };
