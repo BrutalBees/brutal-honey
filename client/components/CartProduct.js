@@ -1,94 +1,18 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { updateCart, removeProductFromCart } from "../store/cart";
-import styled from "styled-components";
 import { DeleteOutlined } from '@ant-design/icons';
-
-
-// Styled Components
-const StyledCartRow = styled.div`
-  display: flex;
-  width: 100%;
-  flex-direction: row;
-  padding: 20px;
-  border-bottom: solid #cdc5c4 0.5px;
-  height: 150px;
-`;
-
-const StyledProductImage = styled.div`
-  background-image: url(${(props) => props.image});
-  background-size: cover;
-  background-position: center;
-  height: 100%;
-  width: 10%;
-`;
-
-const StyledProductName = styled.div`
-  display: flex;
-  width: 30%;
-  font-size: 15px;
-  font-weight: 800;
-  justify-content: flex-start;
-  align-items: center;
-  padding: 0px 30px;
-`;
-
-const StyledProductPrice = styled(StyledProductName)`
-  width: 20%;
-  padding: 0px 30px;
-  justify-content: center;
-  padding: 0px 30px;
-`;
-
-const StyledQuantityForm = styled.form`
-  display: flex;
-  flex-direction: column;
-  width: 25%;
-  padding: 0px 40px;
-  justify-content: center;
-  align-items: center;
-`;
-
-const StyledProductQuantity = styled.div`
-  display: flex;
-  justify-content: space-around;
-  width: 100%;
-  height: 40px;
-  margin-bottom: 10px;
-  margin-top: 40px;
-  border: solid grey 0.5px;
-`;
-
-const StyledQuantityInput = styled.input`
-  display: flex;
-  border: none;
-  padding: 0;
-  background-color: white;
-  margin: 0;
-  width: 50px;
-  text-align: center;
-  &:hover {
-    color: #f5db8b;
-  }
-`;
-
-const StyledQuantityButton = styled.button`
-  display: flex;
-  border: none;
-  background-color: white;
-  margin: 0;
-  align-items: center;
-  &:hover {
-    color: #a2aab1;
-  }
-`;
-
-const StyledDeleteButton = styled(StyledQuantityButton)`
-  display: flex;
-  width: 5%;
-  justify-content: center;
-`;
-
+import {
+  StyledCartRow,
+  StyledProductImage,
+  StyledCartProductName,
+  StyledProductPrice,
+  StyledQuantityForm,
+  StyledProductQuantity,
+  StyledQuantityInput,
+  StyledQuantityButton,
+  StyledDeleteButton
+} from './styles';
 
 // CartProduct Component
 const CartProduct = (props) => {
@@ -120,7 +44,7 @@ const CartProduct = (props) => {
   return (
     <StyledCartRow key={product.id}>
       <StyledProductImage image={product.imageUrl[0]}></StyledProductImage>
-      <StyledProductName>{product.productName}</StyledProductName>
+      <StyledCartProductName>{product.productName}</StyledCartProductName>
       <StyledProductPrice>${product.price}</StyledProductPrice>
       <StyledQuantityForm>
         <StyledProductQuantity>
