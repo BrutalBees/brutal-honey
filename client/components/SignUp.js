@@ -11,6 +11,9 @@ const StyledSignupButton = styled(Button)`
   background-color: white;
   border: solid #d9d9d9; 1px;
   margin-bottom: 20px;
+  margin-top: 15%;
+  margin-left: 50px;
+
   &:hover {
     color: #f5db8b;
     border: solid #f5db8b 1px;
@@ -33,6 +36,8 @@ export const StyledFormBox = styled.div`
   display: flex;
   justify-content: center;
   border: 5px solid #b48139;
+  background-color: #ebe8eb;
+  align-text: center;
 `;
 
 const SignUp = (props) => {
@@ -41,7 +46,16 @@ const SignUp = (props) => {
     <StyledWrapper>
       <header className="App-header">
         <Container>
-          <h1> Register</h1>
+          <h1
+            style={{
+              textAlign: 'center',
+              color: 'white',
+              fontWeight: 'bolder',
+            }}
+          >
+            {' '}
+            Register
+          </h1>
           <div>
             <StyledFormBox>
               <Form
@@ -101,7 +115,11 @@ const SignUp = (props) => {
                   </Col>
                 </Form.Group>
 
-                <StyledSignupButton variant="secondary" type="submit" className="button">
+                <StyledSignupButton
+                  variant="secondary"
+                  type="submit"
+                  className="button"
+                >
                   {displayName}
                 </StyledSignupButton>
                 <div>
