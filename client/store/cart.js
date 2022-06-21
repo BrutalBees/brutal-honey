@@ -36,7 +36,6 @@ export const fetchCart = () => {
 export const updateCart = (productId, quantity) => {
   const cartUpdate = { productId, quantity };
   const token = window.localStorage.getItem('token');
-  debugger
   return async (dispatch) => {
     const { data: updatedCart } = await axios.post('/api/cart', cartUpdate, {
       headers: {
