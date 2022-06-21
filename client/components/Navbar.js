@@ -31,19 +31,19 @@ const Navbar = () => {
         <StyledRightHeader>
           {isLoggedIn ? (
             <StyledLinksWrapper>
-              {isAdmin ?
+              {isAdmin ? (
                 <StyledLink to="/admin">
                   WELCOME, {name.toUpperCase()}
                 </StyledLink>
-                :
+              ) : (
                 <span>WELCOME, {name.toUpperCase()} </span>
-              }
+              )}
               <StyledLink to="#" onClick={handleLogout}>
                 LOG OUT
               </StyledLink>
               <StyledLink to="/cart">
                 <ShoppingCartOutlined />
-                {" CART "}
+                {' CART '}
               </StyledLink>
             </StyledLinksWrapper>
           ) : (
@@ -59,7 +59,7 @@ const Navbar = () => {
         <StyledLink to="/products?category=Raw">RAW</StyledLink>
         <StyledLink to="/products?category=Manuka">MANUKA</StyledLink>
         <StyledLink to="/products?category=Sage">SAGE</StyledLink>
-        <StyledLink to="/home">ABOUT</StyledLink>
+        <StyledLink to="/about">ABOUT</StyledLink>
       </StyledNavHeaderBottom>
     </StyledNavbar>
   );
