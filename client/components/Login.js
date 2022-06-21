@@ -2,8 +2,22 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { login } from '../store/auth';
 import { Container, Card, Button, Form, Row, Col } from 'react-bootstrap';
+import styled from 'styled-components';
 import { StyledFormBox, StyledWrapper } from './Signup';
-import { StyledButton } from './styles';
+
+// Styled Components
+const StyledLoginButton = styled(Button)`
+  justify-content: center;
+  color: black;
+  background-color: white;
+  border: solid #d9d9d9; 1px;
+  margin-bottom: 20px;
+  &:hover {
+    color: #f5db8b;
+    border: solid #f5db8b 1px;
+  }
+`;
+
 
 const Login = (props) => {
   const { name, displayName, handleSubmit, error } = props;
@@ -46,13 +60,13 @@ const Login = (props) => {
                         <Form.Control name="password" type="password" />
                       </Col>
                     </Form.Group>
-                    <StyledButton
+                    <StyledLoginButton
                       variant="secondary"
                       type="submit"
                       className="button"
                     >
                       {displayName}
-                    </StyledButton>
+                    </StyledLoginButton>
                     <div>
                       {error && error.response && (
                         <div> {error.response.data} </div>

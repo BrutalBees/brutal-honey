@@ -4,13 +4,8 @@ import { fetchSingleProduct } from '../store/singleProduct';
 import styled from 'styled-components';
 import { Container, Card, Button, Form, Row, Col } from 'react-bootstrap';
 import { StyledProductsLink } from './styles';
-// import {
-//   StyledSplash,
-//   StyledProductIndexWrapper,
-//   StyledProductsLink,
-// } from './styles';
-import { fetchProducts } from '../store/products';
 
+// Styled Components
 const StyledTopWrapper = styled.section`
   display: flex;
   flex-flow: row wrap;

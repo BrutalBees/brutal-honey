@@ -3,7 +3,19 @@ import { connect } from 'react-redux';
 import { signup } from '../store/auth';
 import { Container, Card, Button, Form, Row, Col } from 'react-bootstrap';
 import styled from 'styled-components';
-import { StyledButton } from './styles';
+
+// Styled Components
+const StyledSignupButton = styled(Button)`
+  justify-content: center;
+  color: black;
+  background-color: white;
+  border: solid #d9d9d9; 1px;
+  margin-bottom: 20px;
+  &:hover {
+    color: #f5db8b;
+    border: solid #f5db8b 1px;
+  }
+`;
 
 export const StyledWrapper = styled.div`
   display: flex;
@@ -89,9 +101,9 @@ const SignUp = (props) => {
                   </Col>
                 </Form.Group>
 
-                <StyledButton variant="secondary" type="submit" className="button">
+                <StyledSignupButton variant="secondary" type="submit" className="button">
                   {displayName}
-                </StyledButton>
+                </StyledSignupButton>
                 <div>
                   {error && error.response && (
                     <div> {error.response.data} </div>
