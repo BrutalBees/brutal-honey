@@ -40,7 +40,7 @@ router.post('/', verifyToken, async (req, res, next) => {
   }
 });
 
-// DELETE /api/cart - removes product from cart
+// DELETE /api/cart/:productId - removes product from cart
 router.delete('/:productId', verifyToken, async (req, res, next) => {
   try {
     const userCart = await Cart.findOne({
@@ -51,7 +51,22 @@ router.delete('/:productId', verifyToken, async (req, res, next) => {
     });
     await userCart.removeProduct(req.params.productId)
     res.send(await userCart.reload());
-    res.send(req.data)
+  } catch (error) {
+    next(error);
+  }
+});
+
+// PUT /api/cart/checkout - changes cart to order
+router.put('/checkout', verifyToken, async (req, res, next) => {
+  try {
+    const userCart = await Cart.findOne({
+      where: {
+        userId: req.user.id
+      },
+      include: [ Product ]
+    });
+    userCart.isOrder = true;
+    res.send(await userCart.save());
   } catch (error) {
     next(error);
   }
