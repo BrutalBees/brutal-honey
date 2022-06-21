@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { login } from '../store/auth';
 import { Container, Card, Button, Form, Row, Col } from 'react-bootstrap';
 import styled from 'styled-components';
-import { StyledFormBox, StyledWrapper } from './Signup';
+import { StyledFormBox, StyledWrapper } from './SignUp';
 
 // Styled Components
 const StyledLoginButton = styled(Button)`
