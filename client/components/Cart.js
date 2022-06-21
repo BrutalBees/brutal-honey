@@ -1,26 +1,28 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchCart } from "../store/cart";
+import { fetchCart, checkoutCart } from "../store/cart";
 import CartProduct from "./CartProduct";
-import styled from "styled-components";
 import {
-  StyledProductsLink,
-  StyledProductPrice,
   StyledCartWrapper,
   StyledCart,
   StyledEmptyCart,
   StyledTotalPrice,
-  StyledCheckoutLink
+  StyledCheckoutButton
 } from "./styles";
 
 // Cart Component
-const Cart = () => {
+const Cart = (props) => {
   const cart = useSelector(state => state.cart);
   const [ products, setProducts ] = useState(cart.products);
   const dispatch = useDispatch();
   useEffect(() => { dispatch(fetchCart()) }, [dispatch]);
-  useEffect(() => setProducts(cart.products), [cart]);
+  useEffect(() => setProducts(cart.products), [cart, cart.isOrder]);
   const subtotal = products && products.reduce((totalPrice, product) => totalPrice + (product.price * product.cartProduct.quantity), 0);
+
+  const handleCheckout = () => {
+    dispatch(checkoutCart());
+    props.history.push('/checkout');
+  };
 
   return(
     <StyledCartWrapper>
@@ -38,7 +40,7 @@ const Cart = () => {
       }
       </StyledCart>
       <StyledTotalPrice>TOTAL ${subtotal}</StyledTotalPrice>
-      <StyledCheckoutLink to="/checkout">CHECK OUT</StyledCheckoutLink>
+      <StyledCheckoutButton onClick={handleCheckout}>CHECK OUT</StyledCheckoutButton>
     </StyledCartWrapper>
   )
 };
