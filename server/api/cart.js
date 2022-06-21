@@ -1,5 +1,4 @@
 const router = require('express').Router();
-const { reset } = require('nodemon');
 const verifyToken = require('../auth/verifyToken');
 const { models: { Cart, Product, cartProduct } } = require('../db');
 module.exports = router;

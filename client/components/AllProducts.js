@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { fetchProducts } from "../store/products";
@@ -12,6 +12,7 @@ const AllProducts = () => {
 
   return (
     <div style={{ margin: 100 }}>
+      <p>SHOWING {allProducts.length} OF {allProducts.length} ITEMS:</p>
       <ProductIndex products={allProducts}/>
     </div>
   )
