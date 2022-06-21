@@ -9,6 +9,7 @@ import OrderConfirmation from './components/OrderConfirmation';
 import AdminView from './components/AdminView';
 import Signup from './components/SignUp';
 import Login from './components/Login';
+import About from './components/About';
 
 import { me } from './store';
 
@@ -23,6 +24,7 @@ const Routes = () => {
     <div>
       <Switch>
         <Route path="/home" component={Home} />
+        <Route path="/about" component={About} />
         <Route path="/products" component={AllProducts} />
         <Route path="/product/:id" component={SingleProduct} />
         <Route path="/cart" component={Cart} />
