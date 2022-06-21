@@ -45,14 +45,15 @@ const About = () => {
       />
       <StyledSubtitle>ANCIENT WISDOM + AWESOME SMELLS.</StyledSubtitle>
       <StyledParagraph>
-        We lovingly create products that will complement and enhance the daily
-        stess and struggle, using only the highest quality active ingredients
-        and botanicals that are effective, long lasting and always non-toxic.
-        Each product is infused with the elements of aroma, memory, place and
-        beauty traditions from across the globe. These candles carry with them
-        stories and maps of their discoveries. Always striving to inspire and to
-        be inspired. Together, we can fight the indecent assault from houses
-        that smell like trash, a dog fart, or even a unhygienic partner.
+        We lovingly create handcrafted premium honey that will change the way
+        you think about honey. We make it the way nature intended, with bees
+        drawing nectar from wildflower blossoms across superior forage lands,
+        tended by trusted beekeepers, using responsible practices that respect
+        the environment. Each product is infused with the elements of aroma,
+        memory, place and beauty traditions from across the globe. Our honies
+        carry with them stories and maps of their discoveries. Always striving
+        to inspire and to be inspired. That's why Brutal Honey is the
+        Beesponsible honey .
         <br /> Brutal Bees with Love, Angel + Nyjia + Katie
       </StyledParagraph>
     </div>
