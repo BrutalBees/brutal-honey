@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { fetchCart } from "../store/cart";
 import CartProduct from "./CartProduct";
 import styled from "styled-components";
-import { StyledProductsLink } from "./styles";
+import { StyledProductsLink, StyledProductPrice } from "./styles";
 
 // Styled Components
 const StyledCartWrapper = styled.div`
@@ -19,9 +19,19 @@ const StyledCart = styled.div`
   border-top: solid #cdc5c4 0.5px;
 `;
 
+const StyledTotalPrice = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 30px;
+  padding: 0px 10px;
+  font-size: 16px;
+  font-weight: 600;
+`;
+
 const StyledCheckoutLink = styled(StyledProductsLink)`
   align-self: flex-end;
   margin-right: 0px;
+  margin-top: 30px;
 `;
 
 // Cart Component
@@ -31,6 +41,7 @@ const Cart = () => {
   const dispatch = useDispatch();
   useEffect(() => { dispatch(fetchCart()) }, [dispatch]);
   useEffect(() => setProducts(cart.products), [cart]);
+  const subtotal = products && products.reduce((totalPrice, product) => totalPrice + (product.price * product.cartProduct.quantity), 0);
 
   return(
     <StyledCartWrapper>
@@ -43,6 +54,7 @@ const Cart = () => {
           />
         )}
       </StyledCart>
+      <StyledTotalPrice>TOTAL ${subtotal}</StyledTotalPrice>
       <StyledCheckoutLink to="/checkout">CHECK OUT</StyledCheckoutLink>
     </StyledCartWrapper>
   )
