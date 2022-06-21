@@ -205,7 +205,20 @@ const StyledTotalPrice = styled.div`
   font-weight: 600;
 `;
 
-const StyledCheckoutLink = styled(StyledProductsLink)`
+const StyledCheckoutButton = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 42px;
+  width: 217px;
+  background-color: rgb(245, 219, 139);
+  color: black;
+  border: solid rgb(245, 219, 139) 1px;
+  margin: 50px;
+  &:hover {
+    color: rgb(245, 219, 139);
+    background-color: white;
+  }
   align-self: flex-end;
   margin-right: 0px;
   margin-top: 30px;
@@ -331,7 +344,7 @@ export {
   StyledCart,
   StyledEmptyCart,
   StyledTotalPrice,
-  StyledCheckoutLink,
+  StyledCheckoutButton,
   // CartProduct
   StyledCartRow,
   StyledProductImage,

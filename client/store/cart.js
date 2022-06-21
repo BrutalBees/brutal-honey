@@ -3,6 +3,7 @@ import axios from "axios";
 // Action Types
 const SET_CART = "SET_CART";
 const UPDATED_CART = "UPDATED_CART";
+const CHECKOUT_CART = "CHECKOUT_CART";
 
 // Action Creators
 const setCart = (cart) => {
@@ -16,6 +17,13 @@ const gotUpdatedCart = (updatedCart) => {
   return {
     type: UPDATED_CART,
     updatedCart
+  }
+};
+
+const checkedOutCart = (order) => {
+  return {
+    type: CHECKOUT_CART,
+    order
   }
 };
 
@@ -56,6 +64,18 @@ export const removeProductFromCart = (productId) => {
       }
     });
     dispatch(gotUpdatedCart(updatedCart));
+  }
+};
+
+// Checkout cart
+export const checkoutCart = () => {
+  const token = window.localStorage.getItem('token');
+  return async (dispatch) => {
+  await axios.get('/api/cart/checkout', {
+      headers: {
+        authorization: token
+      }
+    });
   }
 };
 
