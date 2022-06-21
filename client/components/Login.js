@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { login } from '../store/auth';
 import { Container, Card, Button, Form, Row, Col } from 'react-bootstrap';
-import { StyledFormBox, StyledWrapper } from './Signup';
+import { StyledFormBox, StyledWrapper } from './SignUp';
 
 const Login = (props) => {
   const { name, displayName, handleSubmit, error } = props;
