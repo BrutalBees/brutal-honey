@@ -32,11 +32,25 @@ export const fetchCart = () => {
   }
 };
 
+// Add products and edit their quantity in cart
 export const updateCart = (productId, quantity) => {
   const cartUpdate = { productId, quantity };
   const token = window.localStorage.getItem('token');
   return async (dispatch) => {
     const { data: updatedCart } = await axios.post('/api/cart', cartUpdate, {
+      headers: {
+        authorization: token
+      }
+    });
+    dispatch(gotUpdatedCart(updatedCart));
+  }
+};
+
+// Remove product from cart
+export const removeProductFromCart = (productId) => {
+  const token = window.localStorage.getItem('token');
+  return async (dispatch) => {
+    const { data: updatedCart } = await axios.delete('/api/cart', { productId }, {
       headers: {
         authorization: token
       }
