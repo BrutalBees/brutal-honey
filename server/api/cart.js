@@ -8,7 +8,8 @@ router.get('/', verifyToken, async (req, res, next) => {
   try {
     const [ userCart, created ] = await Cart.findOrCreate({
       where: {
-        userId: req.user.id
+        userId: req.user.id,
+        isOrder: false
       },
       include: [ Product ]
     });
@@ -24,7 +25,8 @@ router.post('/', verifyToken, async (req, res, next) => {
   try {
     const userCart = await Cart.findOne({
       where: {
-        userId: req.user.id
+        userId: req.user.id,
+        isOrder: false
       },
       include: [ Product ]
     });
@@ -45,7 +47,8 @@ router.delete('/:productId', verifyToken, async (req, res, next) => {
   try {
     const userCart = await Cart.findOne({
       where: {
-        userId: req.user.id
+        userId: req.user.id,
+        isOrder: false
       },
       include: [ Product ]
     });
@@ -61,7 +64,8 @@ router.put('/checkout', verifyToken, async (req, res, next) => {
   try {
     const userCart = await Cart.findOne({
       where: {
-        userId: req.user.id
+        userId: req.user.id,
+        isOrder: false
       },
       include: [ Product ]
     });

@@ -26,7 +26,7 @@ const Cart = () => {
     <StyledCartWrapper>
       <h1>YOUR CART</h1>
       <StyledCart>
-      {/* {!cart.isOrder && products.length ?
+      {products && products.length ?
         (products.map(product =>
           <CartProduct
             key={product.id}
@@ -35,18 +35,6 @@ const Cart = () => {
         ))
       :
       <StyledEmptyCart>Looks like your cart is empty</StyledEmptyCart>
-      } */}
-      {
-        (cart.isOrder && (products && !products.length))
-        ?
-        <StyledEmptyCart>Looks like your cart is empty</StyledEmptyCart>
-        :
-        (products.map(product =>
-          <CartProduct
-            key={product.id}
-            product={product}
-          />
-        ))
       }
       </StyledCart>
       <StyledTotalPrice>TOTAL ${subtotal}</StyledTotalPrice>
