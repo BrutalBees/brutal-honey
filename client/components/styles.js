@@ -228,6 +228,7 @@ const StyledProductQuantity = styled.div`
   justify-content: space-around;
   width: 100%;
   height: 40px;
+  background-color: white;
   margin-bottom: 10px;
   margin-top: 40px;
   border: solid grey 0.5px;

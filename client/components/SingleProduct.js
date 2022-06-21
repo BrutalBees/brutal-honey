@@ -1,9 +1,16 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchSingleProduct } from '../store/singleProduct';
+import { updateCart } from '../store/cart';
 import styled from 'styled-components';
 import { Card } from 'react-bootstrap';
-import { StyledProductsLink } from './styles';
+import {
+  StyledProductsLink,
+  StyledQuantityForm,
+  StyledProductQuantity,
+  StyledQuantityButton,
+  StyledQuantityInput
+} from './styles';
 
 // Styled Components
 const StyledTopWrapper = styled.section`
@@ -31,6 +38,9 @@ const StyledProductInfo = styled.div`
 const StyledSingledProd = styled.div`
   background-image: url('https://images.unsplash.com/photo-1625600243103-1dc6824c6c8a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1064&q=80');
 `;
+const StyledProductQuantityForm = styled(StyledQuantityForm)`
+  padding: 0px;
+`;
 
 const StyledAddToCartBtn = styled.button`
   width: 100%;
@@ -52,11 +62,27 @@ const StyledAddToCartBtn = styled.button`
 const SingleProduct = (props) => {
   const dispatch = useDispatch();
   const product = useSelector((state) => state.singleProduct);
-  const allProducts = useSelector((state) => state.products);
+  const [ quantity, setQuantity ] = useState(1);
 
   useEffect(() => {
     dispatch(fetchSingleProduct(props.match.params.id));
   }, [dispatch]);
+
+  const handleChange = (evt) => {
+    evt.preventDefault();
+    setQuantity(evt.target.value);
+  };
+
+  const handleQtyChange = (evt) => {
+    evt.preventDefault();
+    evt.target.name === 'minus' && setQuantity(quantity - 1);
+    evt.target.name === 'plus' && setQuantity(quantity + 1);
+  };
+
+  const handleAddToCart = (evt) => {
+    dispatch(updateCart(product.id, quantity))
+  };
+
   return (
     <StyledSingledProd>
       <StyledTopWrapper>
@@ -69,8 +95,27 @@ const SingleProduct = (props) => {
                 $ {product.price}
               </Card.Subtitle>
               <Card.Text>{product.description}</Card.Text>
-
-              <StyledAddToCartBtn>Add to Cart</StyledAddToCartBtn>
+              <StyledProductQuantityForm>
+                <StyledProductQuantity>
+                  <StyledQuantityButton
+                    name="minus"
+                    onClick={handleQtyChange}
+                  >{"-"}</StyledQuantityButton>
+                  <StyledQuantityInput
+                    type="text"
+                    name={product.id}
+                    value={quantity}
+                    onChange={handleChange}
+                  />
+                  <StyledQuantityButton
+                    name="plus"
+                    onClick={handleQtyChange}
+                  >{"+"}</StyledQuantityButton>
+                </StyledProductQuantity>
+              </StyledProductQuantityForm>
+              <StyledAddToCartBtn
+                onClick={handleAddToCart}
+              >Add to Cart</StyledAddToCartBtn>
             </Card.Body>
           </Card>
         </StyledProductInfo>
