@@ -2,7 +2,22 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { login } from '../store/auth';
 import { Container, Card, Button, Form, Row, Col } from 'react-bootstrap';
-import { StyledFormBox, StyledWrapper } from './SignUp';
+import styled from 'styled-components';
+import { StyledFormBox, StyledWrapper } from './Signup';
+
+// Styled Components
+const StyledLoginButton = styled(Button)`
+  justify-content: center;
+  color: black;
+  background-color: white;
+  border: solid #d9d9d9; 1px;
+  margin-bottom: 20px;
+  &:hover {
+    color: #f5db8b;
+    border: solid #f5db8b 1px;
+  }
+`;
+
 
 const Login = (props) => {
   const { name, displayName, handleSubmit, error } = props;
@@ -45,22 +60,21 @@ const Login = (props) => {
                         <Form.Control name="password" type="password" />
                       </Col>
                     </Form.Group>
-
-                    <a href="/#" className="forget-link">
-                      Forgot password?
-                    </a>
-                    <Button
+                    <StyledLoginButton
                       variant="secondary"
                       type="submit"
                       className="button"
                     >
                       {displayName}
-                    </Button>
+                    </StyledLoginButton>
                     <div>
                       {error && error.response && (
                         <div> {error.response.data} </div>
                       )}
                     </div>
+                    <a href="/#" className="forget-link">
+                        Forgot password?
+                      </a>
                     <div className="signup-link">
                       <a
                         href="/signup"

@@ -2,18 +2,26 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchSingleProduct } from '../store/singleProduct';
 import styled from 'styled-components';
+import { Container, Card, Button, Form, Row, Col } from 'react-bootstrap';
+import { StyledProductsLink } from './styles';
 
-const AddToCartBtn = styled.button`
+// Styled Components
+const StyledTopWrapper = styled.section`
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  // gap: 300px;
+  align-items: center;
+`;
+
+const StyledAddToCartBtn = styled.button`
   display: flex;
   color: #303030;
   border-radius: 2px;
   background-color: #f5db8b;
-  width: 300px;
-  align-text: center;
-  margin: 1em;
-  padding: 0.25em 1em;
-  align-self: flex-end;
-  justify content: end;
+  width: 200px;
+  text-align: center;
+
   curser: pointer;
 &:hover {
   opacity: 50%;
@@ -22,65 +30,72 @@ const AddToCartBtn = styled.button`
   }
 `;
 
-const ProductImg = { width: '300px', height: '350px' };
-// const Description = {
-//   width: '250px',
-//   justifyContent: 'end',
-//   alignSelf: 'flexEnd',
-//   margin: '0 0 24px',
-// };
-
-const Description = styled.p`
-  font-size: 14px;
-  margin: 0 0 24px;
-  line-height: 1.5em;
-  letter-spacing: 1.5;
-  width: 300px;
-  align-self: flex-end;
+const StyledSingleProductImg = styled.img`
+  // display: flex;
+  width: 350px;
+  height: 400px;
+  margin: 50px;
+  border: 2px solid brown;
+  border-radius: 5px;
 `;
 
-// const TopWrapper = styled.section`
-//   display: flex;
-//   flex-direction: row;
-// `;
-
-const TopWrapper = styled.section`
-  overflow: hidden;
+const StyledProductInfo = styled.div`
   display: flex;
   flex-direction: column;
-  // text-align: center;
-  height: 100vh;
+`;
+const StyledDescription = styled.p`
+  // text-align: justify;
+  width: 20px;
+  margin-left: 400px;
+  margin-right: 50px;
+  line-height: 1.5em;
+  letter-spacing: 1.5;
+  overflow-wrap: normal;
+  order: 2;
+`;
+const StyledProductName = styled.h1`
+  letter-spacing: 1.5;
+  align-tex: center;
+  width: 350px;
+  height: 400px;
+  margin-left: 400px;
+  margin-top: 50px;
+  padding-bottom: 2px;
+  order: 1;
+`;
+
+const StyledSingledProd = styled.div`
+  background-image: url('https://images.unsplash.com/photo-1625600243103-1dc6824c6c8a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1064&q=80');
 `;
 
 const SingleProduct = (props) => {
   const dispatch = useDispatch();
   const product = useSelector((state) => state.singleProduct);
+  const allProducts = useSelector((state) => state.products);
+
   useEffect(() => {
     dispatch(fetchSingleProduct(props.match.params.id));
   }, [dispatch]);
   return (
-    <div>
-      <TopWrapper>
-        <div>
-          {/* </StyledSpash> */}
-          {/* <ProductImg> */}
-          <span>
-            <img src={[product.imageUrl]} style={ProductImg} />
-            {/* </ProductImg> */}
-            {/* </StyledSpash> */}
-            <h2>{product.productName}</h2>
-          </span>
-          <h3>${product.price}</h3>
-          <hr />
-          <Description>{product.description}</Description>
-          <AddToCartBtn>Add to Cart</AddToCartBtn>
-        </div>
-      </TopWrapper>
-    </div>
+    <StyledSingledProd>
+      <StyledTopWrapper>
+        <StyledSingleProductImg src={[product.imageUrl]} />
+        <StyledProductInfo>
+          <Card border="light" style={{ width: '28rem' }}>
+            <Card.Body>
+              <Card.Title as="h1">{product.productName}</Card.Title>
+              {/* <StyledProductName>{product.productName}</StyledProductName> */}
+              <Card.Subtitle className="mb-2 text-muted">
+                $ {product.price}
+              </Card.Subtitle>
+              <Card.Text>{product.description}</Card.Text>
+              <StyledProductsLink>Add to Cart</StyledProductsLink>
+            </Card.Body>
+          </Card>
+        </StyledProductInfo>
+      </StyledTopWrapper>
+    </StyledSingledProd>
   );
 };
 
 export default SingleProduct;
-
-// TODO: style
-// TODO: quantity btn
