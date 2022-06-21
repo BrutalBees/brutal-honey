@@ -1,28 +1,50 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchCart } from "../store/cart";
+import CartProduct from "./CartProduct";
+import styled from "styled-components";
+import { StyledProductsLink } from "./styles";
 
+// Styled Components
+const StyledCartWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 100px 200px;
+`;
+
+const StyledCart = styled.div`
+  display: flex;
+  flex-direction: column;
+  border-top: solid #cdc5c4 0.5px;
+`;
+
+const StyledCheckoutLink = styled(StyledProductsLink)`
+  align-self: flex-end;
+  margin-right: 0px;
+`;
+
+// Cart Component
 const Cart = () => {
   const cart = useSelector(state => state.cart);
-  const productsInCart = cart.products;
+  const [ products, setProducts ] = useState(cart.products);
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(fetchCart())
-  }, [dispatch]);
+  useEffect(() => { dispatch(fetchCart()) }, [dispatch]);
+  useEffect(() => setProducts(cart.products), [cart]);
+
   return(
-    <div>THIS IS THE SHOPPING CART
-      {productsInCart && productsInCart.map(product =>
-        <div key={product.id} style={{ display: "flex", flexDirection:"column" }}>
-          <div>NAME: {product.productName}</div>
-          <div>PRICE: {product.price}</div>
-          <div style={{ width: 100, height: 100 }}>
-            <img src={product.imageUrl[0]} style={{ maxWidth:"100%", maxHeight:"100%"}}></img>
-          </div>
-          <div>QUANTITY: {product.cartProduct.quantity}</div>
-          <br />
-      </div>
-      )}
-    </div>
+    <StyledCartWrapper>
+      <h1>Your Cart</h1>
+      <StyledCart>
+        {products && products.map(product =>
+          <CartProduct
+            key={product.id}
+            product={product}
+          />
+        )}
+      </StyledCart>
+      <StyledCheckoutLink to="/home">CHECK OUT</StyledCheckoutLink>
+    </StyledCartWrapper>
   )
 };
 
