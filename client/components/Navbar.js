@@ -24,7 +24,7 @@ const Navbar = () => {
   return (
     <StyledNavbar>
       <StyledNavHeader>
-        <StyledLeftHeader>SEARCH</StyledLeftHeader>
+        <StyledLeftHeader>BRUTAL BEES & CO.</StyledLeftHeader>
         <StyledLogoHeader>
           <StyledLogoLink to="/home">BRUTAL HONEY</StyledLogoLink>
         </StyledLogoHeader>
