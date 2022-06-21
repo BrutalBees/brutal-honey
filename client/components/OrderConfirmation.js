@@ -29,22 +29,6 @@ const OrderConfirmation = () => {
           Your order confirmation is: 5514125</div>
       </StyledConfirmationBox>
     </StyledWrapper>
-  
-  // <Card border="primary" style={{ width: '18rem' }} className="confirmation-card">
-  //   <Card.Body>
-  //     <Card.Title>THANK YOU!</Card.Title>
-  //     <Card.Text>
-  //     We have recieved your order.
-  //     </Card.Text>
-  //     <Card.Text>
-  //     A confirmation has been sent to your email.
-  //     </Card.Text>
-  //     <Card.Text>
-  //     Your order confirmation is 5514125
-  //     </Card.Text>
-  //     <Button variant="primary">Continue Shopping</Button>
-  //   </Card.Body>
-  // </Card>
   );
 };
 
