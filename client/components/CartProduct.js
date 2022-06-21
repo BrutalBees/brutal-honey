@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import { updateCart } from "../store/cart";
 import styled from "styled-components";
 import { DeleteOutlined } from '@ant-design/icons';
 
@@ -94,6 +95,7 @@ const CartProduct = (props) => {
   const { product } = props;
   const initialQty = product.cartProduct.quantity;
   const [ quantity, setQuantity ] = useState(initialQty);
+  const dispatch = useDispatch();
 
   const handleChange = (evt) => {
     evt.preventDefault();
@@ -106,9 +108,10 @@ const CartProduct = (props) => {
     evt.target.name === 'plus' && setQuantity(quantity + 1);
   };
 
-  // const handleSubmit = () => {
-
-  // }
+  const handleSubmit = () => {
+    const qtyToAdd = quantity - initialQty;
+    dispatch(updateCart(product.id, qtyToAdd))
+  };
 
   return (
     <StyledCartRow key={product.id}>
@@ -136,7 +139,7 @@ const CartProduct = (props) => {
             type="submit"
             name="Update"
             value="Update"
-            // onClick={handleSubmit}
+            onClick={handleSubmit}
         />
       </StyledQuantityForm>
       <StyledProductPrice>${product.price * product.cartProduct.quantity}</StyledProductPrice>
