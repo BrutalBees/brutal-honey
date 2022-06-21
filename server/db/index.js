@@ -9,8 +9,8 @@ const Cart = require('./models/Cart');
 
 // Model Associations
 
-// One to One
-User.hasOne(Cart);
+// One to Many
+User.hasMany(Cart);
 Cart.belongsTo(User);
 
 // Many to Many
