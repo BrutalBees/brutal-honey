@@ -211,8 +211,6 @@ const StyledCheckoutLink = styled(StyledProductsLink)`
   margin-top: 30px;
 `;
 
-
-
 // CartProduct
 const StyledCartRow = styled.div`
   display: flex;
@@ -303,6 +301,85 @@ const StyledDeleteButton = styled(StyledQuantityButton)`
   justify-content: center;
 `;
 
+// SingleProduct Page
+
+const StyledProdPage = styled.div`
+  background-color: #ebe8eb;
+  justify-content: center;
+  align-items: center;
+`;
+
+const StyledTopWrapper = styled.div`
+  display: flex;
+  flex-direction: row
+  align-items: center;
+  gap: 8%;
+  justify-content:center;
+`;
+
+const StyledSingleProductImg = styled.img`
+  width: 450px;
+  height: 500px;
+  margin: 50px;
+  border: 2px solid #a39c62;
+  border-radius: 5px;
+  background-color: #f2eef2;
+`;
+const StyledProdInfoWrap = styled.div`
+  display: flex;
+  width: 500px;
+  height: 500px;
+  margin: 50px;
+`;
+
+const StyledProductInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #ebe8eb;
+`;
+const StyledName = styled.h1`
+  letter-spacing: 1.5;
+  margin: 3px;
+`;
+const StyledDescription = styled.p`
+  align-text: center;
+  margin: 3px;
+  line-height: 1.8;
+  padding-bottom: 8%;
+  flex-basis: auto;
+  width: 75%;
+`;
+
+const StyledPrice = styled.h3`
+  align-text: center;
+  margin: 5px;
+  align-items: center;
+`;
+
+const StyledAddToCartBtn = styled.button`
+  width: 75%;
+  margin: 50px 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 42px;
+  background-color: #f5db8b;
+  color: #303030;
+  border: solid rgb(245, 219, 139) 1px;
+  cursor: pointer;
+
+  &:hover {
+    color: rgb(245, 219, 139);
+    background-color: white;
+  }
+`;
+
+const StyledProductQuantityForm = styled(StyledQuantityForm)`
+  padding: 0px;
+`;
+
 // Exports
 export {
   // Home
@@ -341,5 +418,16 @@ export {
   StyledProductQuantity,
   StyledQuantityInput,
   StyledQuantityButton,
-  StyledDeleteButton
+  StyledDeleteButton,
+  // SingleProduct
+  StyledProdPage,
+  StyledTopWrapper,
+  StyledSingleProductImg,
+  StyledProdInfoWrap,
+  StyledProductInfo,
+  StyledName,
+  StyledDescription,
+  StyledPrice,
+  StyledAddToCartBtn,
+  StyledProductQuantityForm,
 };
