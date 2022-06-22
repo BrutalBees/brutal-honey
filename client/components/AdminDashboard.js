@@ -2,22 +2,15 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchUsers } from '../store/users';
 import { fetchProducts } from "../store/products";
+import { Statistic } from "antd";
 import styled from 'styled-components';
 
 // Styled Components
 const StyledAdminDashboard = styled.div`
   display: flex;
   flex-direction: column;
-  height: 50vh;
-  gap: 20px;
+  height: 25vh;
   justify-content: space-between;
-`;
-
-const StyledStatistic = styled.div`
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  width: 50%;
 `;
 
 const AdminDashboard = () => {
@@ -29,14 +22,8 @@ const AdminDashboard = () => {
 
   return (
     <StyledAdminDashboard>
-      <StyledStatistic>
-        <h2>Active Users</h2>
-        <h1>{users.length}</h1>
-      </StyledStatistic>
-      <StyledStatistic>
-        <h2>Current Products</h2>
-        <h1>{products.length}</h1>
-      </StyledStatistic>
+      <Statistic title="Active Users" value={users.length} />
+      <Statistic title="Available Products" value={products.length} />
     </StyledAdminDashboard>
   );
 };
