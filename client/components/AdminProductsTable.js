@@ -2,7 +2,6 @@ import React from 'react';
 import { StyledTable } from './styles';
 import { Form, Input, InputNumber, Select } from 'antd';
 
-// Editable Cell Function
 const EditableCell = ({
   product,
   editing,
@@ -11,9 +10,9 @@ const EditableCell = ({
   inputType,
   inputOptions,
   children,
-  ...restProps // className, styled, etc
+  ...restProps 
 }) => {
-  // Returns inputElement to render based on inputType
+  
   const inputElement = () => {
     if (inputType === "number") return (<InputNumber />)
     if (inputType === "select") return (
@@ -25,7 +24,7 @@ const EditableCell = ({
   };
   return (
     <td {...restProps}>
-      {editing ? ( //editing is a boolean indicating whether cell is currently being edited
+      {editing ? ( 
         <Form.Item
           name={dataIndex}
           style={{
@@ -58,7 +57,7 @@ const AdminProductsTable = (props) => {
         }
       }}
       bordered
-      dataSource={data} // dataSource for the table
+      dataSource={data} 
       columns={mergedColumns}
       rowClassName="editable-row"
       pagination={{

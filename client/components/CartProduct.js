@@ -15,7 +15,6 @@ import {
   StyledDeleteButton
 } from './styles';
 
-// CartProduct Component
 const CartProduct = (props) => {
   const { product } = props;
   const initialQty = product.cartProduct.quantity;
@@ -62,12 +61,6 @@ const CartProduct = (props) => {
             onClick={handleQtyChange}
           >{"+"}</StyledQuantityButton>
         </StyledProductQuantity>
-        {/* <StyledQuantityInput
-            type="submit"
-            name="Update"
-            value="Update"
-            onClick={handleSubmit}
-        /> */}
       </StyledQuantityForm>
       <StyledProductPrice>${product.price * product.cartProduct.quantity}</StyledProductPrice>
       <StyledDeleteButton

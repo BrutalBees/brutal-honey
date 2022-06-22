@@ -5,7 +5,6 @@ import { fetchProducts } from "../store/products";
 import { Statistic } from "antd";
 import styled from 'styled-components';
 
-// Styled Components
 const StyledAdminDashboard = styled.div`
   display: flex;
   flex-direction: column;

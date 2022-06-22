@@ -5,7 +5,7 @@ import { StyledTable, StyledButton } from './styles';
 
 
 const AdminUsers = () => {
-  // Hooks
+  
   const users = useSelector(state => state.users);
   const dispatch = useDispatch();
   const [data, setData] = useState(users);
@@ -14,7 +14,7 @@ const AdminUsers = () => {
   useEffect(() => { dispatch(fetchUsers()) }, [dispatch]);
   useEffect(() => { setData(users) }, [users]);
 
-  // Handler functions
+ 
   const handleChange = (pagination, filteredInfo, sortedInfo) => {
     setFilteredInfo(filteredInfo);
     setSortedInfo(sortedInfo);
@@ -24,7 +24,7 @@ const AdminUsers = () => {
     setFilteredInfo({});
     setSortedInfo({});
   };
-  // Columns
+  
   const columns = [
     {
       title: 'First Name',
