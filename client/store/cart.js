@@ -1,85 +1,78 @@
-import axios from "axios";
+import axios from 'axios';
 
-// Action Types
-const SET_CART = "SET_CART";
-const UPDATED_CART = "UPDATED_CART";
-const CHECKOUT_CART = "CHECKOUT_CART";
+const SET_CART = 'SET_CART';
+const UPDATED_CART = 'UPDATED_CART';
+const CHECKOUT_CART = 'CHECKOUT_CART';
 
-// Action Creators
 const setCart = (cart) => {
   return {
     type: SET_CART,
-    cart
-  }
+    cart,
+  };
 };
 
 const gotUpdatedCart = (updatedCart) => {
   return {
     type: UPDATED_CART,
-    updatedCart
-  }
+    updatedCart,
+  };
 };
 
 const checkedOutCart = (order) => {
   return {
     type: CHECKOUT_CART,
-    order
-  }
+    order,
+  };
 };
 
-// Thunk Creators
 export const fetchCart = () => {
   const token = window.localStorage.getItem('token');
   return async (dispatch) => {
     const { data: cart } = await axios.get('/api/cart', {
       headers: {
-        authorization: token
-      }
+        authorization: token,
+      },
     });
     dispatch(setCart(cart));
-  }
+  };
 };
 
-// Add products and edit their quantity in cart
 export const updateCart = (productId, quantity) => {
   const cartUpdate = { productId, quantity };
   const token = window.localStorage.getItem('token');
   return async (dispatch) => {
     const { data: updatedCart } = await axios.post('/api/cart', cartUpdate, {
       headers: {
-        authorization: token
-      }
+        authorization: token,
+      },
     });
     dispatch(gotUpdatedCart(updatedCart));
-  }
+  };
 };
 
-// Remove product from cart
 export const removeProductFromCart = (productId) => {
   const token = window.localStorage.getItem('token');
   return async (dispatch) => {
     const { data: updatedCart } = await axios.delete(`/api/cart/${productId}`, {
       headers: {
-        authorization: token
-      }
+        authorization: token,
+      },
     });
     dispatch(gotUpdatedCart(updatedCart));
-  }
+  };
 };
 
-// Checkout cart
 export const checkoutCart = () => {
   const token = window.localStorage.getItem('token');
   return async (dispatch) => {
-  await axios.get('/api/cart/checkout', {
+    await axios.get('/api/cart/checkout', {
       headers: {
-        authorization: token
-      }
+        authorization: token,
+      },
     });
-  }
+  };
 };
 
-// Cart Reducer
 export default (state = {}, action) => {
   switch (action.type) {
     case SET_CART:
