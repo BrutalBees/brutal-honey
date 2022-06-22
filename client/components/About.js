@@ -5,20 +5,19 @@ const StyledAboutPic = styled.img`
   display: block;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 100px;
+  margin-top: 50px;
   height: 80vh;
   width: 50%;
 `;
 
-const StyledHeader = styled.h1`
+const StyledHeader = styled.h2`
   text-align: center;
   padding-top: 60px;
-  font-weight: bold;
 `;
 
 const StyledSubtitle = styled.h3`
   text-align: center;
-  padding-top: 45px;
+  padding-top: px;
 `;
 
 const StyledParagraph = styled.p`
@@ -28,7 +27,6 @@ const StyledParagraph = styled.p`
   padding-top: 30px;
   padding-bottom: 150px;
   margin: auto;
-  margin-left: 700px;
   text-align-last: center;
   line-height: 2;
   word-spacing: 5px;
@@ -37,10 +35,10 @@ const StyledParagraph = styled.p`
 const About = () => {
   return (
     <div>
-      <StyledHeader>About 🐝</StyledHeader>
+      <StyledHeader>ABOUT THE BEES 🐝</StyledHeader>
       <StyledAboutPic
         src={
-          'https://images.pexels.com/photos/4790590/pexels-photo-4790590.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+          'https://images.unsplash.com/photo-1605445272338-f0357afe9bcf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80'
         }
       />
       <StyledSubtitle>ANCIENT WISDOM + AWESOME SMELLS.</StyledSubtitle>
