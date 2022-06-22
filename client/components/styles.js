@@ -173,20 +173,6 @@ const StyledTable = styled(Table)`
 `;
 
 // Register and Signup forms
-const StyledSignupButton = styled(Button)`
-  color: black;
-  background-color: white;
-  border: solid #d9d9d9; 1px;
-  margin-bottom: 20px;
-  margin-top: 15%;
-  margin-left: 50px;
-
-  &:hover {
-    color: #f5db8b;
-    border: solid #f5db8b 1px;
-  }
-`;
-
 const StyledWrapper = styled.div`
   display: flex;
   justify-content: center;
@@ -204,20 +190,6 @@ const StyledFormBox = styled.div`
   justify-content: center;
   border: 5px solid #b48139;
   background-color: #ebe8eb;
-`;
-
-const StyledLoginButton = styled(Button)`
-  justify-content: center;
-  color: black;
-  background-color: white;
-  border: solid #d9d9d9; 1px;
-  margin-bottom: 20px;
-  margin-top: 10%;
-  margin-left: 25%;
-  &:hover {
-    color: #f5db8b;
-    border: solid #f5db8b 1px;
-  }
 `;
 
 // Cart
@@ -363,7 +335,6 @@ const StyledDeleteButton = styled(StyledQuantityButton)`
 `;
 
 // SingleProduct Page
-
 const StyledProdPage = styled.div`
   background-color: #ebe8eb;
   justify-content: center;
@@ -456,14 +427,12 @@ const StyledConfirmationBox = styled.div`
   text-align: center;
   font-size: 180%;
   background-color:rgba(193, 125, 31, 0.8);
-`
-;
-
+`;
 
 const StyledShoppingButton = styled(Button)`
-   background-color:rgba(193, 125, 31, 0.8);
-   border: 3px solid #ffffff;
-   color: #ffffff;
+  background-color:rgba(193, 125, 31, 0.8);
+  border: 3px solid #ffffff;
+  color: #ffffff;
 `;
 
 // Exports
@@ -490,10 +459,8 @@ export {
   StyledButton,
   StyledTable,
   // Register Login
-  StyledSignupButton,
   StyledWrapper,
   StyledFormBox,
-  StyledLoginButton,
   // Cart
   StyledCartWrapper,
   StyledCart,

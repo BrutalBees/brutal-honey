@@ -7,7 +7,6 @@ const SET_AUTH = 'SET_AUTH';
 
 const setAuth = (auth) => ({ type: SET_AUTH, auth });
 
-// Thunk Creators
 export const me = () => async (dispatch) => {
   const token = window.localStorage.getItem(TOKEN);
   if (token) {
