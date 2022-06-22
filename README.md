@@ -1,5 +1,5 @@
 Deployed Heroku App:
-https://git.heroku.com/brutal-honey.git
+https://brutal-honey.herokuapp.com/home
 
 We lovingly create handcrafted premium honey that will change the way you think about honey. 
 We make it the way nature intended, with bees drawing nectar from wildflower blossoms across superior forage lands, 
