@@ -1,10 +1,8 @@
-// API/PRODUCTS ROUTES
 const router = require('express').Router();
 const verifyToken = require('../auth/verifyToken');
 const { models: { Product }} = require('../db');
 module.exports = router;
 
-// GET /api/products
 router.get('/', async (req, res, next) => {
   try {
     const products = await Product.findAll({
@@ -16,7 +14,6 @@ router.get('/', async (req, res, next) => {
   }
 });
 
-// POST /api/products - admin can create new product
 router.post('/', verifyToken, async (req, res, next) => {
   try {
     if (req.user.isAdmin) {
@@ -29,7 +26,6 @@ router.post('/', verifyToken, async (req, res, next) => {
   }
 });
 
-// GET /api/products/:id
 router.get('/:id', async (req, res, next) => {
   try {
     const product = await Product.findByPk(req.params.id);
@@ -39,7 +35,6 @@ router.get('/:id', async (req, res, next) => {
   }
 });
 
-// PUT /api/products/:id - Admin can edit a product
 router.put('/:id', verifyToken, async (req, res, next) => {
   try {
     if (req.user.isAdmin) {
@@ -54,7 +49,6 @@ router.put('/:id', verifyToken, async (req, res, next) => {
   }
 });
 
-// DELETE /api/products/:id - Admin can delete a product
 router.delete('/:id', verifyToken, async (req, res, next) => {
   try {
     if (req.user.isAdmin) {

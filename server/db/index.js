@@ -18,7 +18,6 @@ const cartProduct = db.define('cartProduct', {
   quantity: {
     type: Sequelize.INTEGER,
     defaultValue: 1
-    // by default if a product is associated then the quantity is 1
   }
 });
 
