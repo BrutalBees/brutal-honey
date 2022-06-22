@@ -6,7 +6,6 @@ import AdminUsers from './AdminUsers';
 import { DashboardOutlined, AppstoreOutlined, UserOutlined } from '@ant-design/icons';
 import { Menu } from 'antd';
 
-// Styled Components
 const StyledProductsWrapper = styled.div`
   margin: 30px 50px;
   width: 85%

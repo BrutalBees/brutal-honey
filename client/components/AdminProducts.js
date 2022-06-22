@@ -5,10 +5,8 @@ import { Form, Popconfirm, Typography } from 'antd';
 import { StyledButton } from './styles';
 import AdminProductsTable from './AdminProductsTable';
 
-// AdminProducts Component
 const AdminProducts = () => {
 
-  // Hooks
   const allProducts = useSelector((state) => state.products);
   const dispatch = useDispatch();
   const [data, setData] = useState(allProducts); 
@@ -21,9 +19,7 @@ const AdminProducts = () => {
   const [form] = Form.useForm();
   const isEditing = (product) => product.id === editingId; 
 
-  // Handler Functions
   const handleAdd = () => {
-    // const tempId = allProducts.length + 500;
     const emptyRow = {
       id: "newProduct",
       productName: "",
@@ -44,11 +40,11 @@ const AdminProducts = () => {
 
   const handleSave = async (productId) => {
     try {
-      const updatedFields = await form.validateFields(); // returns an object of the updated values in the form
+      const updatedFields = await form.validateFields(); 
       productId === "newProduct" ?
-      dispatch(addProduct(updatedFields)) // if its a new row then dispatch addProduct
+      dispatch(addProduct(updatedFields)) 
       :
-      dispatch(updateProduct(productId, updatedFields)); // if its an updated row then dispatch updatedProduct
+      dispatch(updateProduct(productId, updatedFields)); 
       setEditingId("");
     } catch (error) {
       console.log("Validate Failed:", error);
@@ -58,9 +54,9 @@ const AdminProducts = () => {
   const handleDelete = (productId) => {
     try {
       productId === "newProduct" ?
-      setData(data.filter(product => product.id !== "newProduct")) // if deleting a new Row, just remove it from the state
+      setData(data.filter(product => product.id !== "newProduct")) 
       :
-      dispatch(deleteProduct(productId)); // if deleting a product form database, dispatch deleteProduct
+      dispatch(deleteProduct(productId)); 
       setEditingId("");
     } catch (error) {
       console.log("Error deleting product:", error)
@@ -78,10 +74,9 @@ const AdminProducts = () => {
   };
 
   const handleCancel = () => {
-    setEditingId(""); //sets the EditingId as empty if edit cancelled
+    setEditingId(""); 
   };
 
-  // Creates columns
   const columns = [
     {
       title: "Product Name",
@@ -151,8 +146,8 @@ const AdminProducts = () => {
       dataIndex: "actions",
       key: "actions",
       width: "15%",
-      render: (_, product) => {  // renders the Save Delete Cancel or Edit buttons
-        return isEditing(product) ? // if the product is being edited then show the Save and Cancel buttons
+      render: (_, product) => {  
+        return isEditing(product) ? 
         (<span>
           <Typography.Link
             onClick={() => handleSave(product.id)}
@@ -166,10 +161,10 @@ const AdminProducts = () => {
             Cancel
           </Typography.Link>
         </span>)
-        : // if its not being edited show the Edit button
+        : 
         (
           <Typography.Link
-            disabled={editingId !== ""} //disable this link if something is being edited currently
+            disabled={editingId !== ""} 
             onClick={() => handleEdit(product)}
           >
             Edit
@@ -179,10 +174,9 @@ const AdminProducts = () => {
     }
   ];
 
-  // Creates cells
   const mergedColumns = columns.map((column) => {
-    if (!column.editable) return column; // the column is not editable return it
-    return { // if its editable
+    if (!column.editable) return column; 
+    return { 
       ...column,
       onCell: (product) => ({
         product,
@@ -195,7 +189,6 @@ const AdminProducts = () => {
     };
   });
 
-  // Form returned from AdminProduct Component
   return (
     <Form form={form} component={false}>
       <div style={{ display: "flex", justifyContent: "flex-start", gap: 10}}>

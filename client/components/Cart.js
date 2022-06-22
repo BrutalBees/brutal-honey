@@ -10,7 +10,6 @@ import {
   StyledCheckoutButton
 } from "./styles";
 
-// Cart Component
 const Cart = (props) => {
   const cart = useSelector(state => state.cart);
   const [ products, setProducts ] = useState(cart.products);
