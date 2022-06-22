@@ -1,22 +1,29 @@
-import React from "react";
-import { Statistic } from 'antd';
-import { LikeOutlined } from '@ant-design/icons';
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchUsers } from '../store/users';
+import { fetchProducts } from "../store/products";
+import { Statistic } from "antd";
 import styled from 'styled-components';
 
 // Styled Components
 const StyledAdminDashboard = styled.div`
   display: flex;
   flex-direction: column;
-  height: 40vh;
+  height: 25vh;
   justify-content: space-between;
 `;
 
 const AdminDashboard = () => {
+  const users = useSelector(state => state.users);
+  const products = useSelector(state => state.products);
+  const dispatch = useDispatch();
+  useEffect(() => { dispatch(fetchUsers()) }, [dispatch]);
+  useEffect(() => { dispatch(fetchProducts()) }, [dispatch]);
+
   return (
     <StyledAdminDashboard>
-      <Statistic title="Active Users" value={23239} />
-      <Statistic title="Account Balance" value={18347} precision={2} />
-      <Statistic title="Feedback" value={1128} prefix={<LikeOutlined />} />
+      <Statistic title="Active Users" value={users.length} />
+      <Statistic title="Available Products" value={products.length} />
     </StyledAdminDashboard>
   );
 };

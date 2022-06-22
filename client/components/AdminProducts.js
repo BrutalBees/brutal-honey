@@ -72,10 +72,6 @@ const AdminProducts = () => {
     setSortedInfo(sortedInfo);
   };
 
-  const clearFilters = () => {
-    setFilteredInfo({});
-  };
-
   const clearAll = () => {
     setFilteredInfo({});
     setSortedInfo({});
@@ -95,8 +91,8 @@ const AdminProducts = () => {
       width: "14%",
       editable: true,
       sorter: (a, b) => {
-        if (a.productName < b.productName) return -1;
-        if (a.productName > b.productName) return 1;
+        if (a.productName.toLowerCase() < b.productName.toLowerCase()) return -1;
+        if (a.productName.toLowerCase() > b.productName.toLowerCase()) return 1;
         return 0;
       },
       sortOrder: sortedInfo.columnKey === 'productName' ? sortedInfo.order : null,
@@ -206,7 +202,6 @@ const AdminProducts = () => {
         <StyledButton onClick={handleAdd}>
           Add Product
         </StyledButton>
-        <StyledButton onClick={clearFilters}>Clear Filters</StyledButton>
         <StyledButton onClick={clearAll}>Clear All</StyledButton>
       </div>
       <AdminProductsTable

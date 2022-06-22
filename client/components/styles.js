@@ -172,6 +172,54 @@ const StyledTable = styled(Table)`
   }
 `;
 
+// Register and Signup forms
+const StyledSignupButton = styled(Button)`
+  color: black;
+  background-color: white;
+  border: solid #d9d9d9; 1px;
+  margin-bottom: 20px;
+  margin-top: 15%;
+  margin-left: 50px;
+
+  &:hover {
+    color: #f5db8b;
+    border: solid #f5db8b 1px;
+  }
+`;
+
+const StyledWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  padding: 3em;
+  height: 100vh;
+  background-image: url('https://images.unsplash.com/photo-1625600243103-1dc6824c6c8a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1064&q=80');
+  background-size: cover;
+  background-position: center;
+`;
+
+const StyledFormBox = styled.div`
+  display: flex;
+  justify-content: center;
+  border: 5px solid #b48139;
+  background-color: #ebe8eb;
+`;
+
+const StyledLoginButton = styled(Button)`
+  justify-content: center;
+  color: black;
+  background-color: white;
+  border: solid #d9d9d9; 1px;
+  margin-bottom: 20px;
+  margin-top: 10%;
+  margin-left: 25%;
+  &:hover {
+    color: #f5db8b;
+    border: solid #f5db8b 1px;
+  }
+`;
+
 // Cart
 const StyledCartWrapper = styled.div`
   display: flex;
@@ -205,7 +253,20 @@ const StyledTotalPrice = styled.div`
   font-weight: 600;
 `;
 
-const StyledCheckoutLink = styled(StyledProductsLink)`
+const StyledCheckoutButton = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 42px;
+  width: 217px;
+  background-color: rgb(245, 219, 139);
+  color: black;
+  border: solid rgb(245, 219, 139) 1px;
+  margin: 50px;
+  &:hover {
+    color: rgb(245, 219, 139);
+    background-color: white;
+  }
   align-self: flex-end;
   margin-right: 0px;
   margin-top: 30px;
@@ -289,7 +350,7 @@ const StyledQuantityButton = styled.button`
   border: none;
   background-color: white;
   margin: 0;
-  align-items: center;
+  align-self: center;
   &:hover {
     color: #a2aab1;
   }
@@ -403,12 +464,17 @@ export {
   // AdminProducts AdminUsers
   StyledButton,
   StyledTable,
+  // Register Login
+  StyledSignupButton,
+  StyledWrapper,
+  StyledFormBox,
+  StyledLoginButton,
   // Cart
   StyledCartWrapper,
   StyledCart,
   StyledEmptyCart,
   StyledTotalPrice,
-  StyledCheckoutLink,
+  StyledCheckoutButton,
   // CartProduct
   StyledCartRow,
   StyledProductImage,

@@ -28,6 +28,7 @@ const StyledParagraph = styled.p`
   padding-top: 30px;
   padding-bottom: 150px;
   margin: auto;
+  margin-left: 700px;
   text-align-last: center;
   line-height: 2;
   word-spacing: 5px;
