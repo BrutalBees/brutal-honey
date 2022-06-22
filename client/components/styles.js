@@ -174,7 +174,6 @@ const StyledTable = styled(Table)`
 
 // Register and Signup forms
 const StyledSignupButton = styled(Button)`
-  justify-content: center;
   color: black;
   background-color: white;
   border: solid #d9d9d9; 1px;
@@ -205,7 +204,6 @@ const StyledFormBox = styled.div`
   justify-content: center;
   border: 5px solid #b48139;
   background-color: #ebe8eb;
-  align-text: center;
 `;
 
 const StyledLoginButton = styled(Button)`
@@ -215,7 +213,7 @@ const StyledLoginButton = styled(Button)`
   border: solid #d9d9d9; 1px;
   margin-bottom: 20px;
   margin-top: 10%;
-  margin-left: 50px;
+  margin-left: 25%;
   &:hover {
     color: #f5db8b;
     border: solid #f5db8b 1px;

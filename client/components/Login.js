@@ -75,6 +75,8 @@ const Login = (props) => {
                           fontSize: '17px',
                           color: '#b48139',
                           alignText: 'center',
+                          alignSelf: 'center',
+                          paddingLeft: '10%',
                         }}
                       >
                         Create Account
