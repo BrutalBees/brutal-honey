@@ -441,6 +441,31 @@ const StyledProductQuantityForm = styled(StyledQuantityForm)`
   padding: 0px;
 `;
 
+//Order Confirmation
+const StyledConfirmationBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 5px solid #ffffff;
+  padding: 20px 25px 25px 20px;
+  color: #ffffff;
+  height: 400px;
+  width: 400px;
+  overflow: auto;
+  font-family: "Nunito", sans-serif;
+  text-align: center;
+  font-size: 180%;
+  background-color:rgba(193, 125, 31, 0.8);
+`
+;
+
+
+const StyledShoppingButton = styled(Button)`
+   background-color:rgba(193, 125, 31, 0.8);
+   border: 3px solid #ffffff;
+   color: #ffffff;
+`;
+
 // Exports
 export {
   // Home
@@ -496,4 +521,7 @@ export {
   StyledPrice,
   StyledAddToCartBtn,
   StyledProductQuantityForm,
+  //OrderConfirmation
+  StyledConfirmationBox,
+  StyledShoppingButton
 };

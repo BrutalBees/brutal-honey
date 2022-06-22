@@ -11,15 +11,15 @@ const AdminProducts = () => {
   // Hooks
   const allProducts = useSelector((state) => state.products);
   const dispatch = useDispatch();
-  const [data, setData] = useState(allProducts); // stores the allProducts data in the state
+  const [data, setData] = useState(allProducts); 
   const [filteredInfo, setFilteredInfo] = useState({});
   const [sortedInfo, setSortedInfo] = useState({});
-  const [editingId, setEditingId] = useState(""); // state: { data, editingId}
-  useEffect(() => { setData(allProducts) }, [allProducts]); // sets allProducts again in the state when allProducts updates
+  const [editingId, setEditingId] = useState(""); 
+  useEffect(() => { setData(allProducts) }, [allProducts]); 
   useEffect(() => { dispatch(fetchProducts()) }, [dispatch]);
 
   const [form] = Form.useForm();
-  const isEditing = (product) => product.id === editingId; // checks if the current product is being edited
+  const isEditing = (product) => product.id === editingId; 
 
   // Handler Functions
   const handleAdd = () => {
@@ -35,11 +35,11 @@ const AdminProducts = () => {
     setEditingId(emptyRow.id);
   };
 
-  const handleEdit = (product) => { // sets the props of the product as fields of the form
+  const handleEdit = (product) => { 
     form.setFieldsValue({
       ...product
     });
-    setEditingId(product.id); // and sets the editingId in state
+    setEditingId(product.id); 
   };
 
   const handleSave = async (productId) => {
