@@ -17,7 +17,7 @@ const StyledHeader = styled.h2`
 
 const StyledSubtitle = styled.h3`
   text-align: center;
-  padding-top: px;
+  padding-top: 45px;
 `;
 
 const StyledParagraph = styled.p`
