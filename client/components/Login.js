@@ -3,21 +3,7 @@ import { connect } from 'react-redux';
 import { login } from '../store/auth';
 import { Container, Card, Button, Form, Row, Col } from 'react-bootstrap';
 import styled from 'styled-components';
-import { StyledFormBox, StyledWrapper } from './SignUp';
-
-// Styled Components
-const StyledLoginButton = styled(Button)`
-  justify-content: center;
-  color: black;
-  background-color: white;
-  border: solid #d9d9d9; 1px;
-  margin-bottom: 20px;
-  &:hover {
-    color: #f5db8b;
-    border: solid #f5db8b 1px;
-  }
-`;
-
+import { StyledFormBox, StyledWrapper, StyledLoginButton } from './styles';
 
 const Login = (props) => {
   const { name, displayName, handleSubmit, error } = props;
@@ -28,7 +14,15 @@ const Login = (props) => {
           <div className="parent-div">
             <div className="exampldiv">
               <Card className="card-style">
-                <h1 className="login-heading">Login</h1>
+                <h1
+                  style={{
+                    textAlign: 'center',
+                    color: 'white',
+                    fontWeight: 'bolder',
+                  }}
+                >
+                  Login
+                </h1>
                 <StyledFormBox>
                   <Form
                     onSubmit={handleSubmit}
@@ -41,7 +35,7 @@ const Login = (props) => {
                       controlId="formBasicUserName"
                     >
                       <Form.Label column sm={2}>
-                        Email
+                        Email:
                       </Form.Label>
                       <Col sm={10}>
                         <Form.Control name="email" type="email" />
@@ -72,13 +66,18 @@ const Login = (props) => {
                         <div> {error.response.data} </div>
                       )}
                     </div>
-                    <a href="/#" className="forget-link">
-                        Forgot password?
-                      </a>
+
                     <div className="signup-link">
                       <a
                         href="/signup"
-                        style={{ textDecoration: 'none', fontSize: '17px' }}
+                        style={{
+                          textDecoration: 'none',
+                          fontSize: '17px',
+                          color: '#b48139',
+                          alignText: 'center',
+                          alignSelf: 'center',
+                          paddingLeft: '10%',
+                        }}
                       >
                         Create Account
                       </a>
