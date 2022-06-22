@@ -2,13 +2,11 @@ import axios from "axios";
 
 const token = window.localStorage.getItem('token');
 
-// Action Types
 const SET_PRODUCTS = "SET_PRODUCTS";
 const GOT_NEW_PRODUCT = 'GOT_NEW_PRODUCT';
 const GOT_UPDATED_PRODUCT = 'GOT_UPDATED_PRODUCT';
 const DELETE_PRODUCT = 'DELETE_PRODUCT';
 
-// Action Creators
 const setProducts = (products) => {
   return {
     type: SET_PRODUCTS,
@@ -37,11 +35,10 @@ const deletedProductFromServer = (productId) => {
   }
 };
 
-// Thunk Creators
 export const fetchProducts = (search) => {
   return async (dispatch) => {
     const { data: products } = search ?
-    await axios.get(`/api/products${search}`) // api/products?category=Organic
+    await axios.get(`/api/products${search}`)
     :
     await axios.get(`/api/products`)
     dispatch(setProducts(products));
@@ -85,7 +82,6 @@ export const deleteProduct = (productId) => {
   }
 };
 
-// Products Reducer
 export default (state = [], action) => {
   switch (action.type) {
     case SET_PRODUCTS:
