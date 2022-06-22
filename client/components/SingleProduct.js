@@ -1,9 +1,16 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchSingleProduct } from '../store/singleProduct';
+import { updateCart } from '../store/cart';
 import styled from 'styled-components';
-import { Container, Card, Button, Form, Row, Col } from 'react-bootstrap';
-import { StyledProductsLink } from './styles';
+import { Card } from 'react-bootstrap';
+import {
+  StyledProductsLink,
+  StyledQuantityForm,
+  StyledProductQuantity,
+  StyledQuantityButton,
+  StyledQuantityInput
+} from './styles';
 
 // Styled Components
 const StyledTopWrapper = styled.section`
@@ -14,24 +21,8 @@ const StyledTopWrapper = styled.section`
   align-items: center;
 `;
 
-const StyledAddToCartBtn = styled.button`
-  display: flex;
-  color: #303030;
-  border-radius: 2px;
-  background-color: #f5db8b;
-  width: 200px;
-  text-align: center;
-
-  curser: pointer;
-&:hover {
-  opacity: 50%;
-  transition: 100ms ease;
-}
-  }
-`;
-
 const StyledSingleProductImg = styled.img`
-  // display: flex;
+  display: flex;
   width: 350px;
   height: 400px;
   margin: 50px;
@@ -43,39 +34,56 @@ const StyledProductInfo = styled.div`
   display: flex;
   flex-direction: column;
 `;
-const StyledDescription = styled.p`
-  // text-align: justify;
-  width: 20px;
-  margin-left: 400px;
-  margin-right: 50px;
-  line-height: 1.5em;
-  letter-spacing: 1.5;
-  overflow-wrap: normal;
-  order: 2;
-`;
-const StyledProductName = styled.h1`
-  letter-spacing: 1.5;
-  align-tex: center;
-  width: 350px;
-  height: 400px;
-  margin-left: 400px;
-  margin-top: 50px;
-  padding-bottom: 2px;
-  order: 1;
-`;
 
 const StyledSingledProd = styled.div`
   background-image: url('https://images.unsplash.com/photo-1625600243103-1dc6824c6c8a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1064&q=80');
 `;
+const StyledProductQuantityForm = styled(StyledQuantityForm)`
+  padding: 0px;
+`;
 
+const StyledAddToCartBtn = styled.button`
+  width: 100%;
+  margin: 50px 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 42px;
+  background-color: rgb(245, 219, 139);
+  color: black;
+  border: solid rgb(245, 219, 139) 1px;
+  &:hover {
+    color: rgb(245, 219, 139);
+    background-color: white;
+  }
+`;
+
+// Single Product Component
 const SingleProduct = (props) => {
   const dispatch = useDispatch();
   const product = useSelector((state) => state.singleProduct);
-  const allProducts = useSelector((state) => state.products);
+  const [ quantity, setQuantity ] = useState(1);
 
   useEffect(() => {
     dispatch(fetchSingleProduct(props.match.params.id));
   }, [dispatch]);
+
+  const handleChange = (evt) => {
+    evt.preventDefault();
+    setQuantity(evt.target.value);
+  };
+
+  const handleQtyChange = (evt) => {
+    evt.preventDefault();
+    evt.target.name === 'minus' && setQuantity(quantity - 1);
+    evt.target.name === 'plus' && setQuantity(quantity + 1);
+  };
+
+  const handleAddToCart = (evt) => {
+    dispatch(updateCart(product.id, quantity - 1))
+    // by default quantity is 1 when product is added to cart
+  };
+
   return (
     <StyledSingledProd>
       <StyledTopWrapper>
@@ -84,12 +92,31 @@ const SingleProduct = (props) => {
           <Card border="light" style={{ width: '28rem' }}>
             <Card.Body>
               <Card.Title as="h1">{product.productName}</Card.Title>
-              {/* <StyledProductName>{product.productName}</StyledProductName> */}
               <Card.Subtitle className="mb-2 text-muted">
                 $ {product.price}
               </Card.Subtitle>
               <Card.Text>{product.description}</Card.Text>
-              <StyledProductsLink>Add to Cart</StyledProductsLink>
+              <StyledProductQuantityForm>
+                <StyledProductQuantity>
+                  <StyledQuantityButton
+                    name="minus"
+                    onClick={handleQtyChange}
+                  >{"-"}</StyledQuantityButton>
+                  <StyledQuantityInput
+                    type="text"
+                    name={product.id}
+                    value={quantity}
+                    onChange={handleChange}
+                  />
+                  <StyledQuantityButton
+                    name="plus"
+                    onClick={handleQtyChange}
+                  >{"+"}</StyledQuantityButton>
+                </StyledProductQuantity>
+              </StyledProductQuantityForm>
+              <StyledAddToCartBtn
+                onClick={handleAddToCart}
+              >Add to Cart</StyledAddToCartBtn>
             </Card.Body>
           </Card>
         </StyledProductInfo>

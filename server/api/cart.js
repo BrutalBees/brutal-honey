@@ -1,5 +1,4 @@
 const router = require('express').Router();
-const { reset } = require('nodemon');
 const verifyToken = require('../auth/verifyToken');
 const { models: { Cart, Product, cartProduct } } = require('../db');
 module.exports = router;
@@ -9,7 +8,8 @@ router.get('/', verifyToken, async (req, res, next) => {
   try {
     const [ userCart, created ] = await Cart.findOrCreate({
       where: {
-        userId: req.user.id
+        userId: req.user.id,
+        isOrder: false
       },
       include: [ Product ]
     });
@@ -25,7 +25,8 @@ router.post('/', verifyToken, async (req, res, next) => {
   try {
     const userCart = await Cart.findOne({
       where: {
-        userId: req.user.id
+        userId: req.user.id,
+        isOrder: false
       },
       include: [ Product ]
     });
@@ -41,18 +42,35 @@ router.post('/', verifyToken, async (req, res, next) => {
   }
 });
 
-// DELETE /api/cart - removes product from cart
+// DELETE /api/cart/:productId - removes product from cart
 router.delete('/:productId', verifyToken, async (req, res, next) => {
   try {
     const userCart = await Cart.findOne({
       where: {
-        userId: req.user.id
+        userId: req.user.id,
+        isOrder: false
       },
       include: [ Product ]
     });
     await userCart.removeProduct(req.params.productId)
     res.send(await userCart.reload());
-    res.send(req.data)
+  } catch (error) {
+    next(error);
+  }
+});
+
+// GET /api/cart/checkout - changes cart to order
+router.get('/checkout', verifyToken, async (req, res, next) => {
+  try {
+    const userCart = await Cart.findOne({
+      where: {
+        userId: req.user.id,
+        isOrder: false
+      },
+      include: [ Product ]
+    });
+    userCart.isOrder = true;
+    res.send(await userCart.save());
   } catch (error) {
     next(error);
   }

@@ -220,6 +220,148 @@ const StyledLoginButton = styled(Button)`
   }
 `;
 
+// Cart
+const StyledCartWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 100px 200px;
+`;
+
+const StyledCart = styled.div`
+  display: flex;
+  flex-direction: column;
+  border-top: solid #cdc5c4 0.5px;
+`;
+
+const StyledEmptyCart = styled.div`
+  display: flex;
+  width: 100%;
+  padding: 20px 0px;
+  border-bottom: solid #cdc5c4 0.5px;
+  height: 150px;
+  font-size: 18px;
+  font-weight: 800;
+`;
+
+const StyledTotalPrice = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 30px;
+  padding: 0px 10px;
+  font-size: 16px;
+  font-weight: 600;
+`;
+
+const StyledCheckoutButton = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 42px;
+  width: 217px;
+  background-color: rgb(245, 219, 139);
+  color: black;
+  border: solid rgb(245, 219, 139) 1px;
+  margin: 50px;
+  &:hover {
+    color: rgb(245, 219, 139);
+    background-color: white;
+  }
+  align-self: flex-end;
+  margin-right: 0px;
+  margin-top: 30px;
+`;
+
+// CartProduct
+const StyledCartRow = styled.div`
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  padding: 20px;
+  border-bottom: solid #cdc5c4 0.5px;
+  height: 150px;
+`;
+
+const StyledProductImage = styled.div`
+  background-image: url(${(props) => props.image});
+  background-size: cover;
+  background-position: center;
+  height: 100%;
+  width: 10%;
+`;
+
+const StyledCartProductName = styled.div`
+  display: flex;
+  width: 30%;
+  font-size: 15px;
+  font-weight: 800;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0px 30px;
+  a {
+    color: black;
+  }
+  a:hover {
+    color: #b5963e;
+  }
+`;
+
+const StyledProductPrice = styled(StyledProductName)`
+  width: 20%;
+  padding: 0px 30px;
+  justify-content: center;
+  padding: 0px 30px;
+  align-items: center;
+`;
+
+const StyledQuantityForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+  padding: 0px 40px;
+  justify-content: center;
+  align-items: center;
+`;
+
+const StyledProductQuantity = styled.div`
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  height: 40px;
+  background-color: white;
+  border: solid grey 0.5px;
+`;
+
+const StyledQuantityInput = styled.input`
+  display: flex;
+  border: none;
+  padding: 0;
+  background-color: white;
+  margin: 0;
+  width: 50px;
+  text-align: center;
+  &:hover {
+    color: #f5db8b;
+  }
+`;
+
+const StyledQuantityButton = styled.button`
+  display: flex;
+  border: none;
+  background-color: white;
+  margin: 0;
+  align-self: center;
+  &:hover {
+    color: #a2aab1;
+  }
+`;
+
+const StyledDeleteButton = styled(StyledQuantityButton)`
+  display: flex;
+  width: 5%;
+  justify-content: center;
+`;
+
 // Exports
 export {
   // Home
@@ -248,4 +390,20 @@ export {
   StyledWrapper,
   StyledFormBox,
   StyledLoginButton,
+  // Cart
+  StyledCartWrapper,
+  StyledCart,
+  StyledEmptyCart,
+  StyledTotalPrice,
+  StyledCheckoutButton,
+  // CartProduct
+  StyledCartRow,
+  StyledProductImage,
+  StyledCartProductName,
+  StyledProductPrice,
+  StyledQuantityForm,
+  StyledProductQuantity,
+  StyledQuantityInput,
+  StyledQuantityButton,
+  StyledDeleteButton,
 };
