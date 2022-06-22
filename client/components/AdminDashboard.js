@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchUsers } from '../store/users';
+import { fetchProducts } from "../store/products";
 import { Statistic } from 'antd';
-import { LikeOutlined } from '@ant-design/icons';
 import styled from 'styled-components';
 
 // Styled Components
@@ -12,11 +14,18 @@ const StyledAdminDashboard = styled.div`
 `;
 
 const AdminDashboard = () => {
+  const users = useSelector(state => state.users);
+  const products = useSelector(state => state.products);
+  const dispatch = useDispatch();
+  useEffect(() => { dispatch(fetchUsers()) }, [dispatch]);
+  useEffect(() => { dispatch(fetchProducts()) }, [dispatch]);
+
+  debugger
   return (
     <StyledAdminDashboard>
-      <Statistic title="Active Users" value={23239} />
-      <Statistic title="Account Balance" value={18347} precision={2} />
-      <Statistic title="Feedback" value={1128} prefix={<LikeOutlined />} />
+      <h2>ADMIN DASHBOARD</h2>
+      <Statistic title="Active Users" value={users && users.length} />
+      <Statistic title="Products Available" value={products && products.length}/>
     </StyledAdminDashboard>
   );
 };

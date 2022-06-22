@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchUsers } from '../store/users';
-import { Space } from 'antd';
 import { StyledTable, StyledButton } from './styles';
 
 
@@ -21,10 +20,6 @@ const AdminUsers = () => {
     setSortedInfo(sortedInfo);
   };
 
-  const clearFilters = () => {
-    setFilteredInfo({});
-  };
-
   const clearAll = () => {
     setFilteredInfo({});
     setSortedInfo({});
@@ -36,8 +31,8 @@ const AdminUsers = () => {
       dataIndex: 'firstName',
       key: 'firstName',
       sorter: (a, b) => {
-        if (a.firstName < b.firstName) return -1;
-        if (a.firstName > b.firstName) return 1;
+        if (a.firstName.toLowerCase() < b.firstName.toLowerCase()) return -1;
+        if (a.firstName.toLowerCase() > b.firstName.toLowerCase()) return 1;
         return 0;
       },
       sortOrder: sortedInfo.columnKey === 'firstName' ? sortedInfo.order : null,
@@ -47,8 +42,8 @@ const AdminUsers = () => {
       dataIndex: 'lastName',
       key: 'lastName',
       sorter: (a, b) => {
-        if (a.lastName < b.lastName) return -1;
-        if (a.lastName > b.lastName) return 1;
+        if (a.lastName.toLowerCase() < b.lastName.toLowerCase()) return -1;
+        if (a.lastName.toLowerCase() > b.lastName.toLowerCase()) return 1;
         return 0;
       },
       sortOrder: sortedInfo.columnKey === 'lastName' ? sortedInfo.order : null,
@@ -58,8 +53,8 @@ const AdminUsers = () => {
       dataIndex: 'email',
       key: 'email',
       sorter: (a, b) => {
-        if (a.email < b.email) return -1;
-        if (a.email > b.email) return 1;
+        if (a.email.toLowerCase() < b.email.toLowerCase()) return -1;
+        if (a.email.toLowerCase() > b.email.toLowerCase()) return 1;
         return 0;
       },
       sortOrder: sortedInfo.columnKey === 'email' ? sortedInfo.order : null,
@@ -94,21 +89,16 @@ const AdminUsers = () => {
 
   return (
     <div>
-      <Space
-        style={{
-          marginBottom: 16,
-        }}
-      >
-        <StyledButton onClick={clearFilters}>Clear Filters</StyledButton>
+      <div style={{ display: "flex", justifyContent: "flex-start", gap: 10}}>
         <StyledButton onClick={clearAll}>Clear All</StyledButton>
-        </Space>
+      </div>
       <StyledTable
         rowKey={'id'}
         columns={columns}
         dataSource={data}
         onChange={handleChange}
         pagination={{
-          defaultPageSize: 5,
+          defaultPageSize: 8,
           position: ["none", "bottomCenter"]
         }}
       />
