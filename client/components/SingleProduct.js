@@ -2,9 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { updateCart } from '../store/cart';
 import { fetchSingleProduct } from '../store/singleProduct';
-import styled from 'styled-components';
 import {
-  StyledQuantityForm,
   StyledProductQuantity,
   StyledQuantityButton,
   StyledQuantityInput,
@@ -42,8 +40,8 @@ const SingleProduct = (props) => {
 
   const handleAddToCart = (evt) => {
     dispatch(updateCart(product.id, quantity - 1));
-    // by default quantity is 1 when product is added to cart
   };
+
   return (
     <StyledProdPage>
       <StyledTopWrapper>

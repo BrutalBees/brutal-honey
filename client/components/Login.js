@@ -3,8 +3,21 @@ import { connect } from 'react-redux';
 import { login } from '../store/auth';
 import { Container, Card, Button, Form, Row, Col } from 'react-bootstrap';
 import styled from 'styled-components';
-import { StyledFormBox, StyledWrapper, StyledLoginButton } from './styles';
+import { StyledFormBox, StyledWrapper } from './styles';
 
+const StyledLoginButton = styled(Button)`
+  justify-content: center;
+  color: black;
+  background-color: white;
+  border: solid #d9d9d9; 1px;
+  margin-bottom: 20px;
+  margin-top: 10%;
+  margin-left: 25%;
+  &:hover {
+    color: #f5db8b;
+    border: solid #f5db8b 1px;
+  }
+`;
 const Login = (props) => {
   const { name, displayName, handleSubmit, error } = props;
   return (
@@ -41,7 +54,6 @@ const Login = (props) => {
                         <Form.Control name="email" type="email" />
                       </Col>
                     </Form.Group>
-
                     <Form.Group
                       as={Row}
                       className="mb-3"
@@ -66,7 +78,6 @@ const Login = (props) => {
                         <div> {error.response.data} </div>
                       )}
                     </div>
-
                     <div className="signup-link">
                       <a
                         href="/signup"
@@ -92,7 +103,6 @@ const Login = (props) => {
     </StyledWrapper>
   );
 };
-
 const mapLogin = (state) => {
   return {
     name: 'login',
@@ -100,7 +110,6 @@ const mapLogin = (state) => {
     error: state.auth.error,
   };
 };
-
 const mapDispatchLogin = (dispatch) => {
   return {
     handleSubmit(evt) {
@@ -111,5 +120,4 @@ const mapDispatchLogin = (dispatch) => {
     },
   };
 };
-
 export default connect(mapLogin, mapDispatchLogin)(Login);

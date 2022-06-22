@@ -3,7 +3,20 @@ import { connect } from 'react-redux';
 import { signup } from '../store/auth';
 import { Container, Card, Button, Form, Row, Col } from 'react-bootstrap';
 import styled from 'styled-components';
-import { StyledFormBox, StyledWrapper, StyledSignupButton } from './styles';
+import { StyledFormBox, StyledWrapper } from './styles';
+
+const StyledSignupButton = styled(Button)`
+  color: black;
+  background-color: white;
+  border: solid #d9d9d9; 1px;
+  margin-bottom: 20px;
+  margin-top: 15%;
+  margin-left: 50px;
+  &:hover {
+    color: #f5db8b;
+    border: solid #f5db8b 1px;
+  }
+`;
 
 const SignUp = (props) => {
   const { name, displayName, handleSubmit, error } = props;
