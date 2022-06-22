@@ -3,7 +3,6 @@ const verifyToken = require('../auth/verifyToken');
 const { models: { Cart, Product, cartProduct } } = require('../db');
 module.exports = router;
 
-// GET /api/cart - returns the cart and products associated with the token, creates new cart if none
 router.get('/', verifyToken, async (req, res, next) => {
   try {
     const [ userCart, created ] = await Cart.findOrCreate({
@@ -19,8 +18,6 @@ router.get('/', verifyToken, async (req, res, next) => {
   }
 });
 
-// POST /api/cart - adds given quantity of products to associated user cart
-// req.body: { "productId": 7, "quantity": 4 }
 router.post('/', verifyToken, async (req, res, next) => {
   try {
     const userCart = await Cart.findOne({
@@ -42,7 +39,6 @@ router.post('/', verifyToken, async (req, res, next) => {
   }
 });
 
-// DELETE /api/cart/:productId - removes product from cart
 router.delete('/:productId', verifyToken, async (req, res, next) => {
   try {
     const userCart = await Cart.findOne({
@@ -59,7 +55,6 @@ router.delete('/:productId', verifyToken, async (req, res, next) => {
   }
 });
 
-// GET /api/cart/checkout - changes cart to order
 router.get('/checkout', verifyToken, async (req, res, next) => {
   try {
     const userCart = await Cart.findOne({
